@@ -1,0 +1,356 @@
+/*总体*/
+.bigdiv{
+	margin:0px auto;
+	/*border: 1px solid blue;*/
+	width: 100%	
+}
+/*顶部*/
+.tophead{
+	/*border: 1px red solid;*/
+	width: 100%;
+	height: 80px;
+}
+
+/*标志图片*/
+
+.imagesign{
+	margin-left: 100px;
+	margin-top: 15px;
+	float: left;
+	/*border: 1px solid blue;*/
+}
+
+.train{
+	/*border: 1px solid red;*/	
+	width: 1000px;
+	height: 35px;
+	float: left;
+}
+
+
+/*输入框*/
+.readinput{
+	margin-left: 100px;
+	margin-top: 5px;
+	width: 400px;
+	height: 30px;
+	float: left;
+}
+
+/*搜索按钮*/
+.search{	
+	margin-top: 5px;
+	width: 40px;
+	height: 36px;
+	background-image: url("../image/搜索2.png");
+	margin-left: 0；
+
+}
+
+/*火车头*/
+.train{
+	/*border: 1px red solid;*/
+	margin-left: 100px;
+	width: 1066px;
+	height: 50px;
+	float: left;
+	margin-top: 15px;
+	/*border: 1px solid blue;*/
+	background-image: url("../image/火车头.png");
+}
+
+/*语言*/
+
+.language{
+	float: left;
+	/*border: 1px solid red;*/
+	list-style-type: none;
+}
+
+/*语言滑动*/
+.slide{
+	display: none; width: 90px;
+	height: 100px; 
+	/*border:1px solid blue;*/
+	position: relative;
+	margin-top:10px;
+	border: 1px solid #C1C1C1;
+	background-color: white;
+}
+
+/*菜单项*/
+.lidiv{
+	float: right;
+	width: 90px;
+	color: #3B99FC;
+	z-index: 1;
+	/*background-color: red;*/
+}
+
+
+/*语言*/
+.language li:hover div{
+	display: block;
+}
+
+
+/*语言旁边的*/
+.logindiv{
+	float: right;
+	width: 450px;
+	height: 50px;
+	/*border:1px solid red;*/
+	margin-right: 60px;
+}
+
+
+
+/*顶部右边*/
+.imagetop{
+	float: left;
+	/*border:1px solid blue;*/
+	/*margin-left: 20px;*/
+	margin-left: 0px;
+}
+
+
+/*顶部右边*/
+.imagetop2{
+	float: left;
+	/*border:1px solid blue;*/
+	/*margin-left: 20px;*/
+	margin-left: 20px;
+}
+
+
+/*顶部右边字体*/
+.topfont{
+	font-size: 7px;
+	/*background-color: white;*/
+	color: gray;
+}
+
+
+/*登录*/
+.login{
+	float: left;
+	margin-top: 15px;
+	margin-left: 5px;
+}
+/*注册*/
+.reg{
+	float: left;
+	margin-top: 15px;
+	margin-left: 10px;
+
+}
+
+
+/*中部菜单*/
+.menubar{
+	/*border: 1px solid blue;*/
+	height: 40px;
+	width: 100%;	
+	background-color: #3B99FC;
+	/*border: 1px solid red;*/
+	text-align: center;
+	line-height: 30px;
+	float: left;
+	margin: 0px;
+}
+
+
+/*菜单显示*/
+.Menudisplay
+{
+	display: none; width: 100px;
+	height: 100px; 
+	/*border:1px solid blue;*/
+	position: relative;
+	margin-top:0px;
+	/*text-align: center;	*/
+	border: 1px solid #C1C1C1;
+	background-color: white;
+
+	}
+
+
+/*滑动*/
+.homepage li:hover div{
+	display: block;
+}	
+
+
+/*菜单*/
+.menu{
+	width: 100px;
+	float: left;
+	color: white;	
+	list-style-type: none;
+	text-align: center;
+	float: left;
+	margin-top: -11px;
+	margin-left: 70px;
+}
+
+/*菜单项字体*/
+.menufont{
+	color: gray;
+	float: left;
+	margin-right:  50px;
+}
+
+/*菜单项箭头*/
+.menuarrows{
+	float: right;
+	/*margin-left: 300px;*/
+	margin-top: -5px;
+	width: 20px;
+	height: 39px;
+}
+
+
+/*友情链接*/
+.friend{
+	width: 100%;
+	height: 200px;
+	/*border: 1px solid blue;*/
+	float: left;
+	margin-top: 30px;
+	margin-bottom: 50px;
+	background-color: #f8f8f8;
+}
+
+
+/*友情链接字*/
+.fontfriend{
+	width: 28%;
+	height: 140px;
+	float: left;
+	/*border: 1px solid red;*/
+	margin-left: 220px;
+	margin-top: 50px;
+
+}
+/*友情链接图片第一个*/
+.imggefont{
+	transform: scale(0.5);
+	margin-left: -100px ;
+	margin-top: -13px;
+	height: 80px;
+	width: 400px;
+	float: left;
+	border: 1px solid gray;
+}
+
+
+/*右边第一个图片*/
+.imggefont2{
+	transform: scale(0.5);
+	margin-left: 110px ;
+	margin-top: -82px;
+	height: 80px;
+	width: 400px;
+	float: left;
+	border: 1px solid gray;
+}
+
+
+/*左边第二个*/
+.imggefont3{
+	transform: scale(0.5);
+	margin-left: -100px ;
+	margin-top: -33px;
+	height: 80px;
+	width: 400px;
+	float: left;
+	border: 1px solid gray;
+}
+
+
+/*二维码*/
+.QR{
+	float: left;
+	height: 140px;
+	width: 45%;
+	margin-top: 50px;
+	margin-left: 50px;
+}
+
+
+/*二维码字体*/
+.QRfont{
+	float: left;
+	margin-left: 15px;
+}
+
+
+/*二维码图片*/
+.QEimage{
+	transform: scale(0.25);
+	float: left;
+	margin-left: -100px;
+	margin-top: -120px;
+}
+
+/*二维码右边3个*/
+.QEimage2{
+	transform: scale(0.25);
+	float: left;
+	margin-left: -210px;
+	margin-top: -120px;
+	/*border: 1px solid red;*/
+}
+
+
+/*二维码字体*/
+.fonter{
+	float: right;
+	/*border: 1px solid red;*/
+	width: 120px;
+	height: 80px;
+	font-size: 10px;
+	margin-top: -220px;
+	margin-right: 20px;
+}
+
+
+
+/*底部*/
+.bottom{
+	float: left;
+	width: 100%;
+	height: 100px;
+	/*border: 1px solid red;*/
+	background-color: #666666;
+}
+
+
+
+/*底部字体*/
+.fontbottom{
+	float: left;
+	margin-left: 550px;
+	margin-top: 20px;
+	color: white;
+	
+}
+
+
+
+
+/*注册信息*/
+.regmessage{
+	float: left;
+	width: 66%;
+	height: 500px;
+	border: 1px solid red;
+	margin-left: 250px;
+}
+
+
+/*地址*/
+.place{
+	font-size: 12px;
+	margin-left: 100px;
+}

@@ -1,0 +1,26 @@
+.bgtablediv{
+	border: 1px solid red;
+}
+
+
+
+
+/*偶数行even*/
+/*.table tr:nth-child(even){
+    background: #A1F8EA;
+}*/
+/*奇数行odd*/
+/*.table tr:nth-child(odd){
+    background: #f5f2eb;
+}*/
+
+
+
+
+
+
+
+table tr:hover{
+	background-color: pink;
+}
+

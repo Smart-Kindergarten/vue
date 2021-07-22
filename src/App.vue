@@ -1,0 +1,35 @@
+<template>
+  <div id="app">
+<!--    <img src="./assets/logo.png">-->
+<!--    <dududu></dududu>-->
+<!--    <Index></Index>-->
+    <router-view></router-view>
+
+<!--    <AdminIndex></AdminIndex>-->
+<!--    <Login></Login>-->
+<!--    <HelloWorld></HelloWorld>-->
+<!--    <router-view/>-->
+  </div>
+
+</template>
+
+<script>
+  import dududu from './components/dududu'
+  import Index from './components/view/Index'
+  import Login from './components/view/Login'
+export default {
+  name: 'App',
+  components:{dududu: dududu,Index : Index,Login : Login},
+}
+</script>
+
+<style>
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>

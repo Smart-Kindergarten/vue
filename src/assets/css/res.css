@@ -1,0 +1,121 @@
+ /*左边大标签 放图片*/
+ .bigdivleft{
+ 	/*边框*/       /*实线*/
+ 	/*border: 1px red solid;*/
+ 	width: 30%;
+ 	height: 100%;
+ 	/*浮动 : 漂浮在body 文档上, 向左对齐*/
+ 	float:left;  
+ }
+
+ /*右边信息大标签*/
+
+ .bigdivright{
+ 	/*border: 1px red solid;*/
+ 	width: 68%;
+ 	height: 100%;
+ 	/*浮动 : 漂浮在body 文档上, 向左对齐*/
+ 	float:left;  
+ 	margin-left: 20px;
+ }
+/*头1*/
+ .head{
+ 	margin-left: 700px;
+ 	width:80px;
+ 	height:40px;
+ }
+
+/*头2*/
+.head2{
+	margin-left: 20px;
+}
+
+/*欢迎*/
+.weicome{
+	margin-left: 400px;
+	margin-top: 10%;
+}
+
+/*快乐*/
+.happy{
+	margin-left: 400px;
+	margin-top: 1%;
+}
+
+/*靓号*/
+.good{
+ 	margin-left: 50px;
+ 	color:blue;
+ /*	height: 50px;
+ 	width:50px;*/
+ 	/*font-size: 4px;*/
+ 	font-size: 20px;
+}
+
+/*昵称  密码*/
+.name{
+	margin-left:400px;
+	width: 200px;
+	height: 30px;
+	margin-top: 20px;
+} 
+
+/*下拉框*/
+.number{
+	margin-left: 400px;
+	margin-top: 20px;
+	width: 80px;
+	height: 35px;
+}
+
+/*手机号*/
+.phone{
+	margin-left: 10px;
+	width: 105px;
+	height: 28px;
+}
+
+/*注册按钮*/
+.reg{
+	margin-left: 400px;
+	margin-top: 20px;
+	width: 210px;
+	height: 40px;
+	background-color: MediumSlateBlue;
+}
+
+/*找回密码*/
+.findpdw{
+	float: left;
+	margin-left: 400px;
+	font-size: 10px;
+}
+
+/*复选框*/
+.read{
+	margin-left: 400px;
+	margin-top: 30px;
+}
+
+/*阅读内容*/
+.read2{
+	float: left;
+	font-size: 10px;
+	margin-left: 400px;
+}
+
+
+.regma{
+	margin-left: 400px;
+	margin-top: 200px
+}	
+
+
+/*邮箱*/
+.em{
+	float: left;
+	margin-left: -100px;
+	margin-top: 20px;
+	width: 200px;
+	height: 30px;
+}

@@ -1,0 +1,20 @@
+/*注册大标签*/
+.big{
+	text-align: center;
+	/*float: left;*/
+	margin-top: 0px;
+	background-image: url("../image/注册背景.jpg");
+	background-size: 100% 700px;
+	width: 100%;
+	height: 700px;
+	/*border: 1px solid width;*/
+}
+
+.bigdiv2{
+	text-align: center;
+	width: 100%;
+	height: 600px;
+	/*border: 1px solid blue;*/
+	margin-top: 150px; 	
+	float: left; 	
+}

@@ -1,0 +1,876 @@
+/*首行字体*/
+.fastfont{
+	height: 20px;
+	width: 100%;
+	/*border: 1px solid red;*/
+	background-color: #F2F2F2;
+}
+
+/*鼠标手势：小手;字体变颜色;无下划线*/
+.poter:hover{
+	/*text-decoration: none;*/
+	/*cursor: pointer; */
+	color: red;
+}
+
+/*logo图片大小*/
+.logo{
+	float: left;
+	margin-left: 150px;
+}
+
+/*天猫首页字体*/
+.tianfont{
+	float: left;
+	margin-left: 0px;
+	font-size: 13px;
+	color: #999999;
+	margin-top: 0.5px;
+}
+
+/*欢迎来到天猫*/
+.weicomefont{
+	float: left;
+	margin-left: 20px;
+	font-size: 13px;
+	color: #999999;
+	margin-top: 0.5px;
+}
+
+/*我的淘宝字体*/
+.myfont{
+	float: left;
+	margin-left: 400px;
+	font-size: 13px;
+	color: #999999;
+	margin-top: 0.5px;
+}
+
+/*下标图片*/
+.subscript{
+	float: left;
+	margin-top: 2px;
+
+}
+
+
+/*购物车图片*/
+.car{
+	float: left;
+	margin-top: 0.5px;
+}
+
+/*竖着图片*/
+.erect{
+	float: left;
+	margin-top: 0px;
+	height: 18px;
+	margin-left: 5px;
+}
+
+/*手机图片*/
+.phone{
+	float: left;
+	margin-top: 0px;
+	height: 18px;
+	margin-left: 5px;
+}
+
+/*手机版文字*/
+.phonefont{
+	float: left;
+	margin-left: 5px;
+	font-size: 13px;
+	color: #999999;
+	margin-top: 0.5px;
+}
+
+/*网站图标*/
+.website{
+	float: left;
+	margin-top: 1px;
+	height: 18px;
+	margin-left: 15px
+}
+
+
+/*搜索栏*/
+.search{
+	height: 100px;
+	width: 100%;
+	/*border: 1px solid red;*/
+}
+
+/*天猫图标*/
+.cat{
+	float: left;
+	margin-top: 30px;
+	margin-left: 150px;
+	height: 20px;
+}
+
+/*天猫竖着图片*/
+.caterect{
+	float: left;
+	margin-top: 15px;
+	margin-left: 15px;
+}
+
+
+/*旗舰店字体*/
+.flagshipstore{
+	float: left;
+	margin-top: 20px;
+	font-size: 12px;
+	margin-left: 10px;
+}
+
+
+/*品牌*/
+.brand{
+	float: left;
+	height: 15px;
+	width: 50px;
+	/*border: 1px solid blue;*/
+	margin-top: 38px;
+	margin-left: -120px;
+	background-color: #F4C985;
+}
+
+/*品牌直销字体*/
+.brandfont{
+	font-size: 6px;
+	float: left;
+	margin-left: 5px;
+	/*margin-top: 0px;*/
+}
+
+
+/*精灵图标*/
+.elf{
+	float: left;
+	margin-top: 38px;
+	height: 20px;
+	margin-left: -65px;
+
+}
+
+
+/*描述服务物流字体*/
+.describe{
+	float: left;
+	margin-top: 20px;
+	font-size: 14px;
+	margin-left: 10px;
+	color: #999999;
+}
+
+/*描述服务物流字体时间*/
+.describetime{
+	float: left;
+	color: red;
+	font-size: 12px;
+	margin-top: 40px;
+	margin-left: -104px;
+}
+
+
+/*横杠*/
+.whippletree{
+	float: left;
+	margin-top: 44px;
+	margin-left: -84px;
+
+}
+
+.describetime2{
+	float: left;
+	color: red;
+	font-size: 12px;
+	margin-top: 40px;
+	margin-left: -67px;
+}
+
+
+.whippletree2{
+	float: left;
+	margin-top: 44px;
+	margin-left: -44px;
+
+}
+
+.describetime3{
+	float: left;
+	color: red;
+	font-size: 12px;
+	margin-top: 40px;
+	margin-left: -25px;
+}
+
+
+/*箭头*/
+.arrows{
+	float: left;
+	margin-top: 40px;
+	margin-left: -5px;
+	width: 13px;
+}
+
+/*下拉*/
+.dropdown{
+	float: left;
+	margin-top: 30px;	
+	margin-left: 5px;
+}
+
+
+/*手机逛*/
+.phoneshop{
+	color: #999999;
+	float: left;
+	font-size: 12px;
+	margin-top: 20px;
+	margin-left: 10px;
+}
+
+/*手机逛二维码*/
+.phoneshopQR{
+	float: left;
+	margin-top: 40px;
+	margin-left: -35px;
+	width: 40px;
+	height: 23px;
+}
+
+
+/*搜索框*/
+.information{
+	float: left;
+	margin-top: 23px;
+	height: 30px;
+	width: 400px;
+	margin-left: 150px;
+	border: 2px solid red;
+}
+
+
+/*搜天猫*/
+.catinformation{
+	float: left;
+	margin-top: 23px;
+	height: 36px;
+	width: 60px;
+	border: 2px solid red;
+	background-color: red;
+}
+
+
+/*搜天猫字体*/
+.searchcatfont{
+	float: left;
+	margin-top: 30px;
+	margin-left: -54px;
+	color: white;
+}	
+
+
+
+/*搜本店*/
+.OURinformation{
+	float: left;
+	margin-top: 23px;
+	height: 36px;
+	width: 60px;
+	margin-left: 5px;
+	border: 2px solid #060505;
+	background-color: #060505;
+}
+
+
+/*搜本店字体*/
+.searchOURfont{
+	float: left;
+	margin-top: 30px;
+	margin-left: -54px;
+	color: white;
+
+}	
+
+
+
+/*商品全部信息*/
+.allinformation{
+	width: 100%;
+	height: 700px;
+	/*border: 1px solid red;*/
+	float: left;
+	margin-bottom: 100px;
+}
+
+/*中部全部信息*/
+.midallinformation{
+	/*border: 1px solid red;*/
+	width: 80%;
+	height: 650px;
+	float: left;
+	margin-left: 160px;
+	margin-top: 50px;
+}
+
+
+/*商品图片*/
+.ctimg{
+	float: left;
+	border: 1px solid #F2F2F2;
+}
+
+
+/*商品信息右边*/
+.allif{
+	float: left;
+	margin-left: 10px;
+	height: 650px;
+	width: 550px;
+	/*border: 1px solid red;*/
+}
+
+/*商品名*/
+.topfont{
+	float: left;
+	margin-top: 20px;
+	margin-left: 25px;
+	color: #0E0D0D;
+	font-weight:bold;
+}
+
+/*价格div*/
+.moneydiv{
+	float: left;
+	width: 265px;
+	height:  33px;
+	border: 1px solid #BFBFBF;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+/*浏览器*/
+.browser{
+	float: left;
+	/*margin-left: 20px;*/
+	width: 45px;
+	height: 35px;
+	/*margin-top: 5px;*/
+	margin-left: -1px;
+}
+
+/*商城价*/
+.Mallprice{
+	float: left;
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
+
+/*价格*/
+.money{
+	float: left;
+	margin-top: 5px;
+	margin-left: 5px;
+	color: red;
+}
+
+/*价格竖着图片*/
+.merect{
+	float: left;
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
+
+/*优惠券*/
+.bdiscount{
+	float: left;
+	height: 34px;
+	width: 65px;
+	margin-top: 20px;
+	margin-left: 10px;
+	background-color: #00B2FC;
+	border: 1px solid #00B2FC;
+}
+
+
+
+/*优惠券字体*/
+.discountsfont{
+	float: left;
+	margin-top: 26px;	
+	margin-left: -58px;
+	color: #FFFFFF;
+}
+
+
+
+
+/*优惠价格div*/
+.discountsinfdiv{
+	float: left;
+	width: 500px;
+	height: 100px;
+	/*border: 1px solid red;*/
+	margin-top: 5px;
+	margin-left: 20px;
+	background-image: url("../commodityimage/价格背景.png");
+}
+
+
+/*价格*/
+.divpricefont{
+	float: left;
+	font-size: 12px;
+	margin-left: 10px;
+	margin-top: 5px;
+	color: #999999;
+}
+
+/*价格2*/
+.divpricefont2{
+	float: left;
+	font-size: 12px;
+	margin-left: 40px;
+	margin-top: 5px;
+	color: #020202;
+	text-decoration:line-through;
+}
+
+
+
+
+/*促销*/
+.promotion{
+	float: left;
+	font-size: 12px;
+	margin-left: -107px;
+	margin-top: 15px;
+	color: #999999;
+}
+
+
+
+
+/*促销价格*/
+.promotion2{
+	float: left;
+	font-size: 25px;
+	margin-left: -50px;
+	margin-top: 5px;
+	color: #FF0036;
+}
+
+
+
+/*活动中div*/
+.activitydiv{
+	/*border: 1px solid red;*/
+	float: left;
+	margin-left: 10px;
+	height: 20px;
+	width: 50px;
+	margin-top: 10px;
+	background-color: #F47A86;
+}
+
+
+/*活动中字体*/
+.activityfont{
+ 	color: white;
+ 	font-size: 12px;
+ 	float: left;
+ 	margin-left: 5px;
+ 	margin-top: 2px;
+}
+
+
+
+/*本店优惠*/
+.discountsdiv{
+	float: left;
+	font-size: 12px;
+	margin-left: -198px;
+	margin-top: 50px;
+	color: #999999;	
+}
+
+
+
+/*活动价格*/
+.mdiscounts{
+	float: left;
+	margin-top: 45px;
+	margin-left: -135px;
+	width: 100px;
+	height: 25px;
+	background-color: #F0EFEF;
+	border: none;
+	outline: none; 
+	background-color: transparent;
+	color: #F80505;
+}
+
+
+
+/*更多优惠div*/
+.MoreDiscountdiv{
+	float: left;
+	width: 90px;
+	height: 25px;
+	/*border: 1px solid pink;*/
+	margin-top: 45px;
+	margin-left: 190px;
+}
+
+
+
+/*更多优惠*/
+.MoreDiscountfont{
+	color: #F80505;
+}
+
+
+/*销量*/
+.Sales{
+	float: left;
+	width: 500px;
+	height: 50px;
+	/*border: 1px solid red;*/
+	margin-top: 2px;
+	margin-left: -1px;
+
+}
+
+
+/*月销量*/
+.monthlySalesfont{
+	float: left;
+	margin-left: 30px;
+	margin-top: 15px;
+	font-size: 13px;
+	color: #999999;
+}
+
+
+/*月销量值*/
+.monthlySalesnumber{
+	float: left;
+	font-size: 13px;
+	color: red;
+	margin-left: 5px;
+	margin-top: 15px;
+}
+
+
+
+/*月销量竖着图片*/
+.Salesimg{
+	/*border: 1px solid red;*/
+	float: left;
+	margin-left: 50px;
+	margin-top: 10px;
+}
+
+
+/*累积评价字体*/
+.evaluatefont{
+	float: left;
+	font-size: 13px;
+	color: #999999;
+	margin-left: 5px;
+	margin-top: 15px;
+	margin-left: 50px;
+}
+
+
+
+
+/*购买*/
+.buydiv{
+	width: 100%;
+	height: 300px;
+	/*border: 1px solid pink;*/
+	float: left;
+	margin-top: 1px;
+	margin-left: -1px;
+	background-color: white;
+}
+
+
+
+/*运费div*/
+.freightdiv{
+	float: left;
+	height: 50px;
+	width: 100%;
+	/*border: 1px solid red;*/
+	margin-top: 12px;
+	margin-left: -1px;
+}
+
+
+/*运费字体*/
+.freightfont{
+	float: left;
+	font-size: 13px;
+	color: #838383;
+	margin-left: 18px;
+	margin-top: 15px;
+
+}
+
+
+/*广东字体*/
+.Cantonfont{
+	float: left;
+	font-size: 13px;
+	margin-top: 15px;
+	margin-left: 20px;
+}
+
+
+/*至*/
+.tofont{
+	float: left;
+	font-size: 13px;
+	margin-top: 15px;
+	margin-left: 5px;
+}
+
+/*地址按钮*/
+.sitebtn{
+	width: 100px;
+	height: 25px;	
+	float: left;
+	margin-top: 12px;
+	margin-left: 5px;
+	background-color: transparent;
+	border: none; 
+	outline: none;
+}
+
+
+/*快递字*/
+.expressagefont{
+	 float: left;
+	 font-size: 13px;
+	 margin-top: 17px;
+}
+
+
+
+
+
+/*口味字体*/
+.tastefont{
+	float: left;
+	font-size: 13px;
+	color: #838383;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+/*酱心乳酸球580g*/
+.saucebut{
+	float: left;
+	width: 150px;
+	height: 28px;
+	margin-top: 15px;
+	margin-left: 15px;
+	background-color: transparent;
+	border: none; 
+	outline: none;
+}
+
+
+/*乳酸菌小口袋580g*/
+.LABbtn{
+	float: left;
+	width: 150px;
+	height: 28px;
+	margin-top: 15px;
+	margin-left: 15px;
+	background-color: transparent;
+	border: none; 
+	outline: none;
+}
+
+
+/*数量字体*/
+.quantityfont{
+	float: left;
+	font-size: 13px;
+	color: #838383;
+	margin-left: -357px;
+	margin-top: 35px;
+}
+
+
+/*数量输入框*/
+.numberput{
+	float: left;
+	width: 50px;
+	height: 30px;
+	margin-left: -290px;
+	margin-top: 30px;
+}
+
+
+/*上点击按钮*/
+.topbtn{
+	width: 20px;
+	height: 15px;
+	float: left;
+	margin-left: -235px;
+	margin-top: 30px;
+}
+
+
+/*下点击按钮*/
+.downbtn{
+	width: 20px;
+	height: 15px;
+	float: left;
+	margin-left: -235px;
+	margin-top: 50px;
+}
+
+
+
+
+/*件字体*/
+.piecefont{
+	float: left;
+	margin-left: -205px;
+	margin-top: 35px;
+	font-size: 13px;
+	color: #838383;
+}
+
+
+/*库存*/
+.inventory{
+	float: left;
+	margin-left: -155px;
+	margin-top: 35px;
+	font-size: 13px;
+	color: #838383;
+}
+
+
+
+/*购物车*/
+.shopping{
+	float: left;
+	width: 100%;
+	height: 200px;
+	/*border: 1px solid red;*/
+	margin-left: -1px;
+}
+
+
+/*购物车div*/
+.shopping{
+	float: left;
+	height: 100px;
+}
+
+/*立即购买*/
+.newshopping{
+	float: left;
+	width: 150px;
+	height: 40px;
+	margin-left: 85px;
+	margin-top: 20px;
+	border: 1px solid red;
+	color: red;
+	background-color: #FFEDED;
+}
+
+
+/*加入购物车*/
+.shoppingcar{
+	float: left;
+	width: 150px;
+	height: 40px;
+	margin-left: 10px;
+	margin-top: 20px;
+	border: 1px solid red;
+	color: white;
+	background-color: red;
+}
+
+/*返利购买*/
+.shoppingrebate{
+float: left;
+	width: 70px;
+	height: 40px;
+	margin-left: 10px;
+	margin-top: 20px;
+	border: 1px solid red;
+	color: white;
+	background-color: red;
+}
+
+
+/*服务承诺字体*/
+.servefont{
+	float: left;
+	margin-top: 10px;
+	font-size: 13px;
+	color: #999999;
+	margin-left: 5px;
+}
+
+
+/*正品保证*/
+.BSOfont{
+	float: left;
+	margin-top: 10px;
+	font-size: 13px;
+	color: #666666;
+	margin-left: 20px;
+}
+
+/*急速退款*/
+.arapidrefundfont{
+	float: left;
+	margin-top: 10px;
+	font-size: 13px;
+	color: #666666;
+	margin-left: 30px;
+}
+
+/*七天无理由退款*/
+.Sevendaysrefundwithoutreasonfont{
+	float: left;
+	margin-top: 10px;
+	font-size: 13px;
+	color: #666666;
+	margin-left: 30px;
+}
+
+/*支付方式*/
+.paymentfont{
+	float: left;
+	margin-top: 10px;
+	font-size: 13px;
+	color: #666666;
+	margin-left: 70px;
+}
+
+
+/*支付方式图片*/
+.payimg{
+	float: left;
+	width: 15px;
+	height: 10px;
+	margin-top: 15px;
+	margin-left: 1px;
+}
