@@ -14,11 +14,11 @@ import Power from '../components/view/Power'
 Vue.use(Router)
 
 const routes = [
-  { path:"/Login",name:"Login",component: Login},
+  { path:"/",name:"Login",component: Login},
   { path:"/Menu/:cid",name:"Menu",component: Menu},
   { path:"/Login12306",name:"Login12306",component: Login12306},
   { path:"/Reg12306",name:"Reg12306",component: Reg12306},
-  { path:"/",name:"Index",component: Index,
+  { path:"/Index",name:"Index",component: Index,
     children:[
       {path:'/UserAdmin',name:'UserAdmin',component:UserAdmin},
       {path:'/UserTable',name:'UserTable',component:UsersTable},

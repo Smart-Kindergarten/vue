@@ -1,14 +1,6 @@
 <template>
   <div id="app">
-<!--    <img src="./assets/logo.png">-->
-<!--    <dududu></dududu>-->
-<!--    <Index></Index>-->
     <router-view></router-view>
-
-<!--    <AdminIndex></AdminIndex>-->
-<!--    <Login></Login>-->
-<!--    <HelloWorld></HelloWorld>-->
-<!--    <router-view/>-->
   </div>
 
 </template>

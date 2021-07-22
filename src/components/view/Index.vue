@@ -1,14 +1,9 @@
 <template xmlns:router="">
     <div style="margin-top: 0px;">
       <div>
-      <Menu :msg ="msg"></Menu>
-      <router-link to="/Login" >登录</router-link>
-      <router-link to="/Menu/123" replace>菜单</router-link>
-      <router-link to="/Login12306" >12306登录</router-link>
-      <router-link to="/Reg12306">12306注册</router-link>
-      <router-link to="/UserAdmin">用户管理</router-link>
-        <router-link to="/Power">权限管理</router-link>
 
+<!--        子组件:-->
+<!--        <span>{{inputName}}</span>-->
 
         <el-row :gutter="20">
           <el-col :span="6"><div class="grid-content bg-purple">
@@ -18,15 +13,15 @@
               class="el-menu-vertical-demo"
               @open="handleOpen"
               @close="handleClose">
-              <el-submenu index="index" v-for="(item,index) in menuData" :key="index">
+              <el-submenu index="index" v-for="(item,index) in menuData" :key="item.index">
                 <template slot="title">
                   <i class="el-icon-location"></i>
-                  <span>{{item.mbname}}</span>
+                  <span>{{item.mename}}</span>
                 </template>
                 <el-menu-item-group>
                   <el-menu-item :index="subItem.URL" v-for="(subItem,subIndex) in menuTwoData"
-                                v-if="subItem.mbid === item.rid" :key="subIndex">
-                    {{subItem.mbname}}
+                                v-if="subItem.meid === item.mepid" :key="subIndex">
+                    {{subItem.mename}}
                     </el-menu-item>
                 </el-menu-item-group>
               </el-submenu>
@@ -50,6 +45,11 @@
 <script>
   import Menu from './Menu'
   export default {
+    // 接受父组件的值
+    // props: {
+    //   inputName: String,
+    //   required: true
+    // },
     data() {
       return {
         msg: '我是一个组件',
@@ -74,9 +74,12 @@
       },
       MenuALL:function () {
           this.$axios.get("admin/MenuAll",{
+            params:{
+              uaccount:this.username,
+            },
           }).then(response=>{
             for (let i = 0; i < response.data.length; i++) {
-              if (response.data[i].mbid === 0) {
+              if (response.data[i].meid === 0) {
                 this.menuData.push(response.data[i]);
               }else {
                 this.menuTwoData.push(response.data[i]);

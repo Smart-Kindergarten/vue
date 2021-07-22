@@ -37,16 +37,29 @@
       <!--    <router-view></router-view>-->
     </div>
 
+<!--    父组件:-->
+<!--    <input type="text" v-model="name">-->
+    <br>
+    <br>
+<!--    &lt;!&ndash; 引入子组件 &ndash;&gt;-->
+<!--    <child :inputName="name"></child>-->
+
   </div>
 </template>
 
 <script>
+  import Index from './Index'
+
   export default {
+    // components: {
+    //   Index
+    // },
     name: 'Login',
     data () {
       return {
-        username: '',
-        password: '',
+          username: '',
+          password: '',
+          name: this.response.data[0].uaccount,
       }
     },
     methods: {
@@ -63,11 +76,14 @@
         if (this.username != '' && this.password != ''){
          this.$axios.get("admin/GGB2",{
            params:{
-             name:this.username,
-             pwd:this.password
+             uaccount:this.username,
+             upwd:this.password
            },
           }).then(response=>{
-            console.log(response)
+            console.log(response.data[0].uaccount)
+           this.$router.replace({
+             path: '/Index',
+           })
          }).catch(error=>{
             console.log(error)
           });
