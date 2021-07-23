@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  import Security_Carousel from './view/SecurityGuard-Carousel'
+  import Security_Carousel from './Security/SecurityGuard-Carousel'
     export default {
         name: "Security",
         components: {
