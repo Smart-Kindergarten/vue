@@ -27,22 +27,18 @@
         </el-checkbox>
         <el-form-item style="width:100%;">
           <el-button type="primary" style="width:40%;"
-                     @click.prevent="handleLogin">登录
+                     @click.prevent="handleLogin">登录11
           </el-button>
           <el-button type="primary" @click="handleRegister" style="width:40%;"
-          >注册
+          >注册23
           </el-button>
         </el-form-item>
       </el-form>
       <!--    <router-view></router-view>-->
     </div>
 
-<!--    父组件:-->
-<!--    <input type="text" v-model="name">-->
     <br>
     <br>
-<!--    &lt;!&ndash; 引入子组件 &ndash;&gt;-->
-<!--    <child :inputName="name"></child>-->
 
   </div>
 </template>
@@ -58,8 +54,7 @@
     data () {
       return {
           username: '',
-          password: '',
-
+          password: ''
       }
     },
     methods: {
@@ -78,11 +73,10 @@
            params:{
              uaccount:this.username,
              upwd:this.password,
-             user:null
+
            },
           }).then(response=>{
             console.log(response.data[0].uaccount)
-
            this.$router.push({
              name:'Index',
              params:{Userid:response.data[0].uaccount}

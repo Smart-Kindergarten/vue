@@ -11,7 +11,7 @@
   import Login from './components/view/Login'
 export default {
   name: 'App',
-  components:{dududu: dududu,Index : Index,Login : Login},
+  // components:{dududu: dududu,Index : Index,Login : Login},
 }
 </script>
 

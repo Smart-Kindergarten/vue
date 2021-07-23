@@ -14,6 +14,7 @@
          return this.$route.params.cid;
       },
       data () {
+
         return {}
       },
       // props: ["msg"],
