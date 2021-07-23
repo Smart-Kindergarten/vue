@@ -1,5 +1,7 @@
 <template>
-
+  <div>
+    <Security_Carousel></Security_Carousel>
+  </div>
 </template>
 
 <script>
@@ -13,5 +15,5 @@
 </script>
 
 <style scoped>
-
+  @import "../assets/css/Security.css";
 </style>
