@@ -3,9 +3,7 @@
 <!--      -->
       <div>
 
-<!--        子组件:-->
-<!--        <span>{{inputName}}</span>-->
-        {{User}}
+<!--        {{User}}-->
         <el-row :gutter="20">
           <el-col :span="6"><div class="grid-content bg-purple">
             <el-menu
@@ -14,7 +12,7 @@
               class="el-menu-vertical-demo"
               @open="handleOpen"
               @close="handleClose">
-              <el-submenu index="index" v-for="(item,index) in menuData" :key="item.index">
+              <el-submenu index="index" v-for="(item,index) in menuData" :key="item.mepid">
                 <template slot="title">
                   <i class="el-icon-location"></i>
                   <span>{{item.mename}}</span>

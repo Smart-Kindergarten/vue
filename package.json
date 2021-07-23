@@ -10,7 +10,8 @@
     "e2e": "node test/e2e/runner.js",
     "test": "npm run e2e",
     "lint": "eslint --ext .js,.vue src test/e2e/specs",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "serve": "webpack-dev-server --open"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -70,6 +71,9 @@
     "webpack-dev-server": "^2.9.1",
     "webpack-merge": "^4.1.0"
   },
+  "devServer": {
+    "disableHostCheck": true
+  },
   "engines": {
     "node": ">= 6.0.0",
     "npm": ">= 3.0.0"
@@ -79,4 +83,5 @@
     "last 2 versions",
     "not ie <= 8"
   ]
+
 }
