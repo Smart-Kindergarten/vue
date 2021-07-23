@@ -59,7 +59,7 @@
       return {
           username: '',
           password: '',
-          name: this.response.data[0].uaccount,
+
       }
     },
     methods: {
@@ -77,12 +77,15 @@
          this.$axios.get("admin/GGB2",{
            params:{
              uaccount:this.username,
-             upwd:this.password
+             upwd:this.password,
+             user:null
            },
           }).then(response=>{
             console.log(response.data[0].uaccount)
-           this.$router.replace({
-             path: '/Index',
+
+           this.$router.push({
+             name:'Index',
+             params:{Userid:response.data[0].uaccount}
            })
          }).catch(error=>{
             console.log(error)

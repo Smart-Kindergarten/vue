@@ -1,10 +1,11 @@
 <template xmlns:router="">
     <div style="margin-top: 0px;">
+<!--      -->
       <div>
 
 <!--        子组件:-->
 <!--        <span>{{inputName}}</span>-->
-
+        {{User}}
         <el-row :gutter="20">
           <el-col :span="6"><div class="grid-content bg-purple">
             <el-menu
@@ -58,10 +59,13 @@
         // tableData:[],
         menuData:[],
         menuTwoData:[],
+        User:this.$route.params.Userid
       }
     },
     name: 'Index',
-    components : {Menu : Menu},
+    components : {
+      Menu : Menu
+    },
     // mounted:function(){
             // this.MenuALL();//需要触发的函数
     //       },
@@ -75,7 +79,7 @@
       MenuALL:function () {
           this.$axios.get("admin/MenuAll",{
             params:{
-              uaccount:this.username,
+              uaccount:this.User,
             },
           }).then(response=>{
             for (let i = 0; i < response.data.length; i++) {
