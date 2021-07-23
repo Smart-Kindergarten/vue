@@ -1,7 +1,7 @@
 <template>
   <el-carousel height="150px">
     <el-carousel-item v-for="(item,Indexes) in 4" :key="item">
-      <img :src="'/api/Security/getCarousel?Carousel='+Indexes" :id=Indexes>
+      <img :src="'http://127.0.0.1:9900/Security/GetCarousel?Carousel='+item" :id=Indexes style="width: 100%;height: 100%">
     </el-carousel-item>
   </el-carousel>
 </template>
