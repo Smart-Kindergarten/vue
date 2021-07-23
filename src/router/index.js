@@ -10,6 +10,7 @@ import UserAdmin from '../components/admin/UserAdmin'
 import App from '../App'
 import UsersTable from '../components/admin/UsersTable'
 import Power from '../components/view/Power'
+import Security from "../components/SecurityGuard";
 
 Vue.use(Router)
 
@@ -27,6 +28,7 @@ const routes = [
   // { path:"/",name:"App",component: App},
   { path:"/AdminIndex",name:"AdminIndex",component: AdminIndex},
   { path:"/Power",name:"Power",component: Power},
+  { path:"/Security",name:"Security",component: Security},
 
 ]
 
