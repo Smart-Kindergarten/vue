@@ -26,6 +26,8 @@
           </tbody>
         </table>
       </div>
+      <el-button type="primary" icon="el-icon-arrow-left"style="float: left;margin-left: 20px">上一周</el-button>
+      <el-button type="primary" style="float: right;margin-right: 20px">下一周<i class="el-icon-arrow-right el-icon--right"></i></el-button>
     </div>
   </div>
 </template>
