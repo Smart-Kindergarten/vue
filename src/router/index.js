@@ -11,6 +11,7 @@ import App from '../App'
 import UsersTable from '../components/admin/UsersTable'
 import Power from '../components/view/Power'
 import Security from "../components/SecurityGuard";
+import Curriculum from '../components/teacher/Curriculum'
 
 Vue.use(Router)
 
@@ -23,6 +24,8 @@ const routes = [
     children:[
       {path:'/UserAdmin',name:'UserAdmin',component:UserAdmin},
       {path:'/UserTable',name:'UserTable',component:UsersTable},
+      {path:'/Curriculum',name:'Curriculum',component:Curriculum},
+
     ]
   },
   // { path:"/",name:"App",component: App},
