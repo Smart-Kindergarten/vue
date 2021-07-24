@@ -26,7 +26,7 @@
           </tbody>
         </table>
       </div>
-      <el-button type="primary" icon="el-icon-arrow-left"style="float: left;margin-left: 20px">上一周</el-button>
+      <el-button type="primary" icon="el-icon-arrow-left" style="float: left;margin-left: 20px">上一周</el-button>
       <el-button type="primary" style="float: right;margin-right: 20px">下一周<i class="el-icon-arrow-right el-icon--right"></i></el-button>
     </div>
   </div>
@@ -35,7 +35,7 @@
 <script>
 export default {
   name: 'Curriculum',
-  data() {
+  data () {
     return {
       weeks: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
       classTableData: [{
@@ -70,7 +70,7 @@ export default {
         'friday': '',
       }],
       tableShow: false
-    };
+    }
   },
   methods: {
     /**
@@ -79,9 +79,9 @@ export default {
      * @param {String} identifier 标识符
      * @returns {String} 转换后的中文
      */
-    digital2Chinese(num, identifier) {
-      const character = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二'];
-      return identifier === 'week' && (num === 0 || num === 7) ? '日' : character[num];
+    digital2Chinese (num, identifier) {
+      const character = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二']
+      return identifier === 'week' && (num === 0 || num === 7) ? '日' : character[num]
     }
   }
 }
