@@ -12,7 +12,7 @@
               class="el-menu-vertical-demo"
               @open="handleOpen"
               @close="handleClose">
-              <el-submenu index="index" v-for="(item,index) in menuData" :key="item.mepid">
+              <el-submenu index="index" v-for="(item,index) in menuData" :key="item">
                 <template slot="title">
                   <i class="el-icon-location"></i>
                   <span>{{item.mename}}</span>
