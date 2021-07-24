@@ -18,9 +18,9 @@
                   <span>{{item.mename}}</span>
                 </template>
                 <el-menu-item-group>
-                  <el-menu-item :index="subItem.URL" v-for="(subItem,subIndex) in menuTwoData"
+                  <el-menu-item :index="subItem.meurl" v-for="(subItem,subIndex) in menuTwoData"
                                 v-if="subItem.meid === item.mepid" :key="subIndex">
-                    <router-link to="subItem.meurl">{{subItem.mename}}</router-link>
+                    {{subItem.mename}}
                   </el-menu-item>
                 </el-menu-item-group>
               </el-submenu>

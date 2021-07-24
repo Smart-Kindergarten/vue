@@ -23,12 +23,13 @@ const routes = [
     children:[
       {path:'/UserAdmin',name:'UserAdmin',component:UserAdmin},
       {path:'/UserTable',name:'UserTable',component:UsersTable},
+      { path:"/Security",name:"Security",component: Security},
     ]
   },
   // { path:"/",name:"App",component: App},
   { path:"/AdminIndex",name:"AdminIndex",component: AdminIndex},
   { path:"/Power",name:"Power",component: Power},
-  { path:"/Security",name:"Security",component: Security},
+
 
 ]
 
