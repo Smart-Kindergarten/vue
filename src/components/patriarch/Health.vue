@@ -81,6 +81,7 @@
           this.tableData = response.data;
         }).catch(error=>{
           console.log(error)
+          //sdasd
         });
       },
       handleClick(row) {
