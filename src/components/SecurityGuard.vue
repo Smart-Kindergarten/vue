@@ -15,8 +15,8 @@
 </template>
 
 <script>
-  import Security_Carousel from './Security/SecurityGuard-Carousel'
-  import Security_Menu from './Security/SecurityGuard-Menu'
+  import Security_Carousel from './security/SecurityGuard-Carousel'
+  import Security_Menu from './security/SecurityGuard-Menu'
     export default {
         name: "Security",
         data(){
