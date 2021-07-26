@@ -2,14 +2,14 @@
 
   <div class="class-table">
     <div style="height: 40px;font-size: 30px">课程表</div>
-    <div>班级名称：小⑴班</div>
-    <span>2021-07-26~2021-07-30</span>
+    <div>班级名称：{{ className }}</div>
+    <span>{{ startTime }}~{{ endTime }}</span>
     <div class="table-wrapper">
       <div class="tabel-container">
         <table>
           <thead>
           <tr>
-            <th>时间</th>
+            <th>课节</th>
             <th v-for='(week, index) in weeks' :key='index'> {{ '周' + digital2Chinese(index + 1, 'week') }}</th>
           </tr>
           </thead>
@@ -37,42 +37,65 @@ export default {
   name: 'Curriculum',
   data () {
     return {
+      className: '',
+      startTime: '',
+      endTime: '',
       weeks: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
-      classTableData: [{
-        'monday': '物理',
-        'tuesday': '英语',
-        'wednesday': '政治',
-        'thursday': '历史',
-        'friday': '化学',
-      }, {
-        'monday': '生物',
-        'tuesday': '物理',
-        'wednesday': '化学',
-        'thursday': '英语',
-        'friday': '化学',
-      }, {
-        'monday': '生物',
-        'tuesday': '物理',
-        'wednesday': '生物',
-        'thursday': '历史',
-        'friday': '生物',
-      }, {
-        'monday': '',
-        'tuesday': '政治',
-        'wednesday': '物理',
-        'thursday': '政治',
-        'friday': '历史',
-      }, {
-        'monday': '生物',
-        'tuesday': '历史',
-        'wednesday': '历史',
-        'thursday': '历史',
-        'friday': '',
-      }],
+      classTableData: [],
       tableShow: false
     }
   },
+  mounted: function () {
+    this.$axios.get('teacher/selectCurrAll').then(response => {
+      console.log(response.data.length)
+      this.className = response.data[0].classId
+      var currDate = response.data[0].currDate
+      var date = currDate.split(',')
+      this.startTime = date[0]
+      this.endTime = date[1]
+      this.classTableData = [
+        {
+          'monday': response.data[0].currMonday,
+          'tuesday': response.data[0].currTuesday,
+          'wednesday': response.data[0].currWednesday,
+          'thursday': response.data[0].currThursday,
+          'friday': response.data[0].currFriday,
+        },
+        {
+          'monday': response.data[1].currMonday,
+          'tuesday': response.data[1].currTuesday,
+          'wednesday': response.data[1].currWednesday,
+          'thursday': response.data[1].currThursday,
+          'friday': response.data[1].currFriday,
+        },
+        {
+          'monday': response.data[2].currMonday,
+          'tuesday': response.data[2].currTuesday,
+          'wednesday': response.data[2].currWednesday,
+          'thursday': response.data[2].currThursday,
+          'friday': response.data[2].currFriday,
+        },
+        {
+          'monday': response.data[3].currMonday,
+          'tuesday': response.data[3].currTuesday,
+          'wednesday': response.data[3].currWednesday,
+          'thursday': response.data[3].currThursday,
+          'friday': response.data[3].currFriday,
+        },
+        {
+          'monday': response.data[4].currMonday,
+          'tuesday': response.data[4].currTuesday,
+          'wednesday': response.data[4].currWednesday,
+          'thursday': response.data[4].currThursday,
+          'friday': response.data[4].currFriday,
+        }]
+    }).catch(error => {
+      console.log(error)
+    })
+  },
+
   methods: {
+
     /**
      * 数字转中文
      * @param {Number} num 需要转换的数字
@@ -82,7 +105,8 @@ export default {
     digital2Chinese (num, identifier) {
       const character = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二']
       return identifier === 'week' && (num === 0 || num === 7) ? '日' : character[num]
-    }
+    },
+
   }
 }
 </script>
