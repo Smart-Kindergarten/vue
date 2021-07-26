@@ -26,6 +26,7 @@
         <span slot="footer" class="dialog-footer">
     <el-button @click="dialogVisibless = false">取 消</el-button>
     <el-button type="primary" @click="affirmAdd">确 定</el-button>
+<!--          //撒大声地-->
   </span>
       </el-dialog>
     </div>
