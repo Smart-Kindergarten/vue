@@ -12,7 +12,19 @@
               class="el-menu-vertical-demo"
               @open="handleOpen"
               @close="handleClose">
-              <el-submenu v-for="(item,index) in menuData" :key="item.mepid" :index="item.mepid">
+<!--              <el-submenu v-for="(item,index) in menuData" :key="item.mepid" :index="item.mepid">-->
+<!--                <template slot="title">-->
+<!--                  <i class="el-icon-location"></i>-->
+<!--                  <span>{{item.mename}}</span>-->
+<!--                </template>-->
+<!--                <el-menu-item-group>-->
+<!--                  <el-menu-item :index="subItem.meurl" v-for="(subItem,subIndex) in menuTwoData"-->
+<!--                                v-if="subItem.meid === item.mepid" :key="subIndex">-->
+<!--                    {{subItem.mename}}-->
+<!--                  </el-menu-item>-->
+<!--                </el-menu-item-group>-->
+<!--              </el-submenu>-->
+              <el-submenu v-for="(item,index) in menuData" :key="item.mepid" >
                 <template slot="title">
                   <i class="el-icon-location"></i>
                   <span>{{item.mename}}</span>

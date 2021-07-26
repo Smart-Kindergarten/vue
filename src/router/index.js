@@ -13,6 +13,8 @@ import Power from '../components/view/Power'
 import Security from "../components/SecurityGuard";
 import Curriculum from '../components/teacher/Curriculum'
 import Health from '../components/patriarch/Health'
+import ParentsManagement from '../components/terrace/ParentsManagement'
+import ceshi from '../components/terrace/ceshi'
 
 Vue.use(Router)
 
@@ -27,7 +29,8 @@ const routes = [
       {path:'/UserTable',name:'UserTable',component:UsersTable},
       {path:'/Curriculum',name:'Curriculum',component:Curriculum},
       {path:'/Health',name:'Health',component:Health},
-
+      {path:'/ParentsManagement',name:'ParentsManagement',component:ParentsManagement},
+      {path:'/ceshi',name:'ceshi',component:ceshi},
       { path:"/Security",name:"Security",component: Security},
     ]
   },
