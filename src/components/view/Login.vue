@@ -81,6 +81,10 @@
              name:'Index',
              params:{Userid:response.data[0].uaccount}
            })
+           this.$router.push({
+             name:'Health',
+             params:{Userid:response.data[0].uaccount}
+           })
          }).catch(error=>{
             console.log(error)
           });
