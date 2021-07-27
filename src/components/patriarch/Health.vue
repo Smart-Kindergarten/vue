@@ -77,6 +77,7 @@
           params:{
             page:val,
               uaccount: this.User,
+            // ad
           },
         }).then(response=>{
           console.log(response.data)
