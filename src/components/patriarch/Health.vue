@@ -67,8 +67,6 @@
         tableData: [
         ],
       }
-
-
     },
     methods: {
       getTableDate:function(val){
