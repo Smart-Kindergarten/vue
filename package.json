@@ -4,6 +4,7 @@
   "description": "asd",
   "author": "asd",
   "private": true,
+  "proxy" : "http://localhost:9901/",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
