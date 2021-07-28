@@ -245,7 +245,7 @@
         console.log(row.uaccount),
         this.dialogVisible = true
         this.questionForm.uaccount = row.uaccount
-        this.questionForm. biname = row. biname
+        this.questionForm.biname = row. biname
         this.questionForm.uname = row.uname
         this.questionForm.uwork = row.uwork
         this.questionForm.usite = row.usite

@@ -17,6 +17,7 @@ import Alipay from "../components/patriarch/Alipay";
 import SendMessage from "../components/patriarch/SendMessage";
 import ParentsManagement from '../components/terrace/ParentsManagement'
 import SafetyEducationVideo from '../components/terrace/SafetyEducationVideo'
+import SafetyEducationQuestions from '../components/terrace/SafetyEducationQuestions'
 
 Vue.use(Router)
 
@@ -36,6 +37,7 @@ const routes = [
       {path: "/SendMessage", name: "SendMessage", component: SendMessage},
       {path: "/ParentsManagement", name: "ParentsManagement", component: ParentsManagement},
       {path: "/SafetyEducationVideo", name: "SafetyEducationVideo", component: SafetyEducationVideo},
+      {path: "/SafetyEducationQuestions", name: "SafetyEducationQuestions", component: SafetyEducationQuestions},
 
     ]
   },
