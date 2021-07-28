@@ -57,6 +57,7 @@
     name: 'Health',
     data() {
       return {
+        User: this.$route.params.Userid,
         currentPage1: 5,
         currentPage2: 5,
         currentPage3: 5,
@@ -66,8 +67,6 @@
         tableData: [
         ],
       }
-
-
     },
     methods: {
       getTableDate:function(val){
@@ -75,6 +74,8 @@
         this.$axios.get("Health/HealthAll",{
           params:{
             page:val,
+              uaccount: this.User,
+            // ad
           },
         }).then(response=>{
           console.log(response.data)

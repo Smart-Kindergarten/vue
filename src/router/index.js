@@ -15,7 +15,8 @@ import Curriculum from '../components/teacher/Curriculum'
 import Health from '../components/patriarch/Health'
 import Alipay from "../components/patriarch/Alipay";
 import SendMessage from "../components/patriarch/SendMessage";
-import PublishHomework from '../components/teacher/PublishHomework'
+import ParentsManagement from '../components/terrace/ParentsManagement'
+import SafetyEducationVideo from '../components/terrace/SafetyEducationVideo'
 
 Vue.use(Router)
 
@@ -24,8 +25,7 @@ const routes = [
   {path: "/Menu/:cid", name: "Menu", component: Menu},
   {path: "/Login12306", name: "Login12306", component: Login12306},
   {path: "/Reg12306", name: "Reg12306", component: Reg12306},
-  {
-    path: "/Index", name: "Index", component: Index,
+  {path: "/Index", name: "Index", component: Index,
     children: [
       {path: '/UserAdmin', name: 'UserAdmin', component: UserAdmin},
       {path: '/UserTable', name: 'UserTable', component: UsersTable},
@@ -34,7 +34,8 @@ const routes = [
       {path: "/Security", name: "Security", component: Security},
       {path: "/Alipay", name: "Alipay", component: Alipay},
       {path: "/SendMessage", name: "SendMessage", component: SendMessage},
-      {path: '/PublishHomework', name: 'PublishHomework', component: PublishHomework},
+      {path: "/ParentsManagement", name: "ParentsManagement", component: ParentsManagement},
+      {path: "/SafetyEducationVideo", name: "SafetyEducationVideo", component: SafetyEducationVideo},
 
     ]
   },
