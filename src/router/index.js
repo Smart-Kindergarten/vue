@@ -15,6 +15,7 @@ import Curriculum from '../components/teacher/Curriculum'
 import Health from '../components/patriarch/Health'
 import Alipay from "../components/patriarch/Alipay";
 import SendMessage from "../components/patriarch/SendMessage";
+import PublishHomework from '../components/teacher/PublishHomework'
 
 Vue.use(Router)
 
@@ -33,6 +34,8 @@ const routes = [
       {path: "/Security", name: "Security", component: Security},
       {path: "/Alipay", name: "Alipay", component: Alipay},
       {path: "/SendMessage", name: "SendMessage", component: SendMessage},
+      {path: '/PublishHomework', name: 'PublishHomework', component: PublishHomework},
+
     ]
   },
   // { path:"/",name:"App",component: App},
