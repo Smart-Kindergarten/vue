@@ -6,7 +6,7 @@
         border
         stripe
         :data="tableData"
-        style="width: 841px;margin: auto">
+        style="width: 851px;margin: auto;text-align: center">
         <el-table-column
           label="班级编号"
           width="100"
@@ -36,20 +36,30 @@
           label="操作"
           width="220"
           align="=center">
-          <div class="con">
-            <div class="tip">选择文件：</div>
-            <input class="file" type="file" title="请选择文件" value="请选择文件">
-            <div class="tip">输入姓名：</div>
-            <input class="inputS" type="text" v-model="name" placeholder="请在此输入姓名">
-            <button class="submit" @click="submit">提交</button>
-          </div>
+          <!--          <el-form :model="form">-->
+          <el-button size="medium" type="primary" @click="uploadFile">发布作业</el-button>
+          <!--          </el-form>-->
         </el-table-column>
       </el-table>
     </div>
+    <el-upload
+      ref="uploadDemo"
+      action="/api/elUpload"
+      :auto-upload="false"
+      :file-list="fileList"
+      :show-file-list="false"
+      :on-preview="handlePreview"
+      :on-remove="handleRemove"
+      :on-change="handleChange"
+      :on-success="handleSuccess">
+      <el-button slot="trigger" size="medium" type="primary">上传作业</el-button>
+    </el-upload>
+
   </div>
 </template>
 
 <script>
+
 var formData = new FormData() // 声明一个FormData对象
 var formData = new window.FormData() // vue 中使用 window.FormData(),否则会报 'FormData isn't definded'
 export default {
@@ -59,37 +69,64 @@ export default {
       tableData: [
         {
           fileWork: '',
-          date: '',
+          date: this.addDate(),
         }],
 
-      fileList: [],
-      name: '',
-      // file: ''
+      form: {
+        file: ''
+      },
+      fileList: []
     }
   },
 
   methods: {
-    submit: function () {
-      formData.append('file', document.querySelector('input[type=file]').files[0]) // 'file' 这个名字要和后台获取文件的名字一样;
-      formData.append('user', this.name)
-      //'userfile'是formData这个对象的键名
-      axios({
-        url: 'http://localhost:9901/teacher/upHomework',   //****: 你的ip地址
-        data: formData,
-        method: 'post',
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          // 'Access-Control-Allow-Origin': 'http://127.0.0.1:8080'
-          //这里是为了解决跨域问题，但是博主并没有用这种方式解决。后面会给出解决方案
-        }
-      }).then((res) => {
-        console.log(res.data)
-      }) // 发送请求
+    uploadFile () {
+      this.$refs.uploadDemo.submit()
+    },
+    // submit(params) { // 如果要自定义submit的话el-upload需要加上:http-request="submit"
+    //   console.log(params)
+    //   const form = new FormData()
+    //   form.append('xml', params.file)
+    //   this.$http.post('/elupload', form, {
+    //     headers: {
+    //       'Content-Type': 'multipart/form-data'
+    //     }
+    //   }).then(() => {
+    //     this.$notify({
+    //       title: '成功',
+    //       message: '导入成功',
+    //       type: 'success',
+    //       duration: 2000
+    //     })
+    //   })
+    // },
+    handleSuccess (response, file, fileList) {
+      console.log(response)
+      if (response == '上传成功') {
+        this.$message({
+          showClose: true,
+          message: response,
+          type: 'success'
+        })
+      } else {
+        this.$message({
+          showClose: true,
+          message: response,
+          type: 'error'
+        })
+      }
     },
 
+    handleRemove (file, fileList) {
+      console.log(file, fileList)
+    },
+    handlePreview (file) {
+      console.log(file)
+    },
     handleChange (file, fileList) {
       console.log('文件选择')
       console.log(file.name)
+      console.log(this.fileList)
       this.tableData = [
         {
           fileWork: file.name,
