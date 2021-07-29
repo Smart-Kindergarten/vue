@@ -5,7 +5,7 @@
     <div>班级名称：{{ className }}</div>
     <span>{{ startTime }}~{{ endTime }}</span>
     <div class="table-wrapper">
-      <div class="tabel-container">
+      <div class="table-container">
         <table>
           <thead>
           <tr>
@@ -200,10 +200,14 @@ export default {
   width: 100%;
   height: 100%;
   overflow: auto;
+  /*border: 1px black solid;*/
+
 }
 
-.tabel-container {
+.table-container {
   margin: 7px;
+  /*border: 1px black solid;*/
+  height: 240px;
 }
 
 table {
