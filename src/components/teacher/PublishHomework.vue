@@ -1,13 +1,14 @@
 <template>
   <div>
     <h1>发布作业</h1>
-    <div>
+    <div align="center">
       <el-table
         border
         stripe
         :data="tableData"
-        style="width: 851px;margin: auto;text-align: center">
+        style="width: 861px;margin: auto;text-align: center">
         <el-table-column
+          prop="id"
           label="班级编号"
           width="100"
           align="center">
@@ -16,8 +17,8 @@
           label="班级名称"
           width="180"
           align="center">
-          <select style="width: 160px;height: 30px">
-            <option></option>
+          <select style="width: 160px;height: 30px" @change="getClassId($event)">
+            <option v-for="(item,index) in classAry" :key="index" :value="item.classId">{{ item.className }}</option>
           </select>
         </el-table-column>
         <el-table-column
@@ -54,7 +55,6 @@
       :on-success="handleSuccess">
       <el-button slot="trigger" size="medium" type="primary">上传作业</el-button>
     </el-upload>
-
   </div>
 </template>
 
@@ -68,6 +68,7 @@ export default {
     return {
       tableData: [
         {
+          id: this.cId,
           fileWork: '',
           date: this.addDate(),
         }],
@@ -75,13 +76,18 @@ export default {
       form: {
         file: ''
       },
-      fileList: []
+      fileList: [],
+
+      classAry: [],
+      cId: '',
     }
   },
+  props: ['uacc'],
 
   methods: {
     uploadFile () {
       this.$refs.uploadDemo.submit()
+
     },
     // submit(params) { // 如果要自定义submit的话el-upload需要加上:http-request="submit"
     //   console.log(params)
@@ -100,6 +106,7 @@ export default {
     //     })
     //   })
     // },
+
     handleSuccess (response, file, fileList) {
       console.log(response)
       if (response == '上传成功') {
@@ -123,10 +130,7 @@ export default {
     handlePreview (file) {
       console.log(file)
     },
-    handleChange (file, fileList) {
-      console.log('文件选择')
-      console.log(file.name)
-      console.log(this.fileList)
+    handleChange (file) {
       this.tableData = [
         {
           fileWork: file.name,
@@ -145,6 +149,31 @@ export default {
       // console.log(this.systemTime)
       return date.year + '-' + date.month + '-' + date.date
     },
+//获取班级名称
+    getClassName () {
+      console.log(this.uacc)
+      this.$axios.get('teacher/getClassName', {
+        params: {
+          uAccount: this.uacc
+        }
+      }).then(response => {
+        console.log('--------------')
+        this.classAry = response.data
+        console.log(this.classAry)
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+    //获取班级id
+    getClassId (event) {
+      this.cId = event.target.value //获取option对应的value值
+      console.log('你选中了', this.cId)
+    },
+
+  },
+
+  mounted () {
+    this.getClassName()
   }
 }
 </script>

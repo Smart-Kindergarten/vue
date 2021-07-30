@@ -37,7 +37,7 @@ const routes = [
       {path: '/SendMessage', name: 'SendMessage', component: SendMessage},
       {path: '/ParentsManagement', name: 'ParentsManagement', component: ParentsManagement},
       {path: '/SafetyEducationVideo', name: 'SafetyEducationVideo', component: SafetyEducationVideo},
-      {path: '/PublishHomework', name: 'PublishHomework', component: PublishHomework},
+      {path: '/publishHomework', name: 'PublishHomework', component: PublishHomework},
 
     ]
   },

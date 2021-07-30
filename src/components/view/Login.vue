@@ -44,76 +44,78 @@
 </template>
 
 <script>
-  import Index from './Index'
+import Index from './Index'
 
-  export default {
-    // components: {
-    //   Index
-    // },
-    name: 'Login',
-    data () {
-      return {
-          username: '',
-          password: ''
-      }
+export default {
+  // components: {
+  //   Index
+  // },
+  name: 'Login',
+  data () {
+    return {
+      username: '',
+      password: ''
+    }
+  },
+  methods: {
+    handleRegister: function () {
+
     },
-    methods: {
-      handleRegister:function(){
+    handleLogin: function () {
+      if (this.username === '') {
+        alert('用户名不能为空')
+      }
+      if (this.password === '') {
+        alert('密码不能为空')
+      }
+      if (this.username != '' && this.password != '') {
+        this.$axios.get('admin/GGB2', {
+          params: {
+            uaccount: this.username,
+            upwd: this.password,
 
-      },
-      handleLogin: function () {
-        if (this.username === '') {
-          alert('用户名不能为空')
-        }
-        if (this.password === '') {
-          alert('密码不能为空')
-        }
-        if (this.username != '' && this.password != ''){
-         this.$axios.get("admin/GGB2",{
-           params:{
-             uaccount:this.username,
-             upwd:this.password,
+          },
+        }).then(response => {
+          console.log(response.data[0].uaccount)
+          this.$router.push({
+            name: 'Health',
+            params: {Userid: response.data[0].uaccount}
+          })
 
-           },
-          }).then(response=>{
-            console.log(response.data[0].uaccount)
-           this.$router.push({
-             name:'Index',
-             params:{Userid:response.data[0].uaccount}
-           })
-           this.$router.push({
-             name:'Health',
-             params:{Userid:response.data[0].uaccount}
-           })
-         }).catch(error=>{
-            console.log(error)
-          });
-          // this.$router.replace('/Login12306')
-        }
+          this.$router.push({
+            name: 'Index',
+            params: {Userid: response.data[0].uaccount}
+          })
+
+        }).catch(error => {
+          console.log(error)
+        })
+        // this.$router.replace('/Login12306')
       }
     }
   }
+}
 </script>
 
 <style scoped>
-  .login-container {
-    width: 100%;
-    height: 100%;
-  }
+.login-container {
+  width: 100%;
+  height: 100%;
+}
 
-  .login-page {
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    margin: 20px auto;
-    width: 350px;
-    padding: 35px 35px 15px;
-    background: #fff;
-    border: 1px solid #eaeaea;
-    box-shadow: 0 0 25px #cac6c6;
-  }
+.login-page {
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  margin: 20px auto;
+  width: 350px;
+  padding: 35px 35px 15px;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 0 25px #cac6c6;
+}
 
-  label.el-checkbox.rememberme {
-    margin: 0px 0px 15px;
-    text-align: left;
-  }
+label.el-checkbox.rememberme {
+  margin: 0px 0px 15px;
+  text-align: left;
+}
 </style>
