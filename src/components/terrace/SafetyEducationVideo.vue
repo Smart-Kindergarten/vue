@@ -8,7 +8,9 @@
                  action="http://localhost:9901/uploadVidoe3"
                  multiple
                  :show-file-list="false"
-                 :data="{SavePath: this.Path.url}"
+                 :data="{SavePath: this.Path.url,
+                 'prop': null,
+                 }"
                  :on-success="handleVideoSuccess"
 
                  :on-progress="uploadVideoProcess">
@@ -51,7 +53,6 @@
         prop="videoId"
         width="200">
         <template slot-scope="scope">
-
           <el-upload :drag="Plus"
                      class="upload-demo"
                      action="http://localhost:9901/uploadVidoe3"
@@ -62,12 +63,11 @@
                      }"
                      :on-success="handleVideoSuccess"
                      :on-progress="uploadVideoProcess">
-              <el-button size="small" type="primary" slot="trigger"  @click="handleEdit(scope.$index, scope.row)">重新上传</el-button>
+              <el-button size="small" type="primary" slot="trigger" @click="handleEdits(scope.$index, scope.row)" >重新上传</el-button>
             </el-upload>
           <div class="dele">
-            <el-button size="small" type="primary" slot="trigger">删   除</el-button>
+            <el-button size="small" type="primary" slot="trigger" @click="handleEdit(scope.$index, scope.row)">删   除</el-button>
           </div>
-
         </template>
       </el-table-column>
 
@@ -157,12 +157,47 @@
       },
       handleClick(row) {
         console.log(row);
+
       },
+      // 删除
       handleEdit(row){
         console.log(this.tableData[row].videoId)
         this.voids = this.tableData[row].videoId
-
+        this.$axios.get("SafetyEducationInf/delectVideo",{
+          params:{
+            voids:this.voids,
+            page:"1"
+          },
+        }).then(response=>{
+          console.log(response.data)
+          this.tableData = response.data;
+          // this.voidid = response.data.videoId
+          this.getTableDate(1);
+        }).catch(error=>{
+          console.log(error)
+          //sdasd
+        });
       },
+//重新上传
+      handleEdits(row){
+        console.log(this.tableData[row].videoId)
+        this.voids = this.tableData[row].videoId
+        this.$axios.get("uploadVidoe3",{
+          params:{
+            voids:this.voids,
+            page:"1"
+          },
+        }).then(response=>{
+          console.log(response.data)
+          this.tableData = response.data;
+          // this.voidid = response.data.videoId
+          // this.getTableDate(1);
+        }).catch(error=>{
+          console.log(error)
+          //sdasd
+        });
+      },
+
       handleSizeChange:function(val) {
         console.log(`每页 ${val} 条`);
         this.getTableDate(val);
