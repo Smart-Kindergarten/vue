@@ -9,7 +9,7 @@
       :lazy="item.lazy"
     >
       <SecurityGuardPickQuery v-if="item.content" @addTab="addTab"></SecurityGuardPickQuery>
-      <SecurityGuardPickinformation v-else></SecurityGuardPickinformation>
+      <SecurityGuardPickinformation v-else :babyID="item.babyID"></SecurityGuardPickinformation>
     </el-tab-pane>
   </el-tabs>
 </template>
