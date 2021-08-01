@@ -106,13 +106,18 @@ export default {
     //   })
     // },
     UploadedSuccess () {
-      this.$axios.get('upHomework', {
+      this.$axios.get('teacher/upHomework', {
         params: {
-          classId: this.cId,
-          teacher: this.uacc,
+          id: this.cId,
+          uacc: this.uacc
         }
       }).then(res => {
-        console.log(res)
+        // console.log(res)
+        this.$message({
+          showClose: true,
+          message: res.data,
+          type: 'success'
+        })
       }).catch(error => {
         console.log(error)
       })
@@ -121,11 +126,6 @@ export default {
       console.log(response)
       if (response == '上传成功') {
         this.UploadedSuccess()
-        this.$message({
-          showClose: true,
-          message: response,
-          type: 'success'
-        })
       } else {
         this.$message({
           showClose: true,
@@ -171,6 +171,11 @@ export default {
         this.$forceUpdate()
       }).catch(error => {
         console.log(error)
+        this.$message({
+          showClose: true,
+          message: '不存在所教班级',
+          type: 'error'
+        })
       })
     },
     //获取班级id

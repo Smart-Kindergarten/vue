@@ -17,6 +17,7 @@ import SendMessage from '../components/patriarch/SendMessage'
 import ParentsManagement from '../components/terrace/ParentsManagement'
 import SafetyEducationVideo from '../components/terrace/SafetyEducationVideo'
 import PublishHomework from '../components/teacher/PublishHomework'
+import CheckHomework from '../components/teacher/CheckHomework'
 
 Vue.use(Router)
 
@@ -38,6 +39,7 @@ const routes = [
       {path: '/ParentsManagement', name: 'ParentsManagement', component: ParentsManagement},
       {path: '/SafetyEducationVideo', name: 'SafetyEducationVideo', component: SafetyEducationVideo},
       {path: '/publishHomework', name: 'PublishHomework', component: PublishHomework},
+      {path: '/CheckHomework', name: 'CheckHomework', component: CheckHomework},
 
     ]
   },
