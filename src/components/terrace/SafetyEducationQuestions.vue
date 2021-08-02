@@ -10,32 +10,31 @@
         fixed
         prop="videoId"
         label="视频编号"
-        width="150">
+        width="200">
       </el-table-column>
       <el-table-column
         prop="videoName"
         label="视频名称"
-        width="120">
+        width="200">
       </el-table-column>
       <el-table-column
         prop="fileName"
         label="文件名"
-        width="120">
+        width="200">
       </el-table-column>
       <el-table-column
         prop="releaseTime"
         label="发布时间"
-        width="120">
+        width="200">
       </el-table-column>
       <el-table-column
-        prop="temperature"
-        label="体温"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="healthcondition"
-        label="健康状况"
-        width="120">
+        fixed="right"
+        label="操作"
+        width="260">
+        <template slot-scope="scope">
+          <el-button type="primary" size="min" @click="updateClick(scope.row)">修改</el-button>
+
+        </template>
       </el-table-column>
     </el-table>
     <div class="block">
@@ -45,22 +44,36 @@
         @current-change="handleCurrentChange"
         :current-page="currentPage4"
         :page-sizes="[5, 10, 20]"
-        :page-size="100"
+        :page-size="200"
         layout="total, sizes, prev, pager, next, jumper"
         :total="20">
       </el-pagination>
     </div>
+
+    <el-dialog
+      title="提示"
+      :visible.sync="dialogVisible"
+      width="30%"
+      :modal="false"
+      :before-close="handleClose">
+      <el-form>视频编号:<input type="text" v-model="questionForm.videoId"></el-form>
+      <div>
+        <div class="con">
+          <div class="tip">选择文件：</div>
+          <input class="file" type="file" title="请选择文件" value="请选择文件">
+          <!--      <div class="tip">输入姓名：</div>-->
+          <!--      <input class="inputS" type="text" v-model="name" placeholder="请在此输入姓名">-->
+          <button class="submit" @click="submit">提交</button>
+        </div>
+      </div>
+      <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisible = false">取 消</el-button>
+    <el-button type="primary">确 定</el-button>
+  </span>
+    </el-dialog>
   </el-main>
 
-<!--  <div>-->
-<!--    <div class="con">-->
-<!--      <div class="tip">选择文件：</div>-->
-<!--      <input class="file" type="file" title="请选择文件" value="请选择文件">-->
-<!--&lt;!&ndash;      <div class="tip">输入姓名：</div>&ndash;&gt;-->
-<!--&lt;!&ndash;      <input class="inputS" type="text" v-model="name" placeholder="请在此输入姓名">&ndash;&gt;-->
-<!--      <button class="submit" @click="submit">提交</button>-->
-<!--    </div>-->
-<!--  </div>-->
+
 
 
 
@@ -74,8 +87,12 @@
   export default {
     data() {
       return {
+        questionForm: {
+          videoId: "",
+        },
         name: '',
         User: this.$route.params.Userid,
+        dialogVisible:false,
         currentPage1: 5,
         currentPage2: 5,
         currentPage3: 5,
@@ -94,6 +111,10 @@
         //'userfile'是formData这个对象的键名
         axios({
           url: 'http://localhost:9901/ensure/uploadwork',   //****: 你的ip地址
+          params:{
+            videoId:this.questionForm.videoId,
+            page:"1"
+          },
           data: formData,
           method: 'post',
           headers: {
@@ -104,6 +125,23 @@
         }).then((res) => {
           console.log(res.data);
         }) // 发送请求
+      },
+      affirmClick (row) {
+        this.dialogVisible = false
+      },
+      updateClick (row) {
+        console.log("1111111111111111111111")
+        console.log(row.videoId),
+          this.questionForm.videoId = row.videoId
+          this.dialogVisible = true
+      },
+      handleClose (done) {
+        this.$confirm('确认关闭？')
+          .then(_ => {
+            done()
+          })
+          .catch(_ => {
+          })
       },
 
       getTableDate:function(val){
