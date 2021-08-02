@@ -46,7 +46,7 @@
     </div>
     <el-upload
       ref="uploadDemo"
-      action="/api/elUpload"
+      action="/api/upload"
       :auto-upload="false"
       :file-list="fileList"
       :show-file-list="false"
@@ -62,9 +62,6 @@
 </template>
 
 <script>
-
-var formData = new FormData() // 声明一个FormData对象
-var formData = new window.FormData() // vue 中使用 window.FormData(),否则会报 'FormData isn't definded'
 export default {
   name: 'PublishHomework',
   data () {
@@ -85,7 +82,15 @@ export default {
 
   methods: {
     uploadFile () {
-      this.$refs.uploadDemo.submit()
+      if (this.work!=''){
+        this.$refs.uploadDemo.submit()
+      }else {
+        this.$message({
+          showClose: true,
+          message: "未选择文件",
+          type: 'error'
+        })
+      }
     },
 
     // submit(params) { // 如果要自定义submit的话el-upload需要加上:http-request="submit"
@@ -124,7 +129,7 @@ export default {
     },
     handleSuccess (response, file, fileList) {
       console.log(response)
-      if (response == '上传成功') {
+      if (response.status == 'success') {
         this.UploadedSuccess()
       } else {
         this.$message({
