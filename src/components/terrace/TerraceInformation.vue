@@ -11,7 +11,7 @@
         :visible.sync="dialogVisibless"
         width="30%"
         :modal="false"
-        :before-close="handleClose">
+        :before-close="handleCloses">
         <el-form>资讯名称:<input v-model="ttid"></input></el-form><br>
 
         <el-form>资讯内容: <br><textarea v-model="iftcontent" style="width: 300px;height: 200px"></textarea></el-form><br>
@@ -73,7 +73,21 @@
         :total="20">
       </el-pagination>
     </div>
+    <el-dialog
+      title="提示"
+      :visible.sync="dialogs"
+      width="30%"
+      :modal="false"
+      :before-close="handleClose">
+      <el-form>资讯编号:<input type="text" v-model="ttid"></el-form>
+      <el-form>资讯名称:<input type="text" v-model="iftcontent"></el-form>
+      <el-form>资讯内容:<input type="text" v-model="Createtime"></el-form>
 
+      <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogs = false">取 消</el-button>
+    <el-button type="primary" @click="affirmClick()">确 定</el-button>
+  </span>
+    </el-dialog>
   </el-main>
 </template>
 
@@ -84,6 +98,7 @@
       return {
         ttid : "",
         iftcontent : "",
+        Createtime : "",
         questionForm: {
           uaccount: "",
           biname:"",
@@ -102,6 +117,7 @@
         currentPage4: 4,
         currentPage: 1,
         pagesize: 5,
+        dialogs : false,
         maxlengrh: 0,
         tableData: [],
         babyinf:[
@@ -134,6 +150,14 @@
           .catch(_ => {
           })
       },
+      handleCloses (done) {
+        this.$confirm('确认关闭？')
+          .then(_ => {
+            done()
+          })
+          .catch(_ => {
+          })
+      },
       getTableDate: function (val) {
         // let that=this;
         this.$axios.get('SafetyEducationInf/TerraceInf', {
@@ -151,10 +175,10 @@
       },
       // 删除
       handleClick (row) {
-        console.log(row.uaccount)
-        this.$axios.get('Terrace/delect', {
+        console.log(row.ttid)
+        this.$axios.get('SafetyEducationInf/delectTerraceInf', {
           params: {
-            uaccount: row.uaccount,
+            ttid: row.ttid,
           },
         }).then(response => {
           console.log(response.data)
@@ -163,13 +187,12 @@
           console.log(error)
         })
       },
-      // 禁用
+      // 发布
       stateClick (row) {
         console.log(row.uaccount)
-        this.$axios.get('Terrace/updateState', {
+        this.$axios.get('SafetyEducationInf/issue', {
           params: {
-            uaccount: row.uaccount,
-            ustate: row.pname,
+            ttid: row.ttid,
           },
         }).then(response => {
           console.log(response.data)
@@ -185,40 +208,27 @@
       },
       // 修改
       updateClick (row) {
-        console.log(row.uaccount),
-          this.dialogVisible = true
-        this.questionForm.uaccount = row.uaccount
-        this.questionForm.biname = row. biname
-        this.questionForm.uname = row.uname
-        this.questionForm.uwork = row.uwork
-        this.questionForm.usite = row.usite
-        this.questionForm.uphone = row.uphone
-        this.questionForm.uchildrelation = row.uchildrelation
-        this.$axios.get('Terrace/selectBabyinf', {
-        }).then(response => {
-          console.log(response.data)
-          this.babyinf = response.data
-        }).catch(error => {
-          console.log(error)
-        })
+          this.dialogs = true
+        this.ttid = row.ttid
+        this.iftcontent = row. iftcontent
+        this.Createtime = row.Createtime
+        // this.$axios.get('Terrace/selectBabyinf', {
+        // }).then(response => {
+        //   console.log(response.data)
+        //   this.babyinf = response.data
+        // }).catch(error => {
+        //   console.log(error)
+        // })
       },
       // 确认修改
-      affirmClick (row) {
-        this.dialogVisible = false
-        console.log(this.questionForm.uaccount)
-        console.log(this.questionForm.uname)
-        console.log(this.questionForm.uwork)
-        console.log(this.questionForm.usite)
-        console.log(this.questionForm.uphone)
-        console.log(this.questionForm.uchildrelation)
-        this.$axios.get('Terrace/affirmClick', {
+      affirmClick () {
+        console.log("qqq")
+        this.dialogs = false
+        this.$axios.get('SafetyEducationInf/updateTerraceInf', {
           params: {
-            uname: this.questionForm.uname,
-            uwork: this.questionForm.uwork,
-            usite: this.questionForm.usite,
-            uphone: this.questionForm.uphone,
-            uchildrelation: this.questionForm.uchildrelation,
-            uaccount: this.questionForm.uaccount,
+            ttid : this.ttid,
+            iftcontent : this.iftcontent,
+            Createtime : this.Createtime,
           },
         }).then(response => {
           console.log(response.data)
