@@ -100,7 +100,7 @@
       </el-pagination>
     </div>
     <div>
-      <el-dialog title="作业评分" :visible.sync="dialogFormVisible" width="30%" center>
+      <el-dialog title="作业评分" :visible.sync="dialogFormVisible" width="30%" center :before-close="handleClose">
         <el-form>
           <el-form-item label="作业评级：">
             <el-select v-model="options.value" placeholder="请选择作业评级" @change="getRating(options.value)">
@@ -152,6 +152,14 @@ export default {
   },
   props: ['uacc'],
   methods: {
+    handleClose (done) {
+      this.$confirm('确认关闭？')
+        .then(_ => {
+          done()
+        })
+        .catch(_ => {
+        })
+    },
     CurrentChange (cPage) {
       this.currPage = cPage
     },
@@ -168,10 +176,7 @@ export default {
           uAccount: this.uacc
         }
       }).then(response => {
-        // console.log('--------------')
         this.classAry = response.data
-        this.cId = response.data[0].classId
-        // console.log(this.classAry[0].classId)
         this.$forceUpdate()
       }).catch(error => {
         console.log(error)
@@ -185,7 +190,7 @@ export default {
     //获取班级id
     getClassId (value) {
       this.cId = value
-      console.log('你选中了', this.cId)
+      // console.log('你选中了', this.cId)
       this.getHomework()
     },
 
@@ -201,6 +206,11 @@ export default {
           this.CheckHomeworkAry = res.data
         } else {
           this.CheckHomeworkAry = []
+          this.$message({
+            showClose: true,
+            message: '无数据',
+            type: 'error'
+          })
         }
       }).catch(error => {
         console.log(error)
