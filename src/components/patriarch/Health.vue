@@ -67,6 +67,8 @@
         tableData: [
         ],
       }
+
+
     },
     methods: {
       getTableDate:function(val){
@@ -74,7 +76,7 @@
         this.$axios.get("Health/HealthAll",{
           params:{
             page:val,
-              uaccount: this.User,
+            uaccount: this.User,
             // ad
           },
         }).then(response=>{

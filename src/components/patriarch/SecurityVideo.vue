@@ -1,34 +1,8 @@
 <template>
   <el-main>
-    <div style="float: left">
-      <font>查询条件</font>
-      <font>创建时间:<input type="text">至<input type="text"></font>
-      <font>家长名称:<input type="text"></font>
-      <el-button @click="" type="primary" size="min">查询</el-button>
-      <el-button @click="newClick" type="primary" size="min">新增</el-button>
-      <el-dialog
-        title="新增资讯"
-        :visible.sync="dialogVisibless"
-        width="30%"
-        :modal="false"
-        :before-close="handleCloses">
-        <el-form>资讯类型：<select  v-model="types">
-          <option>亲子</option>
-          <option>交通</option>
-        </select></el-form>
-
-        <el-form>资讯名称:<input v-model="ttid"></input></el-form><br>
-
-        <el-form>资讯内容: <br><textarea v-model="iftcontent" style="width: 300px;height: 200px"></textarea></el-form><br>
-
-        <span slot="footer" class="dialog-footer">
-    <el-button @click="dialogVisibless = false">取 消</el-button>
-    <el-button type="primary" @click="affirmAdd">确 定</el-button>
-          <!--          //撒大声地-->
-  </span>
-      </el-dialog>
-    </div>
-
+    <el-form>安全教育</el-form>
+    <br>
+    <font>完成时间</font> <font>{{startTime}}</font>至<font >{{endTime}}</font>
     <el-table
       :data="this.tableData"
       @selection-change="handleSizeChange"
@@ -36,33 +10,37 @@
       style="width: 100%">
       <el-table-column
         fixed
-        prop="ttid"
-        label="资讯编号"
+        prop="videoId"
+        label="视频编号"
         width="100">
       </el-table-column>
       <el-table-column
-        prop="iftcontent"
-        label="公告名"
+        prop="videoName"
+        label="视频名"
         width="150">
       </el-table-column>
       <el-table-column
-        prop="Createtime"
-        label="公告内容"
-        width="150">
-      </el-table-column>
-      <el-table-column
-        prop="reserve1"
-        label="创建时间"
+        prop="releaseTime"
+        label="发布时间"
         width="200">
+      </el-table-column>
+      <el-table-column
+        prop="secScore"
+        label="得分"
+        width="100">
+      </el-table-column>
+      <el-table-column
+        prop="pname"
+        label="完成情况"
+        width="150">
       </el-table-column>
       <el-table-column
         fixed="right"
         label="操作"
-        width="400">
+        width="300">
         <template slot-scope="scope">
-          <el-button type="primary" size="min" @click="updateClick(scope.row)">修改</el-button>
-          <el-button @click="handleClick(scope.row)" type="primary" size="min">删除</el-button>
-          <el-button @click="stateClick(scope.row)" type="primary" size="min">发布</el-button>
+          <el-button type="primary" size="min" @click="updateClick(scope.row)">播放视频</el-button>
+          <el-button @click="handleClick(scope.row)" type="primary" size="min">安全试题</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -95,16 +73,55 @@
     <el-button type="primary" @click="affirmClick()">确 定</el-button>
   </span>
     </el-dialog>
+
+
+    <div style="border: 1px solid red">
+      <!--
+      <video :src="videoSrc" :poster="videoImg" :autoplay="playStatus" height="421" width="700" :muted="muteStatus">
+        your browser does not support the video tag
+      </video>
+      <button @click="playClick" :class="{hide: isPlay}">点击播放</button> -->
+      <!--class="video-js vjs-default-skin vjs-big-play-centered" -->
+      <video    :preload="preload"
+                :poster="videoImg" :height="height" :width="width" align="center" :controls="controls"  :autoplay="autoplay">
+        <source :src="videoSrc" type="video/mp4">
+      </video>
+    </div>
+
+
   </el-main>
+
 </template>
 
 <script>
+
   export default {
-    name: 'TerraceInformation',
+    name: 'SecurityVideo',
+
     data () {
       return {
+
+
+        videoSrc: 'http://localhost:9901/images/video/测试视频3.mp4',
+        videoImg: '../../../../static/full_res.jpg',
+        playStatus: '',
+        muteStatus: '',
+        isMute: true,
+        isPlay: false,
+        width: '300', // 设置视频播放器的显示宽度（以像素为单位）
+        height: '300', // 设置视频播放器的显示高度（以像素为单位）
+        preload: 'auto', //  建议浏览器是否应在<video>加载元素后立即开始下载视频数据。
+        controls: true, // 确定播放器是否具有用户可以与之交互的控件。没有控件，启动视频播放的唯一方法是使用autoplay属性或通过Player API。
+        autoplay: '',
+
+
+
+
         types : "",
         ttid : "",
+        secScore : "",
+        startTime : "",
+        endTime :"",
         iftcontent : "",
         Createtime : "",
         questionForm: {
@@ -168,14 +185,22 @@
       },
       getTableDate: function (val) {
         // let that=this;
-        this.$axios.get('SafetyEducationInf/TerraceInf', {
+        this.$axios.get('SafetyEducationInf/selectParentsVideo', {
           params: {
             page: val,
           },
         }).then(response => {
           console.log(response.data)
           this.tableData = response.data
-          this.maxlengrh = response.data.length
+          // this.maxlengrh = response.data.length
+          console.log(response.data[0].startTime)
+          console.log(response.data[0].endTime)
+          this.startTime = response.data[0].startTime
+          this.endTime = response.data[0].endTime
+          if (response.data.secScore == "" || response.data.secScore == null){
+            this.tableData.secScore == 0;
+
+          }
         }).catch(error => {
           console.log(error)
           //sdasd
@@ -216,7 +241,7 @@
       },
       // 修改
       updateClick (row) {
-          this.dialogs = true
+        this.dialogs = true
         this.ttid = row.ttid
         this.iftcontent = row. iftcontent
         this.Createtime = row.Createtime
