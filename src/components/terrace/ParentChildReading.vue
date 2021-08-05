@@ -2,9 +2,9 @@
   <el-main>
     <div style="float: left">
       <font>查询条件</font><br>
-      <font>上传时间:<input type="text">至<input type="text"></font>
-      <font>绘本时间:<input type="text"></font>
-      <el-button @click="" type="primary" size="min">查询</el-button>
+      <font>上传时间:<input v-model="bgtime" type="text">至<input v-model="overtime" type="text"></font>
+      <font>绘本名称:<input v-model="nameT" type="text"></font>
+      <el-button @click="selectCondition(1)(1)" type="primary" size="min">查询</el-button>
       <el-button @click="newClick" type="primary" size="min">上传绘本</el-button>
 
 
@@ -149,6 +149,10 @@
     name: 'ParentChildReading',
     data () {
       return {
+
+        nameT : "",
+        bgtime : "",
+        overtime: "",
         delectid : "",
         lookfrid : "",
         lookbookname :"",
@@ -194,6 +198,25 @@
 
     },
     methods: {
+      // 多条件查询
+      selectCondition: function (val) {
+        // let that=this;
+        this.$axios.get('SafetyEducationInf/readInf', {
+          params: {
+            UploadTime : this.bgtime,
+            UploadTimes: this.overtime,
+            bookname : this.nameT,
+            page: val,
+          },
+        }).then(response => {
+          console.log(response.data)
+          this.tableData = response.data
+          this.maxlengrh = response.data.length
+        }).catch(error => {
+          console.log(error)
+          //sdasd
+        })
+      },
       // 删除
       deletes (row){
         console.log(row.frid)

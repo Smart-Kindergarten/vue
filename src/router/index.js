@@ -28,6 +28,9 @@ import ParkManage from '../components/accountmanage/ParkManage'
 import intelligence from '../components/accountmanage/intelligence'
 import ClassAttendance from '../components/teacher/ClassAttendance'
 import ClassInfo from '../components/teacher/ClassInfo'
+import TerraceInformation from '../components/terrace/TerraceInformation'
+import ParentChildReading from '../components/terrace/ParentChildReading'
+import SafetyEducationQuestions from '../components/terrace/SafetyEducationQuestions'
 
 Vue.use(Router)
 
@@ -53,6 +56,9 @@ const routes = [
       {path: '/Healthmanage', name: 'Healthmanage', component: Healthmanage},
       {path: '/intelligence', name: 'intelligence', component: intelligence},
       {path: '/ParkManage', name: 'ParkManage', component: ParkManage},
+      {path: '/TerraceInformation', name: 'TerraceInformation', component: TerraceInformation},
+      {path: '/ParentChildReading', name: 'ParentChildReading', component: ParentChildReading},
+      {path: '/SafetyEducationQuestions', name: 'SafetyEducationQuestions', component: SafetyEducationQuestions},
 
       //teacher
       {path: '/Curriculum', name: 'Curriculum', component: Curriculum},

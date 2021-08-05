@@ -2,9 +2,9 @@
   <el-main>
     <div style="float: left">
       <font>查询条件</font>
-      <font>创建时间:<input type="text">至<input type="text"></font>
-      <font>家长名称:<input type="text"></font>
-      <el-button @click="" type="primary" size="min">查询</el-button>
+      <font>创建时间:<input v-model="bgtime" type="text">至<input v-model="overtime" type="text"></font>
+      <font>资讯名称:<input v-model="nameT" type="text"></font>
+      <el-button @click="selectCondition(1)" type="primary" size="min">查询</el-button>
       <el-button @click="newClick" type="primary" size="min">新增</el-button>
       <el-dialog
         title="新增资讯"
@@ -103,6 +103,9 @@
     name: 'TerraceInformation',
     data () {
       return {
+        nameT : "",
+        bgtime : "",
+        overtime: "",
         types : "",
         ttid : "",
         iftcontent : "",
@@ -138,6 +141,25 @@
 
     },
     methods: {
+      selectCondition: function (val) {
+        // let that=this;
+        this.$axios.get('SafetyEducationInf/TerraceInf', {
+          params: {
+            Createtime : this.bgtime,
+            Createtimes: this.overtime,
+            iftcontent : this.nameT,
+            page: val,
+          },
+        }).then(response => {
+          console.log(response.data)
+          this.tableData = response.data
+          this.maxlengrh = response.data.length
+        }).catch(error => {
+          console.log(error)
+          //sdasd
+        })
+
+      },
       handleCreate() {
         this.questionForm = {
           uaccount: "",
