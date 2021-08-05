@@ -81,7 +81,7 @@ export default {
 
   methods: {
     uploadFile () {
-      if (this.work != '') {
+      if (this.work !== '') {
         this.$refs.uploadDemo.submit()
       } else {
         this.$message({
@@ -126,10 +126,10 @@ export default {
         console.log(error)
       })
     },
-    handleSuccess (response, file, fileList) {
+    handleSuccess (response, file) {
       console.log(response)
-      if (response.status == 'success') {
-        // this.UploadedSuccess()
+      if (response.status === 'success') {
+        this.UploadedSuccess()
       } else {
         this.$message({
           showClose: true,
