@@ -17,9 +17,9 @@ import SendMessage from '../components/patriarch/SendMessage'
 import ParentsManagement from '../components/terrace/ParentsManagement'
 import SafetyEducationVideo from '../components/terrace/SafetyEducationVideo'
 import PublishHomework from '../components/teacher/PublishHomework'
-import CheckHomework from '../components/teacher/CheckHomework'
-import SafetyEducation from '../components/teacher/SafetyEducation'
-import CheckSafetyEducation from '../components/teacher/CheckSafetyEducation'
+import FoodManage from '../components/patriarch/FoodManage'
+import KLMain from '../components/kindergartenLeader/KLMain'
+import TeacherManagement from '../components/kindergartenLeader/TeacherManagement'
 
 Vue.use(Router)
 
@@ -40,11 +40,11 @@ const routes = [
       {path: '/SendMessage', name: 'SendMessage', component: SendMessage},
       {path: '/ParentsManagement', name: 'ParentsManagement', component: ParentsManagement},
       {path: '/SafetyEducationVideo', name: 'SafetyEducationVideo', component: SafetyEducationVideo},
-      {path: '/publishHomework', name: 'PublishHomework', component: PublishHomework},
-      {path: '/CheckHomework', name: 'CheckHomework', component: CheckHomework},
-      {path: '/TeacherSafetyEducation', name: 'TeacherSafetyEducation', component: SafetyEducation},
-      {path: '/CheckSafetyEducation', name: 'CheckSafetyEducation', component: CheckSafetyEducation},
-
+      {path: '/PublishHomework', name: 'PublishHomework', component: PublishHomework},
+      {path: '/PublishHomework', name: 'PublishHomework', component: PublishHomework},
+      {path: '/FoodManage', name: 'FoodManage', component: FoodManage},
+      {path: '/KLMain', name: 'KLMain', component: KLMain},
+      {path: '/TeacherManagement', name: 'TeacherManagement', component: TeacherManagement},
     ]
   },
   // { path:"/",name:"App",component: App},
