@@ -18,7 +18,7 @@
           label="班级名称"
           width="180"
           align="center">
-          <select style="width: 160px;height: 30px" @click="getClassId($event)">
+          <select style="width: 140px;height: 30px" @click="getClassId($event)">
             <option v-for="(item,index) in classAry" :key="index" :value="item.classId">{{ item.className }}</option>
           </select>
         </el-table-column>
@@ -51,7 +51,6 @@
       :file-list="fileList"
       :show-file-list="false"
       :on-preview="handlePreview"
-      :on-remove="handleRemove"
       :on-change="handleChange"
       :on-success="handleSuccess">
       <el-button slot="trigger" size="medium" type="primary">上传作业</el-button>
@@ -82,12 +81,12 @@ export default {
 
   methods: {
     uploadFile () {
-      if (this.work!=''){
+      if (this.work != '') {
         this.$refs.uploadDemo.submit()
-      }else {
+      } else {
         this.$message({
           showClose: true,
-          message: "未选择文件",
+          message: '未选择文件',
           type: 'error'
         })
       }
@@ -130,7 +129,7 @@ export default {
     handleSuccess (response, file, fileList) {
       console.log(response)
       if (response.status == 'success') {
-        this.UploadedSuccess()
+        // this.UploadedSuccess()
       } else {
         this.$message({
           showClose: true,
@@ -140,11 +139,8 @@ export default {
       }
     },
 
-    handleRemove (file, fileList) {
-      console.log(file, fileList)
-    },
     handlePreview (file) {
-      console.log(file)
+      console.log('123', file.url)
     },
     handleChange (file) {
       this.work = file.name
