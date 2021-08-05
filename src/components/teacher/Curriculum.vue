@@ -2,7 +2,20 @@
 
   <div class="class-table">
     <div style="height: 40px;font-size: 30px">课程表</div>
-    <div>班级名称：{{ className }}</div>
+    <div>班级名称：
+      <el-select
+        v-model="classAry.classId"
+        @change="getClassId(classAry.classId)"
+        placeholder="请选择班级"
+        style="width: 140px">
+        <el-option
+          v-for="item in classAry"
+          :key="item.classId"
+          :label="item.className"
+          :value="item.classId">
+        </el-option>
+      </el-select>
+    </div>
     <span>{{ startTime }}~{{ endTime }}</span>
     <div class="table-wrapper">
       <div class="table-container">
@@ -47,7 +60,8 @@ export default {
   name: 'Curriculum',
   data () {
     return {
-      className: '',
+      classAry: [],
+      cId: '',
       startTime: '',
       endTime: '',
       weeks: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
@@ -55,59 +69,12 @@ export default {
       tableShow: false
     }
   },
+  props: ['uacc'],
 
   mounted: function () {
     this.addDate()
-    this.$axios.get('teacher/selectCurrAll', {
-      params: {
-        date: this.systemTime
-      }
-    }).then(response => {
-      console.log(response.data.length)
-      this.className = response.data[0].classId
-      var currDate = response.data[0].currDate
-      var date = currDate.split(',')
-      this.startTime = date[0]
-      this.endTime = date[1]
-      this.classTableData = [
-        {
-          'monday': response.data[0].currMonday,
-          'tuesday': response.data[0].currTuesday,
-          'wednesday': response.data[0].currWednesday,
-          'thursday': response.data[0].currThursday,
-          'friday': response.data[0].currFriday,
-        },
-        {
-          'monday': response.data[1].currMonday,
-          'tuesday': response.data[1].currTuesday,
-          'wednesday': response.data[1].currWednesday,
-          'thursday': response.data[1].currThursday,
-          'friday': response.data[1].currFriday,
-        },
-        {
-          'monday': response.data[2].currMonday,
-          'tuesday': response.data[2].currTuesday,
-          'wednesday': response.data[2].currWednesday,
-          'thursday': response.data[2].currThursday,
-          'friday': response.data[2].currFriday,
-        },
-        {
-          'monday': response.data[3].currMonday,
-          'tuesday': response.data[3].currTuesday,
-          'wednesday': response.data[3].currWednesday,
-          'thursday': response.data[3].currThursday,
-          'friday': response.data[3].currFriday,
-        },
-        {
-          'monday': response.data[4].currMonday,
-          'tuesday': response.data[4].currTuesday,
-          'wednesday': response.data[4].currWednesday,
-          'thursday': response.data[4].currThursday,
-          'friday': response.data[4].currFriday,
-        }]
-    }).catch(error => {
-      console.log(error)
-    })
+    this.getClassName()
+
   },
 
   methods: {
@@ -131,61 +98,156 @@ export default {
         date: nowDate.getDate()
       }
       this.systemTime = date.year + '-' + date.month + '-' + date.date
-      console.log(this.systemTime)
+      // console.log(this.systemTime)
     },
-
-    getWeek: function (string) {
-      this.$axios.get('teacher/getWeekDate', {
+    //获取班级名称
+    getClassName () {
+      this.$axios.get('teacher/getClassName', {
         params: {
-          week: string
+          uAccount: this.uacc
         }
       }).then(response => {
-        console.log(response.data.length)
-        this.className = response.data[0].classId
-        var currDate = response.data[0].currDate
-        var date = currDate.split(',')
-        this.startTime = date[0]
-        this.endTime = date[1]
-        this.classTableData = [
-          {
-            'monday': response.data[0].currMonday,
-            'tuesday': response.data[0].currTuesday,
-            'wednesday': response.data[0].currWednesday,
-            'thursday': response.data[0].currThursday,
-            'friday': response.data[0].currFriday,
-          },
-          {
-            'monday': response.data[1].currMonday,
-            'tuesday': response.data[1].currTuesday,
-            'wednesday': response.data[1].currWednesday,
-            'thursday': response.data[1].currThursday,
-            'friday': response.data[1].currFriday,
-          },
-          {
-            'monday': response.data[2].currMonday,
-            'tuesday': response.data[2].currTuesday,
-            'wednesday': response.data[2].currWednesday,
-            'thursday': response.data[2].currThursday,
-            'friday': response.data[2].currFriday,
-          },
-          {
-            'monday': response.data[3].currMonday,
-            'tuesday': response.data[3].currTuesday,
-            'wednesday': response.data[3].currWednesday,
-            'thursday': response.data[3].currThursday,
-            'friday': response.data[3].currFriday,
-          },
-          {
-            'monday': response.data[4].currMonday,
-            'tuesday': response.data[4].currTuesday,
-            'wednesday': response.data[4].currWednesday,
-            'thursday': response.data[4].currThursday,
-            'friday': response.data[4].currFriday,
-          }]
+        this.classAry = response.data
+      }).catch(error => {
+        console.log(error)
+        this.$message({
+          showClose: true,
+          message: '不存在所教班级',
+          type: 'error'
+        })
+      })
+    },
+    //获取班级id
+    getClassId (value) {
+      this.cId = value
+      // console.log('你选中了', this.cId)
+      this.checkCurr()
+    },
+    checkCurr () {
+      this.$axios.get('teacher/selectCurrAll', {
+        params: {
+          classId: this.cId,
+          date: this.systemTime,
+        }
+      }).then(response => {
+        if (response.data != null) {
+          this.className = response.data[0].classId
+          var currDate = response.data[0].currDate
+          var date = currDate.split(',')
+          this.startTime = date[0]
+          this.endTime = date[1]
+          this.classTableData = [
+            {
+              'monday': response.data[0].currMonday,
+              'tuesday': response.data[0].currTuesday,
+              'wednesday': response.data[0].currWednesday,
+              'thursday': response.data[0].currThursday,
+              'friday': response.data[0].currFriday,
+            },
+            {
+              'monday': response.data[1].currMonday,
+              'tuesday': response.data[1].currTuesday,
+              'wednesday': response.data[1].currWednesday,
+              'thursday': response.data[1].currThursday,
+              'friday': response.data[1].currFriday,
+            },
+            {
+              'monday': response.data[2].currMonday,
+              'tuesday': response.data[2].currTuesday,
+              'wednesday': response.data[2].currWednesday,
+              'thursday': response.data[2].currThursday,
+              'friday': response.data[2].currFriday,
+            },
+            {
+              'monday': response.data[3].currMonday,
+              'tuesday': response.data[3].currTuesday,
+              'wednesday': response.data[3].currWednesday,
+              'thursday': response.data[3].currThursday,
+              'friday': response.data[3].currFriday,
+            },
+            {
+              'monday': response.data[4].currMonday,
+              'tuesday': response.data[4].currTuesday,
+              'wednesday': response.data[4].currWednesday,
+              'thursday': response.data[4].currThursday,
+              'friday': response.data[4].currFriday,
+            }]
+        } else {
+          this.classTableData = []
+          this.$message({
+            showClose: true,
+            message: '无数据',
+            type: 'error'
+          })
+        }
+
       }).catch(error => {
         console.log(error)
       })
     },
+    getWeek: function (string) {
+      this.$axios.get('teacher/getWeekDate', {
+        params: {
+          classId: this.cId,
+          week: string,
+          date: this.startTime,
+        }
+      }).then(response => {
+        if (response.data != null) {
+          this.className = response.data[0].classId
+          var currDate = response.data[0].currDate
+          var date = currDate.split(',')
+          this.startTime = date[0]
+          this.endTime = date[1]
+          this.classTableData = [
+            {
+              'monday': response.data[0].currMonday,
+              'tuesday': response.data[0].currTuesday,
+              'wednesday': response.data[0].currWednesday,
+              'thursday': response.data[0].currThursday,
+              'friday': response.data[0].currFriday,
+            },
+            {
+              'monday': response.data[1].currMonday,
+              'tuesday': response.data[1].currTuesday,
+              'wednesday': response.data[1].currWednesday,
+              'thursday': response.data[1].currThursday,
+              'friday': response.data[1].currFriday,
+            },
+            {
+              'monday': response.data[2].currMonday,
+              'tuesday': response.data[2].currTuesday,
+              'wednesday': response.data[2].currWednesday,
+              'thursday': response.data[2].currThursday,
+              'friday': response.data[2].currFriday,
+            },
+            {
+              'monday': response.data[3].currMonday,
+              'tuesday': response.data[3].currTuesday,
+              'wednesday': response.data[3].currWednesday,
+              'thursday': response.data[3].currThursday,
+              'friday': response.data[3].currFriday,
+            },
+            {
+              'monday': response.data[4].currMonday,
+              'tuesday': response.data[4].currTuesday,
+              'wednesday': response.data[4].currWednesday,
+              'thursday': response.data[4].currThursday,
+              'friday': response.data[4].currFriday,
+            }]
+        } else {
+          this.$message({
+            // showClose: true,
+            message: '无数据',
+            type: 'error'
+          })
+        }
+
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+
   }
 }
 </script>
