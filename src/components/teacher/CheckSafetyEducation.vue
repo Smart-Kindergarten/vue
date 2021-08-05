@@ -32,14 +32,14 @@
         :data="checkSafEduAry.slice((this.currPage-1)*this.pageSize,this.currPage*this.pageSize)"
         highlight-current-row
         :default-sort="{prop: 'completeTime', order: 'descending'}">
-        <el-table-column type="index" label="宝宝编号" width="100" header-align="center" align="center"></el-table-column>
-        <el-table-column prop="biname" label="宝宝名称" width="100" header-align="center" align="center"></el-table-column>
-        <el-table-column prop="uname" label="家长名称" width="100" header-align="center" align="center"></el-table-column>
-        <el-table-column prop="videoName" label="视频名称" width="140" header-align="center" align="center"></el-table-column>
-        <el-table-column prop="endTime" label="结束时间" width="140" header-align="center" align="center"></el-table-column>
-        <el-table-column prop="completeTime" label="完成时间" width="140" header-align="center" align="center"></el-table-column>
-        <el-table-column prop="secScore" label="得分" width="100" header-align="center" align="center"></el-table-column>
-        <el-table-column prop="pname" label="完成情况" width="100" header-align="center" align="center"></el-table-column>
+        <el-table-column align="center" header-align="center" label="宝宝编号" type="index" width="100"></el-table-column>
+        <el-table-column align="center" header-align="center" label="宝宝名称" prop="biname" width="100"></el-table-column>
+        <el-table-column align="center" header-align="center" label="家长名称" prop="uname" width="100"></el-table-column>
+        <el-table-column align="center" header-align="center" label="视频名称" prop="videoName" width="140"></el-table-column>
+        <el-table-column align="center" header-align="center" label="结束时间" prop="endTime" width="140"></el-table-column>
+        <el-table-column align="center" header-align="center" label="完成时间" prop="completeTime" sortable width="140"></el-table-column>
+        <el-table-column align="center" header-align="center" label="得分" prop="secScore" width="100"></el-table-column>
+        <el-table-column align="center" header-align="center" label="完成情况" prop="pname" width="100"></el-table-column>
       </el-table>
     </div>
     <div>
