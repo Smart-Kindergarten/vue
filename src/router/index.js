@@ -20,6 +20,9 @@ import PublishHomework from '../components/teacher/PublishHomework'
 import FoodManage from '../components/patriarch/FoodManage'
 import KLMain from '../components/kindergartenLeader/KLMain'
 import TeacherManagement from '../components/kindergartenLeader/TeacherManagement'
+import CheckHomework from '../components/teacher/CheckHomework'
+import SafetyEducation from '../components/teacher/SafetyEducation'
+import CheckSafetyEducation from '../components/teacher/CheckSafetyEducation'
 
 Vue.use(Router)
 
@@ -33,18 +36,22 @@ const routes = [
     children: [
       {path: '/UserAdmin', name: 'UserAdmin', component: UserAdmin},
       {path: '/UserTable', name: 'UserTable', component: UsersTable},
-      {path: '/Curriculum', name: 'Curriculum', component: Curriculum},
       {path: '/Health', name: 'Health', component: Health},
       {path: '/Security', name: 'Security', component: Security},
       {path: '/Alipay', name: 'Alipay', component: Alipay},
       {path: '/SendMessage', name: 'SendMessage', component: SendMessage},
       {path: '/ParentsManagement', name: 'ParentsManagement', component: ParentsManagement},
       {path: '/SafetyEducationVideo', name: 'SafetyEducationVideo', component: SafetyEducationVideo},
-      {path: '/PublishHomework', name: 'PublishHomework', component: PublishHomework},
-      {path: '/PublishHomework', name: 'PublishHomework', component: PublishHomework},
       {path: '/FoodManage', name: 'FoodManage', component: FoodManage},
       {path: '/KLMain', name: 'KLMain', component: KLMain},
       {path: '/TeacherManagement', name: 'TeacherManagement', component: TeacherManagement},
+
+      //teacher
+      {path: '/Curriculum', name: 'Curriculum', component: Curriculum},
+      {path: '/PublishHomework', name: 'PublishHomework', component: PublishHomework},
+      {path: '/CheckHomework', name: 'CheckHomework', component: CheckHomework},
+      {path: '/TeacherSafetyEducation', name: 'TeacherSafetyEducation', component: SafetyEducation},
+      {path: '/CheckSafetyEducation', name: 'CheckSafetyEducation', component: CheckSafetyEducation},
     ]
   },
   // { path:"/",name:"App",component: App},

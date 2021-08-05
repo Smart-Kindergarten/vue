@@ -159,13 +159,12 @@ export default {
     },
     //获取班级名称
     getClassName () {
-      // console.log(this.uacc)
+      console.log(this.uacc)
       this.$axios.get('teacher/getClassName', {
         params: {
           uAccount: this.uacc
         }
       }).then(response => {
-        // console.log('--------------')
         this.classAry = response.data
         this.cId = response.data[0].classId
         // console.log(this.classAry[0].classId)
