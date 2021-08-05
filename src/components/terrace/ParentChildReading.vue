@@ -5,7 +5,7 @@
       <font>创建时间:<input type="text">至<input type="text"></font>
       <font>家长名称:<input type="text"></font>
       <el-button @click="" type="primary" size="min">查询</el-button>
-      <el-button @click="newClick" type="primary" size="min">新增</el-button>
+      <el-button @click="newClick" type="primary" size="min">上传绘本</el-button>
       <el-dialog
         title="提示"
         :visible.sync="dialogVisibless"
@@ -26,7 +26,7 @@
         <span slot="footer" class="dialog-footer">
     <el-button @click="dialogVisibless = false">取 消</el-button>
     <el-button type="primary" @click="affirmAdd">确 定</el-button>
-<!--          //撒大声地-->
+          <!--          //撒大声地-->
   </span>
       </el-dialog>
     </div>
@@ -38,77 +38,33 @@
       style="width: 100%">
       <el-table-column
         fixed
-        prop="uaccount"
-        label="账号"
-        width="80">
-      </el-table-column>
-      <el-table-column
-        prop="biname"
-        label="宝宝名称"
-        width="80">
-      </el-table-column>
-      <el-table-column
-        prop="uname"
-        label="用户名"
-        width="80">
-      </el-table-column>
-      <el-table-column
-        prop="pname"
-        label="用户状态"
-        width="80">
-      </el-table-column>
-      <el-table-column
-        prop="uwork"
-        label="工作"
-        width="80">
-      </el-table-column>
-      <el-table-column
-        prop="usite"
-        label="地址"
-        width="120">
-      </el-table-column>
-      <el-table-column
-        prop="uphone"
-        label="电话号码"
-        width="120">
-      </el-table-column>
-      <el-table-column
-        prop="uchildrelation"
-        label="亲子关系"
-        width="80">
-      </el-table-column>
-      <el-table-column
-        prop="biadtime"
-        label="创建时间"
+        prop="bookid"
+        label="绘本编号"
         width="100">
+      </el-table-column>
+      <el-table-column
+        prop="bookname"
+        label="绘本名称"
+        width="150">
+      </el-table-column>
+      <el-table-column
+        prop="Folderaddress"
+        label="文件夹地址"
+        width="150">
+      </el-table-column>
+      <el-table-column
+        prop="UploadTime"
+        label="上传时间"
+        width="150">
       </el-table-column>
       <el-table-column
         fixed="right"
         label="操作"
-        width="260">
+        width="400">
         <template slot-scope="scope">
-          <el-button type="primary" size="min" @click="updateClick(scope.row)">修改</el-button>
-          <el-dialog
-            title="提示"
-            :visible.sync="dialogVisible"
-            width="30%"
-            :modal="false"
-            :before-close="handleClose">
-            <el-form>账号:<input type="text" v-model="questionForm.uaccount"></el-form><br>
-            <el-form>宝宝名:<input type="text" v-model="questionForm.biname"></el-form><br>
-            <el-form>用户名:<input type="text" v-model="questionForm.uname"></el-form><br>
-            <el-form>工作:<input type="text" v-model="questionForm.uwork"></el-form><br>
-            <el-form>地址:<input type="text" v-model="questionForm.usite"></el-form><br>
-            <el-form>电话号码:<input type="text" v-model="questionForm.uphone"></el-form><br>
-            <el-form>亲子关系:<input type="text" v-model="questionForm.uchildrelation"></el-form>
-            <span slot="footer" class="dialog-footer">
-    <el-button @click="dialogVisible = false">取 消</el-button>
-    <el-button type="primary" @click="affirmClick">确 定</el-button>
-  </span>
-          </el-dialog>
-<!--          <el-button @click="updateClick(scope.row)" type="primary" size="min">修改</el-button>-->
-          <el-button @click="handleClick(scope.row)" type="primary" size="min">删除</el-button>
-          <el-button @click="stateClick(scope.row)" type="primary" size="min">禁用</el-button>
+          <el-button type="primary" size="min" @click="updateClick(scope.row)">查看绘本</el-button>
+          <el-button @click="handleClick(scope.row)" type="primary" size="min">重新上传</el-button>
+          <el-button @click="stateClick(scope.row)" type="primary" size="min">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -130,7 +86,7 @@
 
 <script>
   export default {
-    name: 'ParentsManagement',
+    name: 'ParentChildReading',
     data () {
       return {
         questionForm: {
@@ -185,7 +141,7 @@
       },
       getTableDate: function (val) {
         // let that=this;
-        this.$axios.get('Terrace/PatriarchAll', {
+        this.$axios.get('SafetyEducationInf/readInf', {
           params: {
             page: val,
           },
@@ -243,7 +199,7 @@
       // 修改
       updateClick (row) {
         console.log(row.uaccount),
-        this.dialogVisible = true
+          this.dialogVisible = true
         this.questionForm.uaccount = row.uaccount
         this.questionForm.biname = row. biname
         this.questionForm.uname = row.uname

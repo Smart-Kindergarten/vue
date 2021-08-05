@@ -7,11 +7,19 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import Axios from 'axios'
+import Qs from 'qs';
+import Video from 'video.js'
+import 'video.js/dist/video-js.css'
+
+Vue.prototype.$video = Video
+
+
 Vue.use(ElementUI)
 
 
 Vue.config.productionTip = false
 Vue.prototype.$axios =Axios
+Vue.prototype.$qs =Qs;
 Axios.defaults.baseURL='api'
 
 /* eslint-disable no-new */
