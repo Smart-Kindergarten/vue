@@ -23,6 +23,9 @@ import TeacherManagement from '../components/kindergartenLeader/TeacherManagemen
 import CheckHomework from '../components/teacher/CheckHomework'
 import SafetyEducation from '../components/teacher/SafetyEducation'
 import CheckSafetyEducation from '../components/teacher/CheckSafetyEducation'
+import Healthmanage from '../components/Health/Healthmanage'
+import ParkManage from '../components/accountmanage/ParkManage'
+import intelligence from '../components/accountmanage/intelligence'
 
 Vue.use(Router)
 
@@ -45,6 +48,9 @@ const routes = [
       {path: '/FoodManage', name: 'FoodManage', component: FoodManage},
       {path: '/KLMain', name: 'KLMain', component: KLMain},
       {path: '/TeacherManagement', name: 'TeacherManagement', component: TeacherManagement},
+      {path: '/Healthmanage', name: 'Healthmanage', component: Healthmanage},
+      {path: '/intelligence', name: 'intelligence', component: intelligence},
+      {path: '/ParkManage', name: 'ParkManage', component: ParkManage},
 
       //teacher
       {path: '/Curriculum', name: 'Curriculum', component: Curriculum},

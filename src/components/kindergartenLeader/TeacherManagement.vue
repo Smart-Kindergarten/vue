@@ -34,7 +34,7 @@
                 <template slot-scope="scope">
                   <el-button
                     size="mini"
-                    @click="handleEdit(scope.$index, scope.row);dialogFormVisible = true">编辑</el-button>
+                    @click="handleEdit(scope.$index, scope.row),dialogFormVisible = true">编辑</el-button>
 
                   <el-dialog title="教师编辑" :visible.sync="dialogFormVisible">
                     <el-form :model="form">
