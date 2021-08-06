@@ -49,8 +49,6 @@
           this.editableTabs = tabs.filter(tab => tab.name !== targetName);
         },
         addTab(baby) {
-          console.log(baby)
-          console.log(this.editableTabs)
           for(var i of this.editableTabs){
             if(i.name==baby[0].toString()){
               this.editableTabsValue = baby[0].toString();
