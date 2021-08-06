@@ -176,6 +176,9 @@
                <el-form-item label="职业">
                  <el-input v-model="form.work"></el-input>
                </el-form-item>
+               <el-form-item label="添加账号">
+                 <el-input v-model="form.uaccount" @blur="checkAcc"></el-input>
+               </el-form-item>
              </el-form>
              <el-button type="success" round @click="addParents">保存</el-button>
              <el-button type="info" round @click="out">取消</el-button>
@@ -211,6 +214,7 @@ export default {
         work:'',
         phone:'',
         babyid:'-',
+        uaccount:'',
       },
       formLabelWidth: '120px',
     }
@@ -363,23 +367,52 @@ export default {
       });
     },
 
+    checkAcc(){
+      this.$axios.get('checkParentsAcc',{
+        params:{
+          uaccount:this.form.uaccount
+        }
+      }).then(response=> {
+        if (response.data === '成功') {
+          this.$notify({
+            title: '成功',
+            message: '该账户可用！',
+            type: 'success'
+          });
+        } else {
+          this.$notify.error({
+            title: '错误',
+            message: '该账户不可用！'
+          });
+          this.form.uaccount=''
+        }
+      })
+    },
+    //  添加家长
     addParents(){
-      if(this.form.name!==''&&this.form.BName!==''&&this.form.region!==''&&this.form.phone!==''&&this.form.work!==''){
+      if(this.form.name!==''&&this.form.BName!==''&&this.form.region!==''&&this.form.phone!==''&&this.form.work!==''&&this.form.uaccount!==''){
         this.$axios.get('addParents',{
           params:{
             uname:this.form.name,
             biname:this.form.BName,
             uchildrelation:this.form.region,
             uphone:this.form.phone,
-            uwork:this.form.work
+            uwork:this.form.work,
+            uaccount:this.form.uaccount
           }
         }).then(response=>{
           if (response.data==='成功'){
             this.$notify({
               title: '成功',
-              message: '修改成功！',
+              message: '添加成功！账号:'+this.form.uaccount+'密码:123456',
               type: 'success'
             });
+            this.form.name ='',
+            this.form.BName='',
+            this.form.region='',
+            this.form.phone='',
+            this.form.work='',
+            this.form.uaccount='',
             this.$axios.get('selectAllParents').then(response => {
               this.tableData = response.data
             })
@@ -426,6 +459,11 @@ export default {
           this.$notify.error({
             title: '错误',
             message: '工作不可为空！'
+          });
+        }else if (this.form.uaccount===''){
+          this.$notify.error({
+            title: '错误',
+            message: '账号不可为空！'
           });
         }
       }
