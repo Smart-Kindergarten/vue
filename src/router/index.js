@@ -61,8 +61,6 @@ const routes = [
       {path: '/TerraceInformation', name: 'TerraceInformation', component: TerraceInformation},
       {path: '/ParentChildReading', name: 'ParentChildReading', component: ParentChildReading},
       {path: '/SafetyEducationQuestions', name: 'SafetyEducationQuestions', component: SafetyEducationQuestions},
-      {path: '/SafetyEducationQuestions', name: 'SafetyEducationQuestions', component: SafetyEducationQuestions},
-      {path: '/SafetyEducationQuestions', name: 'SafetyEducationQuestions', component: SafetyEducationQuestions},
       {path: '/BabyParents', name: 'BabyParents', component: BabyParents},
       {path: '/BabyManagement', name: 'BabyManagement', component: BabyManagement},
 
