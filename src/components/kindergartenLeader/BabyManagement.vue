@@ -362,6 +362,36 @@ export default {
         }
       }
     },
+    //删除
+    handleDelete(index, row){
+      this.$axios.get('deleteBaby',{
+        params:{
+          id:row.biid
+        }
+      }).then(response=>{
+        if (response.data==='成功'){
+          this.$axios.get('selectAllBaby').then(response => {
+            this.tableData = response.data
+          })
+            .catch(error => {
+              console.log(error)
+            })
+          this.dialogFormVisible = false,
+            this.$notify({
+              title: '成功',
+              message: '修改成功！',
+              type: 'success'
+            });
+        }else {
+          this.$notify.error({
+            title: '错误',
+            message: '删除错误！'
+          });
+        }
+      }).catch(error => {
+        console.log(error)
+      })
+    }
 
   }
 }
