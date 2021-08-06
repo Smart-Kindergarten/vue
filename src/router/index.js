@@ -23,8 +23,14 @@ import TeacherManagement from '../components/kindergartenLeader/TeacherManagemen
 import CheckHomework from '../components/teacher/CheckHomework'
 import SafetyEducation from '../components/teacher/SafetyEducation'
 import CheckSafetyEducation from '../components/teacher/CheckSafetyEducation'
-import BabyManagement from '../components/kindergartenLeader/BabyManagement'
-import BabyParents from '../components/kindergartenLeader/BabyParents'
+import Healthmanage from '../components/Health/Healthmanage'
+import ParkManage from '../components/accountmanage/ParkManage'
+import intelligence from '../components/accountmanage/intelligence'
+import ClassAttendance from '../components/teacher/ClassAttendance'
+import ClassInfo from '../components/teacher/ClassInfo'
+import TerraceInformation from '../components/terrace/TerraceInformation'
+import ParentChildReading from '../components/terrace/ParentChildReading'
+import SafetyEducationQuestions from '../components/terrace/SafetyEducationQuestions'
 
 Vue.use(Router)
 
@@ -45,11 +51,14 @@ const routes = [
       {path: '/ParentsManagement', name: 'ParentsManagement', component: ParentsManagement},
       {path: '/SafetyEducationVideo', name: 'SafetyEducationVideo', component: SafetyEducationVideo},
       {path: '/FoodManage', name: 'FoodManage', component: FoodManage},
-      //leader
       {path: '/KLMain', name: 'KLMain', component: KLMain},
       {path: '/TeacherManagement', name: 'TeacherManagement', component: TeacherManagement},
-      {path: '/BabyParents', name: 'BabyParents', component: BabyParents},
-      {path: '/BabyManagement', name: 'BabyManagement', component: BabyManagement},
+      {path: '/Healthmanage', name: 'Healthmanage', component: Healthmanage},
+      {path: '/intelligence', name: 'intelligence', component: intelligence},
+      {path: '/ParkManage', name: 'ParkManage', component: ParkManage},
+      {path: '/TerraceInformation', name: 'TerraceInformation', component: TerraceInformation},
+      {path: '/ParentChildReading', name: 'ParentChildReading', component: ParentChildReading},
+      {path: '/SafetyEducationQuestions', name: 'SafetyEducationQuestions', component: SafetyEducationQuestions},
 
       //teacher
       {path: '/Curriculum', name: 'Curriculum', component: Curriculum},
@@ -57,6 +66,8 @@ const routes = [
       {path: '/CheckHomework', name: 'CheckHomework', component: CheckHomework},
       {path: '/TeacherSafetyEducation', name: 'TeacherSafetyEducation', component: SafetyEducation},
       {path: '/CheckSafetyEducation', name: 'CheckSafetyEducation', component: CheckSafetyEducation},
+      {path: '/ClassAttendance', name: 'ClassAttendance', component: ClassAttendance},
+      {path: '/ClassInfo', name: 'ClassInfo', component: ClassInfo},
     ]
   },
   // { path:"/",name:"App",component: App},

@@ -116,7 +116,6 @@ export default {
           uacc: this.uacc
         }
       }).then(res => {
-        // console.log(res)
         this.$message({
           showClose: true,
           message: res.data,
@@ -127,7 +126,6 @@ export default {
       })
     },
     handleSuccess (response, file) {
-      console.log(response)
       if (response.status === 'success') {
         this.UploadedSuccess()
       } else {
@@ -159,7 +157,6 @@ export default {
     },
     //获取班级名称
     getClassName () {
-      console.log(this.uacc)
       this.$axios.get('teacher/getClassName', {
         params: {
           uAccount: this.uacc

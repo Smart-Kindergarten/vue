@@ -1,34 +1,15 @@
 <template>
   <el-main>
     <div style="float: left">
-      <font>查询条件</font>
-      <font>创建时间:<input type="text">至<input type="text"></font>
-      <font>家长名称:<input type="text"></font>
-      <el-button @click="" type="primary" size="min">查询</el-button>
+      <font>查询条件</font><br>
+      <font>上传时间:<input v-model="bgtime" type="text">至<input v-model="overtime" type="text"></font>
+      <font>绘本名称:<input v-model="nameT" type="text"></font>
+      <el-button @click="selectCondition(1)(1)" type="primary" size="min">查询</el-button>
       <el-button @click="newClick" type="primary" size="min">上传绘本</el-button>
-      <el-dialog
-        title="提示"
-        :visible.sync="dialogVisibless"
-        width="30%"
-        :modal="false"
-        :before-close="handleClose">
-        <el-form>账号:<input type="text" v-model="uaccount"></el-form><br>
-        <el-form >宝宝名:
-          <select style="width: 180px;">
-            <option v-for="(item,index) in babyinf" value="item.name">{{item.biname}}</option>
-          </select>
-        </el-form><br>
-        <el-form>用户名:<input type="text" v-model="uname"></el-form><br>
-        <el-form>工作:<input type="text" v-model="usite"></el-form><br>
-        <el-form>地址:<input type="text" v-model="uwork"></el-form><br>
-        <el-form>电话号码:<input type="text" v-model="uphone"></el-form><br>
-        <el-form>亲子关系:<input type="text" v-model="uchildrelation"></el-form>
-        <span slot="footer" class="dialog-footer">
-    <el-button @click="dialogVisibless = false">取 消</el-button>
-    <el-button type="primary" @click="affirmAdd">确 定</el-button>
-          <!--          //撒大声地-->
-  </span>
-      </el-dialog>
+
+
+
+
     </div>
 
     <el-table
@@ -38,33 +19,38 @@
       style="width: 100%">
       <el-table-column
         fixed
-        prop="bookid"
+        prop="frid"
         label="绘本编号"
-        width="100">
+        width="80">
       </el-table-column>
       <el-table-column
         prop="bookname"
         label="绘本名称"
-        width="150">
+        width="100">
       </el-table-column>
       <el-table-column
         prop="Folderaddress"
         label="文件夹地址"
-        width="150">
+        width="200">
       </el-table-column>
       <el-table-column
         prop="UploadTime"
         label="上传时间"
-        width="150">
+        width="200">
+      </el-table-column>
+      <el-table-column
+        prop="reserve2"
+        label="内容"
+        width="200">
       </el-table-column>
       <el-table-column
         fixed="right"
         label="操作"
         width="400">
         <template slot-scope="scope">
-          <el-button type="primary" size="min" @click="updateClick(scope.row)">查看绘本</el-button>
+          <el-button type="primary" size="min" @click="stateBook(scope.row)">查看绘本</el-button>
           <el-button @click="handleClick(scope.row)" type="primary" size="min">重新上传</el-button>
-          <el-button @click="stateClick(scope.row)" type="primary" size="min">删除</el-button>
+          <el-button @click="deletes(scope.row)" type="primary" size="min">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -81,7 +67,81 @@
       </el-pagination>
     </div>
 
+
+    <el-dialog
+      title="修改绘本"
+      :visible.sync="dialogVisiblesss"
+      width="45%"
+      :modal="false"
+      :before-close="handleClose">
+      <input type="hidden" v-model="lookfrid">
+      <el-form>绘本名称:<input type="text" ref="names" v-model="lookbookname"></el-form><br>
+      <el-form>图片信息: <li>
+        <h3>添加新图：</h3>
+        <input  type="file"  name="myphoto" accept="image/png,image/gif,image/jpeg" ref="new_image"  />
+        <el-button @click="addImage" >确认添加</el-button>
+      </li></el-form><br>
+      <el-form>内容信息:<input type="text" v-model="lookcontent"></el-form><br>
+      <el-form>页数:<input type="text"  v-model="lookpagess"></el-form><br>
+
+      <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisibless = false">取 消</el-button>
+    <el-button type="primary" @click="update">确 定</el-button>
+        <!--          //撒大声地-->
+  </span>
+    </el-dialog>
+
+
+
+
+    <el-dialog
+      title="查看绘本"
+      :visible.sync="dialogVisibles"
+      width="45%"
+      :modal="false"
+      :before-close="handleClose">
+
+      <el-form>绘本名称:<input type="text" ref="names" v-model="lookbookname"></el-form><br>
+      <el-form>图片信息: <img v-model="Folderaddress" src=""></el-form>
+      <el-form>内容信息:<input type="text" v-model="lookcontent"></el-form><br>
+
+
+      <span slot="footer" class="dialog-footer">
+    <el-button type="primary" @click="dialogVisibles = false">确定</el-button>
+<!--    <el-button type="primary" @click="affirmAdd">确 定</el-button>-->
+        <!--          //撒大声地-->
+  </span>
+    </el-dialog>
+
+
+    <el-dialog
+      title="上传绘本"
+      :visible.sync="dialogVisibless"
+      width="45%"
+      :modal="false"
+      :before-close="handleClose">
+      <el-form>绘本名称:<input type="text" ref="names" v-model="bookname"></el-form><br>
+      <el-form>图片信息: <li>
+        <h3>添加新图：</h3>
+        <input  type="file" id="saveImage" name="myphoto" accept="image/png,image/gif,image/jpeg" ref="new_image"/>
+        <el-button @click="addImage">确认添加</el-button>
+      </li>
+
+
+      </el-form><br>
+      <el-form>内容信息:<input type="text" v-model="content"></el-form><br>
+      <el-form>页数:<input type="text"  v-model="pagess"></el-form><br>
+
+      <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisibless = false">取 消</el-button>
+    <el-button type="primary" @click="affirmAdd">确 定</el-button>
+        <!--          //撒大声地-->
+  </span>
+    </el-dialog>
   </el-main>
+
+
+
 </template>
 
 <script>
@@ -89,7 +149,24 @@
     name: 'ParentChildReading',
     data () {
       return {
+
+        nameT : "",
+        bgtime : "",
+        overtime: "",
+        delectid : "",
+        lookfrid : "",
+        lookbookname :"",
+        lookcontent :"",
+        lookpagess :"",
+        frid : "",
+        Folderaddress :"",
+        bookname :"",
+        booknames : "",
+        content :"",
+        reserve2 : "",
+        pagess :"",
         questionForm: {
+          myphotos: "",
           uaccount: "",
           biname:"",
           uname: "",
@@ -101,6 +178,8 @@
         dialogFormVisible: false,
         dialogVisible: false,
         dialogVisibless:false,
+        dialogVisibles : false,
+        dialogVisiblesss:false,
         currentPage1: 5,
         currentPage2: 5,
         currentPage3: 5,
@@ -119,6 +198,103 @@
 
     },
     methods: {
+      // 多条件查询
+      selectCondition: function (val) {
+        // let that=this;
+        this.$axios.get('SafetyEducationInf/readInf', {
+          params: {
+            UploadTime : this.bgtime,
+            UploadTimes: this.overtime,
+            bookname : this.nameT,
+            page: val,
+          },
+        }).then(response => {
+          console.log(response.data)
+          this.tableData = response.data
+          this.maxlengrh = response.data.length
+        }).catch(error => {
+          console.log(error)
+          //sdasd
+        })
+      },
+      // 删除
+      deletes (row){
+        console.log(row.frid)
+        this.delectid = row.frid
+        this.$axios.get('SafetyEducationInf/delectbook', {
+          params: {
+            delectid : this.delectid
+          },
+        }).then(response => {
+          this.getTableDate(1)
+        }).catch(error => {
+          console.log(error)
+        })
+      },
+      // 查看绘本
+      stateBook (row) {
+        this.dialogVisibles = true
+        this.lookfrid = row.frid
+          this.lookbookname =row.bookname;
+        this.lookcontent =row.reserve2;
+        this.Folderaddress = row.Folderaddress;
+        // this.$axios.get('Terrace/updateState', {
+        //   params: {
+        //     uaccount: row.uaccount,
+        //     ustate: row.pname,
+        //   },
+        // }).then(response => {
+        //   console.log(response.data)
+        //
+        //   this.getTableDate(1)
+        // }).catch(error => {
+        //   console.log(error)
+        // })
+      },
+      addImage: function () {
+        let self = this;
+        console.log(self.$refs.new_image.files);
+        if (self.$refs.new_image.files.length !== 0) {
+          var formData = new FormData()
+          formData.append('image_data', self.$refs.new_image.files[0]);
+          //单个文件进行上传
+          this.$axios.post('/addImage', formData, {
+            headers: {
+              "Content-Type": "multipart/form-data"
+            },
+            params: {
+              name : this.$refs.names.value,
+            },
+          }).then(response => {
+
+          })
+        }
+
+      },
+      onUpload(e){
+        var files = e.target.files[0];
+        var formFile = new FormData();
+        formFile.append("file", files);
+        $.ajax({
+          url: baseURL + 'sys/upload/uploadPic',//这里是请求后台的上传文件接口
+          type: 'POST',
+          dataType: 'json',
+          cache: false,
+          data: formFile,
+          processData: false,
+          contentType: false,
+          success: function(r){
+
+            if (r.code === 0) {
+              vm.menu.menuImgUrl = r.fileUrl;
+              $(".file-area").css("display","block");
+              $(".file-area").html("<img src= '"+ r.fileUrl +"'>");
+            }else{
+              alert("文件上传失败：" + r.msg);
+            }
+          }
+        });
+      },
       handleCreate() {
         this.questionForm = {
           uaccount: "",
@@ -148,42 +324,18 @@
         }).then(response => {
           console.log(response.data)
           this.tableData = response.data
-          this.maxlengrh = response.data.length
+          // this.maxlengrh = response.data.length
         }).catch(error => {
           console.log(error)
           //sdasd
         })
       },
-      // 删除
+      // 重新上传
       handleClick (row) {
-        console.log(row.uaccount)
-        this.$axios.get('Terrace/delect', {
-          params: {
-            uaccount: row.uaccount,
-          },
-        }).then(response => {
-          console.log(response.data)
-          this.getTableDate(1)
-        }).catch(error => {
-          console.log(error)
-        })
+        this.dialogVisiblesss = true
+        this.lookfrid = row.frid
       },
-      // 禁用
-      stateClick (row) {
-        console.log(row.uaccount)
-        this.$axios.get('Terrace/updateState', {
-          params: {
-            uaccount: row.uaccount,
-            ustate: row.pname,
-          },
-        }).then(response => {
-          console.log(response.data)
 
-          this.getTableDate(1)
-        }).catch(error => {
-          console.log(error)
-        })
-      },
       // 新建用户
       newClick (){
         this.$axios.get('Terrace/selectBabyinf', {
@@ -196,21 +348,21 @@
           console.log(error)
         })
       },
-      // 修改
-      updateClick (row) {
-        console.log(row.uaccount),
-          this.dialogVisible = true
-        this.questionForm.uaccount = row.uaccount
-        this.questionForm.biname = row. biname
-        this.questionForm.uname = row.uname
-        this.questionForm.uwork = row.uwork
-        this.questionForm.usite = row.usite
-        this.questionForm.uphone = row.uphone
-        this.questionForm.uchildrelation = row.uchildrelation
-        this.$axios.get('Terrace/selectBabyinf', {
+      // 重新上传绘本 确认修改
+      update (row) {
+        this.dialogVisiblesss = false
+        this.$axios.get('SafetyEducationInf/updateBook', {
+          params: {
+            frid : this.lookfrid,
+            bookname :this.lookbookname,
+            content :this.lookcontent,
+            pagess :this.lookpagess,
+
+          },
         }).then(response => {
           console.log(response.data)
-          this.babyinf = response.data
+          this.dialogVisibless = false
+          this.getTableDate(1)
         }).catch(error => {
           console.log(error)
         })
@@ -242,26 +394,20 @@
       },
       // 确认新增
       affirmAdd (row) {
-        this.dialogVisibless = false
-        console.log(this.uaccount)
-        console.log(this.uname)
-        console.log(this.uwork)
-        console.log(this.usite)
-        console.log(this.uphone)
-        console.log(this.uchildrelation)
-        this.$axios.get('Terrace/affirmAdd', {
+
+
+        this.$axios.get('SafetyEducationInf/pictureBook', {
           params: {
-            uaccount: this.uaccount,
-            uname: this.uname,
-            uwork: this.uwork,
-            usite: this.usite,
-            uphone: this.uphone,
-            uchildrelation: this.uchildrelation,
+            bookname :this.bookname,
+            booknames :this.booknames,
+            content :this.content,
+            pagess :this.pagess,
 
           },
         }).then(response => {
           console.log(response.data)
-
+          this.dialogVisibless = false
+          this.getTableDate(1)
         }).catch(error => {
           console.log(error)
         })

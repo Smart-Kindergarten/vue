@@ -116,12 +116,11 @@ export default {
     //下拉框选择
     getRating (val) {
       this.videoId = val
-      console.log('视频：', this.videoId)
     },
 // 查询安全教育
     checkSafEdu () {
       this.$axios.get('teacher/selectSafEdu').then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         this.SafEduAry = res.data
         this.options = res.data
       }).catch(error => {
