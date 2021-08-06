@@ -343,6 +343,7 @@ export default {
             pName:this.pName
           }
         }).then(response=>{
+          alert(response.data)
           this.tableData = response.data
         }).catch(error => {
           console.log(error)
