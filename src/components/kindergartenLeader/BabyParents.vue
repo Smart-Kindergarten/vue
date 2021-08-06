@@ -431,7 +431,11 @@ export default {
       }
     },
     out(){
-
+      this.form.name ='',
+        this.form.BName ='',
+        this.form.region ='',
+        this.form.phone ='',
+        this.form.work =''
     }
 
   }
