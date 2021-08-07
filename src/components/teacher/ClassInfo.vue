@@ -85,7 +85,7 @@ export default {
   data () {
     return {
       classInfoAry: [],
-      pageSize: 10,
+      pageSize: 5,
       currPage: 1,
       classAry: [],
       cId: '',

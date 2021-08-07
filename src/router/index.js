@@ -33,6 +33,7 @@ import ParentChildReading from '../components/terrace/ParentChildReading'
 import SafetyEducationQuestions from '../components/terrace/SafetyEducationQuestions'
 import BabyParents from '../components/kindergartenLeader/BabyParents'
 import BabyManagement from '../components/kindergartenLeader/BabyManagement'
+import ClassPhoto from '../components/teacher/ClassPhoto'
 
 Vue.use(Router)
 
@@ -72,6 +73,8 @@ const routes = [
       {path: '/CheckSafetyEducation', name: 'CheckSafetyEducation', component: CheckSafetyEducation},
       {path: '/ClassAttendance', name: 'ClassAttendance', component: ClassAttendance},
       {path: '/ClassInfo', name: 'ClassInfo', component: ClassInfo},
+      {path: '/ClassPhoto', name: 'ClassPhoto', component: ClassPhoto},
+
     ]
   },
   // { path:"/",name:"App",component: App},

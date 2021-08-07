@@ -9,11 +9,11 @@
     </div>
     <div style="height: 10px"></div>
     <div style="width: 800px;height: 40px;margin: auto;">
-      <div style="float: left;width: 460px">
+      <div style="float: left;width: 400px;margin-left: 20px;">
         <span>宝宝名称：</span>
-        <el-input v-model="babyName" clearable placeholder="请输入内容" prefix-icon="el-icon-search" style="width: 200px"></el-input>
+        <el-input v-model="babyName" clearable placeholder="请输入内容" prefix-icon="el-icon-search" style="width: 300px"></el-input>
       </div>
-      <div style="width: 100px;float: left;margin-left: 200px">
+      <div style="width: 100px;float: left;margin-left: 250px">
         <el-button type="primary" plain>查询</el-button>
       </div>
     </div>
