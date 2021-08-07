@@ -25,6 +25,7 @@ import SafetyEducation from '../components/teacher/SafetyEducation'
 import CheckSafetyEducation from '../components/teacher/CheckSafetyEducation'
 import ClassAttendance from '../components/teacher/ClassAttendance'
 import ClassInfo from '../components/teacher/ClassInfo'
+import ClassPhoto from '../components/teacher/ClassPhoto'
 
 Vue.use(Router)
 
@@ -56,6 +57,8 @@ const routes = [
       {path: '/CheckSafetyEducation', name: 'CheckSafetyEducation', component: CheckSafetyEducation},
       {path: '/ClassAttendance', name: 'ClassAttendance', component: ClassAttendance},
       {path: '/ClassInfo', name: 'ClassInfo', component: ClassInfo},
+      {path: '/ClassPhoto', name: 'ClassPhoto', component: ClassPhoto},
+
     ]
   },
   // { path:"/",name:"App",component: App},
@@ -66,7 +69,6 @@ const routes = [
 
 export default new Router({
   mode: 'history',
-
 
   routes: routes,
 
