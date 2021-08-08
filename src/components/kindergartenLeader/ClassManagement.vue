@@ -22,7 +22,7 @@
               >
               </el-date-picker>
               <a>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;</a>
-              <el-button type="primary" @click="checkBaby">查询</el-button>
+              <el-button type="primary" @click="checkClass">查询</el-button>
             </div>
             <div style="margin-top: 9px">
               <a style="font-size: 20px">宝宝名称:</a>
@@ -32,8 +32,7 @@
             <div style="margin-top: 9px">
               <a style="font-size: 20px">班级名称:</a>
               <el-input v-model="className" placeholder="请输入内容" style="width: 350px"></el-input>
-              <a>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;</a>
-              <el-button type="primary" @click="add">新增</el-button>
+              <a>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;</a>
             </div>
           </div>
           <div style="margin: 50px auto 0;">
@@ -151,10 +150,6 @@
           </div>
 
         </el-tab-pane>
-        <el-tab-pane label="班级管理">
-        </el-tab-pane>
-
-
       </el-tabs>
     </div>
   </div>
@@ -168,6 +163,7 @@ export default {
       formLabelWidth: '120px',
       dialogFormVisible : false,
       pDate:'',
+      newTime:'',
       pName:'',
       className:'',
       tableData: [],
@@ -202,8 +198,20 @@ export default {
     handleSizeChange: function (val) {
       this.pageSize = val
     },
-    checkBaby(){
-      alert("!!!!!!!!!!!!!!")
+    checkClass(){
+      this.newTime=''
+      this.newTime+=this.pDate
+      this.$axios.get('checkBabyClass',{
+        params:{
+          date:this.newTime,
+          name:this.pName,
+          className:this.className,
+        }
+      }).then(response=>{
+        this.tableData = response.data
+      }).catch(error => {
+        console.log(error)
+      })
     },
     handleEdit(index,row){
       this.form.Teacher = ''
