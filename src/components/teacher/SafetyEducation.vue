@@ -7,7 +7,7 @@
     <div style="height: 10px"></div>
     <div align="center">
       <el-table
-        stripe border style="width: 761px;margin: auto;"
+        stripe border style="width: 641px;margin: auto;"
         :data="SafEduAry.slice((this.currPage-1)*this.pageSize,this.currPage*this.pageSize)"
         highlight-current-row
         :default-sort="{prop: 'startTime', order: 'descending'}">
@@ -15,31 +15,19 @@
         <el-table-column prop="videoName" label="视频名称" width="140" header-align="center" align="center"></el-table-column>
         <el-table-column prop="startTime" label="开始时间" sortable width="200" header-align="center" align="center"></el-table-column>
         <el-table-column prop="endTime" label="结束时间" width="200" header-align="center" align="center"></el-table-column>
-        <el-table-column label="操作" width="120" header-align="center" align="center">
-          <template slot-scope="scope">
-            <el-button size="small" @click="getScope(scope.row)">配置试题</el-button>
-          </template>
-        </el-table-column>
+<!--        <el-table-column label="操作" width="120" header-align="center" align="center">-->
+<!--          <template slot-scope="scope">-->
+<!--            <el-button size="small" @click="getScope(scope.row)">配置试题</el-button>-->
+<!--          </template>-->
+<!--        </el-table-column>-->
       </el-table>
     </div>
     <div>
-      <el-pagination
-        background
-        layout="prev, pager, next,sizes,total"
-        :page-sizes="[5,10]"
-        :page-size="pageSize"
-        :total="SafEduAry.length"
-        @current-change="currentChange"
-        @size-change="sizeChange">
+      <el-pagination :page-size="pageSize" :page-sizes="[5,10]" :total="SafEduAry.length" background layout="prev, pager, next,sizes,total" @current-change="currentChange" @size-change="sizeChange">
       </el-pagination>
     </div>
     <div>
-      <el-dialog
-        center
-        title="新增安全教育视频"
-        :visible.sync="dialogVisible"
-        width="30%"
-        :before-close="handleClose">
+      <el-dialog :before-close="handleClose" :visible.sync="dialogVisible" center title="新增安全教育视频" width="30%">
         <div>
           <el-form style="width: 300px;margin: auto">
             <el-form-item label="视频名称:">

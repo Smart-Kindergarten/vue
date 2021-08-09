@@ -149,7 +149,7 @@ export default {
           classId: this.cId
         }
       }).then(response => {
-        // console.log(response)
+        console.log(response)
         if (response.data != null) {
           this.checkSafEduAry = response.data
         } else {

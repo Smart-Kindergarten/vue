@@ -48,7 +48,6 @@
             </el-table-column>
           </el-table>
         </div>
-
         <span slot="footer" class="dialog-footer">
          <el-button type="primary" @click="dialogSubmit">确 定</el-button>
           <el-button @click="dialogVisible = false">取 消</el-button>
@@ -201,7 +200,33 @@ export default {
     //获取班级id
     getClassId (value) {
       this.cId = value
+      this.getClName()
       this.checkPublishHomework()
+    },
+    //使用班级id获取班级名称
+    getClName(){
+      this.$axios.get('teacher/getClName', {
+        params: {
+          classId: this.cId
+        }
+      }).then(response => {
+        if (response.data != null) {
+          this.clName = response.data
+        } else {
+          this.$message({
+            showClose: true,
+            message: '无数据',
+            type: 'error'
+          })
+        }
+      }).catch(error => {
+        console.log(error)
+        this.$message({
+          showClose: true,
+          message: error,
+          type: 'error'
+        })
+      })
     },
     //查询发布作业
     checkPublishHomework () {
@@ -213,7 +238,6 @@ export default {
         console.log(res.data)
         if (res.data != null) {
           this.publishHomeworkAry = res.data
-          this.clName = res.data[0].className
         } else {
           this.publishHomeworkAry = []
           this.clName = ''
