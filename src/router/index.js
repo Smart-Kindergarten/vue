@@ -28,6 +28,8 @@ import ParkManage from '../components/accountmanage/ParkManage'
 import intelligence from '../components/accountmanage/intelligence'
 import ClassAttendance from '../components/teacher/ClassAttendance'
 import ClassInfo from '../components/teacher/ClassInfo'
+import ClassPhoto from '../components/teacher/ClassPhoto'
+import ClassMessage from '../components/teacher/ClassMessage'
 import TerraceInformation from '../components/terrace/TerraceInformation'
 import ParentChildReading from '../components/terrace/ParentChildReading'
 import SafetyEducationQuestions from '../components/terrace/SafetyEducationQuestions'
@@ -79,6 +81,8 @@ const routes = [
       {path: '/CheckSafetyEducation', name: 'CheckSafetyEducation', component: CheckSafetyEducation},
       {path: '/ClassAttendance', name: 'ClassAttendance', component: ClassAttendance},
       {path: '/ClassInfo', name: 'ClassInfo', component: ClassInfo},
+      {path: '/ClassPhoto', name: 'ClassPhoto', component: ClassPhoto},
+      {path: '/ClassMessage', name: 'ClassMessage', component: ClassMessage},
     ]
   },
   // { path:"/",name:"App",component: App},

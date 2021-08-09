@@ -92,8 +92,6 @@ export default {
     //获取班级id
     getClassId (value) {
       this.cId = value
-      // console.log('你选中了', this.cId)
-      this.checkSafEduTestRecord()
     },
   },
   mounted () {
