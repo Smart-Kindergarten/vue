@@ -4,7 +4,7 @@
       <font>查询条件</font><br>
       <font>上传时间:<input v-model="bgtime" type="text">至<input v-model="overtime" type="text"></font>
       <font>绘本名称:<input v-model="nameT" type="text"></font>
-      <el-button @click="selectCondition(1)(1)" type="primary" size="min">查询</el-button>
+      <el-button @click="selectCondition(1)" type="primary" size="min">查询</el-button>
       <el-button @click="newClick" type="primary" size="min">上传绘本</el-button>
 
 
@@ -102,7 +102,9 @@
       :before-close="handleClose">
 
       <el-form>绘本名称:<input type="text" ref="names" v-model="lookbookname"></el-form><br>
-      <el-form>图片信息: <img v-model="Folderaddress" src=""></el-form>
+      <el-form>图片信息: <img v-model="Folderaddress" :src="'http://localhost:9901/images/images/'+lookbookname+'.jpg'"></el-form>
+
+<!--      <a href="http://localhost:9901/images/images/永远爱你.jpg"></a>-->
       <el-form>内容信息:<input type="text" v-model="lookcontent"></el-form><br>
 
 
@@ -233,6 +235,7 @@
       },
       // 查看绘本
       stateBook (row) {
+
         this.dialogVisibles = true
         this.lookfrid = row.frid
           this.lookbookname =row.bookname;

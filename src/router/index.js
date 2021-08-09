@@ -17,8 +17,25 @@ import SendMessage from '../components/patriarch/SendMessage'
 import ParentsManagement from '../components/terrace/ParentsManagement'
 import SafetyEducationVideo from '../components/terrace/SafetyEducationVideo'
 import PublishHomework from '../components/teacher/PublishHomework'
+import FoodManage from '../components/patriarch/FoodManage'
+import KLMain from '../components/kindergartenLeader/KLMain'
+import TeacherManagement from '../components/kindergartenLeader/TeacherManagement'
 import CheckHomework from '../components/teacher/CheckHomework'
-import SendMesgPatriarch from "../components/teacher/SendMesgPatriarch";
+import SafetyEducation from '../components/teacher/SafetyEducation'
+import CheckSafetyEducation from '../components/teacher/CheckSafetyEducation'
+import Healthmanage from '../components/Health/Healthmanage'
+import ParkManage from '../components/accountmanage/ParkManage'
+import intelligence from '../components/accountmanage/intelligence'
+import ClassAttendance from '../components/teacher/ClassAttendance'
+import ClassInfo from '../components/teacher/ClassInfo'
+import TerraceInformation from '../components/terrace/TerraceInformation'
+import ParentChildReading from '../components/terrace/ParentChildReading'
+import SafetyEducationQuestions from '../components/terrace/SafetyEducationQuestions'
+import LookInformation from '../components/patriarch/LookInformation'
+import SecurityVideo from '../components/patriarch/SecurityVideo'
+import LookBabyFood from '../components/patriarch/LookBabyFood'
+import ceshis from '../components/terrace/ceshis'
+import ceshisss from '../components/terrace/ceshisss'
 
 Vue.use(Router)
 
@@ -32,16 +49,36 @@ const routes = [
     children: [
       {path: '/UserAdmin', name: 'UserAdmin', component: UserAdmin},
       {path: '/UserTable', name: 'UserTable', component: UsersTable},
-      {path: '/Curriculum', name: 'Curriculum', component: Curriculum},
       {path: '/Health', name: 'Health', component: Health},
       {path: '/Security', name: 'Security', component: Security},
       {path: '/Alipay', name: 'Alipay', component: Alipay},
       {path: '/SendMessage', name: 'SendMessage', component: SendMessage},
       {path: '/ParentsManagement', name: 'ParentsManagement', component: ParentsManagement},
       {path: '/SafetyEducationVideo', name: 'SafetyEducationVideo', component: SafetyEducationVideo},
-      {path: '/publishHomework', name: 'PublishHomework', component: PublishHomework},
+      {path: '/FoodManage', name: 'FoodManage', component: FoodManage},
+      {path: '/KLMain', name: 'KLMain', component: KLMain},
+      {path: '/TeacherManagement', name: 'TeacherManagement', component: TeacherManagement},
+      {path: '/Healthmanage', name: 'Healthmanage', component: Healthmanage},
+      {path: '/intelligence', name: 'intelligence', component: intelligence},
+      {path: '/ParkManage', name: 'ParkManage', component: ParkManage},
+      {path: '/TerraceInformation', name: 'TerraceInformation', component: TerraceInformation},
+      {path: '/ParentChildReading', name: 'ParentChildReading', component: ParentChildReading},
+      {path: '/SafetyEducationQuestions', name: 'SafetyEducationQuestions', component: SafetyEducationQuestions},
+      {path: '/LookInformation', name: 'LookInformation', component: LookInformation},
+      {path: '/SecurityVideo', name: 'SecurityVideo', component: SecurityVideo},
+      {path: '/LookBabyFood', name: 'LookBabyFood', component: LookBabyFood},
+      {path: '/ceshis', name: 'ceshis', component: ceshis},
+      {path: '/ceshisss', name: 'ceshisss', component: ceshisss},
+
+
+      //teacher
+      {path: '/Curriculum', name: 'Curriculum', component: Curriculum},
+      {path: '/PublishHomework', name: 'PublishHomework', component: PublishHomework},
       {path: '/CheckHomework', name: 'CheckHomework', component: CheckHomework},
-      {path: '/SendMesgPatriarch', name: 'SendMesgPatriarch', component: SendMesgPatriarch},
+      {path: '/TeacherSafetyEducation', name: 'TeacherSafetyEducation', component: SafetyEducation},
+      {path: '/CheckSafetyEducation', name: 'CheckSafetyEducation', component: CheckSafetyEducation},
+      {path: '/ClassAttendance', name: 'ClassAttendance', component: ClassAttendance},
+      {path: '/ClassInfo', name: 'ClassInfo', component: ClassInfo},
     ]
   },
   // { path:"/",name:"App",component: App},
