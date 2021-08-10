@@ -34,6 +34,7 @@ import SafetyEducationQuestions from '../components/terrace/SafetyEducationQuest
 import BabyParents from '../components/kindergartenLeader/BabyParents'
 import BabyManagement from '../components/kindergartenLeader/BabyManagement'
 import ClassManagement from '../components/kindergartenLeader/ClassManagement'
+import CurriculumLeader from '../components/kindergartenLeader/CurriculumLeader'
 
 Vue.use(Router)
 
@@ -62,11 +63,10 @@ const routes = [
       {path: '/TerraceInformation', name: 'TerraceInformation', component: TerraceInformation},
       {path: '/ParentChildReading', name: 'ParentChildReading', component: ParentChildReading},
       {path: '/SafetyEducationQuestions', name: 'SafetyEducationQuestions', component: SafetyEducationQuestions},
-      {path: '/SafetyEducationQuestions', name: 'SafetyEducationQuestions', component: SafetyEducationQuestions},
-      {path: '/SafetyEducationQuestions', name: 'SafetyEducationQuestions', component: SafetyEducationQuestions},
       {path: '/BabyParents', name: 'BabyParents', component: BabyParents},
       {path: '/BabyManagement', name: 'BabyManagement', component: BabyManagement},
       {path: '/ClassManagement', name: 'ClassManagement', component: ClassManagement},
+      {path: '/CurriculumLeader', name: 'CurriculumLeader', component: CurriculumLeader},
 
       //teacher
       {path: '/Curriculum', name: 'Curriculum', component: Curriculum},
