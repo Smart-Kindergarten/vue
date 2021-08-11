@@ -40,6 +40,12 @@ import ceshis from '../components/terrace/ceshis'
 import ceshisss from '../components/terrace/ceshisss'
 import Approval from '../components/terrace/Approval'
 import AuthorityManagement from '../components/terrace/AuthorityManagement'
+import ClassManagement from '../components/kindergartenLeader/ClassManagement'
+import CurriculumLeader from '../components/kindergartenLeader/CurriculumLeader'
+import CampusBulletin from '../components/kindergartenLeader/CampusBulletin'
+import Announcement from '../components/kindergartenLeader/Announcement'
+import BabyParents from '../components/kindergartenLeader/BabyParents'
+import BabyManagement from '../components/kindergartenLeader/BabyManagement'
 
 Vue.use(Router)
 
@@ -75,7 +81,12 @@ const routes = [
       {path: '/ceshisss', name: 'ceshisss', component: ceshisss},
       {path: '/Approval', name: 'Approval', component: Approval},
       {path: '/AuthorityManagement', name: 'AuthorityManagement', component: AuthorityManagement},
-
+      {path: '/ClassManagement', name: 'ClassManagement', component: ClassManagement},
+      {path: '/CurriculumLeader', name: 'CurriculumLeader', component: CurriculumLeader},
+      {path: '/CampusBulletin', name: 'CampusBulletin', component: CampusBulletin},
+      {path: '/Announcement', name: 'Announcement', component: Announcement},
+      {path: '/BabyParents', name: 'BabyParents', component: BabyParents},
+      {path: '/BabyManagement', name: 'BabyManagement', component: BabyManagement},
       //teacher
       {path: '/Curriculum', name: 'Curriculum', component: Curriculum},
       {path: '/PublishHomework', name: 'PublishHomework', component: PublishHomework},
