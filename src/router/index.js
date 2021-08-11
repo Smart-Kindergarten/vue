@@ -47,6 +47,7 @@ import Announcement from '../components/kindergartenLeader/Announcement'
 import BabyParents from '../components/kindergartenLeader/BabyParents'
 import BabyManagement from '../components/kindergartenLeader/BabyManagement'
 import LBT from '../components/view/LBT'
+import SendMesgPatriarch from "../components/teacher/SendMesgPatriarch";
 
 Vue.use(Router)
 
@@ -100,6 +101,7 @@ const routes = [
       {path: '/ClassInfo', name: 'ClassInfo', component: ClassInfo},
       {path: '/ClassPhoto', name: 'ClassPhoto', component: ClassPhoto},
       {path: '/ClassMessage', name: 'ClassMessage', component: ClassMessage},
+      {path: '/SendMesgPatriarch', name:'SendMesgPatriarch', component: SendMesgPatriarch}
     ]
   },
   // { path:"/",name:"App",component: App},
