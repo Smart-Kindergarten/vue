@@ -46,6 +46,7 @@ import CampusBulletin from '../components/kindergartenLeader/CampusBulletin'
 import Announcement from '../components/kindergartenLeader/Announcement'
 import BabyParents from '../components/kindergartenLeader/BabyParents'
 import BabyManagement from '../components/kindergartenLeader/BabyManagement'
+import LBT from '../components/view/LBT'
 
 Vue.use(Router)
 
@@ -87,6 +88,8 @@ const routes = [
       {path: '/Announcement', name: 'Announcement', component: Announcement},
       {path: '/BabyParents', name: 'BabyParents', component: BabyParents},
       {path: '/BabyManagement', name: 'BabyManagement', component: BabyManagement},
+      {path: '/LBT', name: 'LBT', component: LBT},
+
       //teacher
       {path: '/Curriculum', name: 'Curriculum', component: Curriculum},
       {path: '/PublishHomework', name: 'PublishHomework', component: PublishHomework},

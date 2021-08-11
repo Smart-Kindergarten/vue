@@ -1,23 +1,27 @@
 <template xmlns:router="">
+  <div style="background-color: #69818B;height: 790px;width: 100%">
+    <div>
+      <h1>智慧幼儿园管理系统</h1>
+    </div>
   <div style="margin-top: 0px;">
     <div>
       <!--        {{User}}-->
-      <el-row :gutter="20">
-        <el-col :span="3">
-          <div class="grid-content bg-purple">
+      <el-row :gutter="20" >
+        <el-col :span="4" >
+          <div class="grid-content bg-purple" >
             <el-menu
               router :default-active="this.$route.path"
               default-active="2"
               class="el-menu-vertical-demo"
               @open="handleOpen"
               @close="handleClose">
-              <el-submenu v-for="(item,index) in menuData" :key="item.mepid" :index="item.mepid">
-                <template slot="title">
-                  <i class="el-icon-location"></i>
-                  <span>{{ item.mename }}</span>
+              <el-submenu v-for="(item,index) in menuData" :key="item.mepid" :index="item.mepid" style="background-color: #69818B">
+                <template slot="title" >
+                  <i class="el-icon-s-grid" ></i>
+                  <font style="color:white">{{ item.mename }}</font>
                 </template>
-                <el-menu-item-group>
-                  <el-menu-item :index="subItem.meurl" v-for="(subItem,subIndex) in menuTwoData"
+                <el-menu-item-group style="background-color: #69818B" >
+                  <el-menu-item  style="color:white" :index="subItem.meurl" v-for="(subItem,subIndex) in menuTwoData"
                                 v-if="subItem.meid === item.mepid" :key="subIndex">
                     {{ subItem.mename }}
                   </el-menu-item>
@@ -38,13 +42,13 @@
             </el-menu>
           </div>
         </el-col>
-        <el-col :span="18">
+        <el-col :span="18" >
           <div class="grid-content bg-purple">
             <router-view :uacc="User"></router-view>
           </div>
         </el-col>
       </el-row>
-
+    </div>
     </div>
   </div>
 

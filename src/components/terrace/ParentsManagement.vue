@@ -179,6 +179,11 @@
           console.log(response.data)
           this.tableData = response.data
           this.maxlengrh = response.data.length
+          this.$message({
+            showClose: true,
+            message: '查询成功',
+            type: 'success'
+          })
         }).catch(error => {
           console.log(error)
           //sdasd
@@ -228,6 +233,11 @@
           },
         }).then(response => {
           console.log(response.data)
+          this.$message({
+            showClose: true,
+            message: '删除成功',
+            type: 'success'
+          })
           this.getTableDate(1)
         }).catch(error => {
           console.log(error)
@@ -243,7 +253,11 @@
           },
         }).then(response => {
           console.log(response.data)
-
+          this.$message({
+            showClose: true,
+            message: '禁用成功',
+            type: 'success'
+          })
           this.getTableDate(1)
         }).catch(error => {
           console.log(error)
@@ -301,6 +315,11 @@
         }).then(response => {
           console.log(response.data)
           this.getTableDate(1)
+          this.$message({
+            showClose: true,
+            message: '修改成功',
+            type: 'success'
+          })
         }).catch(error => {
           console.log(error)
         })
@@ -326,7 +345,11 @@
           },
         }).then(response => {
           console.log(response.data)
-
+          this.$message({
+            showClose: true,
+            message: '新增成功',
+            type: 'success'
+          })
         }).catch(error => {
           console.log(error)
         })

@@ -19,6 +19,7 @@ Vue.prototype.$video = Video
 Vue.use(ElementUI)
 
 
+
 Vue.config.productionTip = false
 Vue.prototype.$axios =Axios
 Vue.prototype.$qs =Qs;

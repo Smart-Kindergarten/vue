@@ -101,11 +101,12 @@
       :modal="false"
       :before-close="handleClose">
 
-      <el-form>绘本名称:<input type="text" ref="names" v-model="lookbookname"></el-form><br>
-      <el-form>图片信息: <img v-model="Folderaddress" :src="'http://localhost:9901/images/images/'+lookbookname+'.jpg'"></el-form>
+      <el-form>绘本名称:<input style="border-style: none;" type="text" ref="names" v-model="lookbookname"></el-form><br>
+      <el-form>图片信息:
+        <br><img style="width: 300px;height: 300px;" v-model="Folderaddress" :src="'http://localhost:9901/images/images/'+lookbookname+'.jpg'"></el-form>
 
 <!--      <a href="http://localhost:9901/images/images/永远爱你.jpg"></a>-->
-      <el-form>内容信息:<input type="text" v-model="lookcontent"></el-form><br>
+      <el-form>内容信息:<input style="border-style: none;" type="text" v-model="lookcontent"></el-form><br>
 
 
       <span slot="footer" class="dialog-footer">

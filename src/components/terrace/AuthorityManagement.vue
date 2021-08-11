@@ -49,7 +49,16 @@
         }, {
           value: '3',
           label: '园长'
-        },],
+        }, {
+          value: '4',
+          label: '保健员'
+        }, {
+          value: '5',
+          label: '安防员'
+        }, {
+          value: '6',
+          label: '管理员'
+        }],
         value: '',
         fromData: [],
         toData: [],
