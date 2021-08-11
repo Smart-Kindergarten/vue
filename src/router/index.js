@@ -28,15 +28,18 @@ import ParkManage from '../components/accountmanage/ParkManage'
 import intelligence from '../components/accountmanage/intelligence'
 import ClassAttendance from '../components/teacher/ClassAttendance'
 import ClassInfo from '../components/teacher/ClassInfo'
+import ClassPhoto from '../components/teacher/ClassPhoto'
+import ClassMessage from '../components/teacher/ClassMessage'
 import TerraceInformation from '../components/terrace/TerraceInformation'
 import ParentChildReading from '../components/terrace/ParentChildReading'
 import SafetyEducationQuestions from '../components/terrace/SafetyEducationQuestions'
-import BabyParents from '../components/kindergartenLeader/BabyParents'
-import BabyManagement from '../components/kindergartenLeader/BabyManagement'
-import ClassManagement from '../components/kindergartenLeader/ClassManagement'
-import CurriculumLeader from '../components/kindergartenLeader/CurriculumLeader'
-import CampusBulletin from '../components/kindergartenLeader/CampusBulletin'
-import Announcement from '../components/kindergartenLeader/Announcement'
+import LookInformation from '../components/patriarch/LookInformation'
+import SecurityVideo from '../components/patriarch/SecurityVideo'
+import LookBabyFood from '../components/patriarch/LookBabyFood'
+import ceshis from '../components/terrace/ceshis'
+import ceshisss from '../components/terrace/ceshisss'
+import Approval from '../components/terrace/Approval'
+import AuthorityManagement from '../components/terrace/AuthorityManagement'
 
 Vue.use(Router)
 
@@ -65,12 +68,13 @@ const routes = [
       {path: '/TerraceInformation', name: 'TerraceInformation', component: TerraceInformation},
       {path: '/ParentChildReading', name: 'ParentChildReading', component: ParentChildReading},
       {path: '/SafetyEducationQuestions', name: 'SafetyEducationQuestions', component: SafetyEducationQuestions},
-      {path: '/BabyParents', name: 'BabyParents', component: BabyParents},
-      {path: '/BabyManagement', name: 'BabyManagement', component: BabyManagement},
-      {path: '/ClassManagement', name: 'ClassManagement', component: ClassManagement},
-      {path: '/CurriculumLeader', name: 'CurriculumLeader', component: CurriculumLeader},
-      {path: '/CampusBulletin', name: 'CampusBulletin', component: CampusBulletin},
-      {path: '/Announcement', name: 'Announcement', component: Announcement},
+      {path: '/LookInformation', name: 'LookInformation', component: LookInformation},
+      {path: '/SecurityVideo', name: 'SecurityVideo', component: SecurityVideo},
+      {path: '/LookBabyFood', name: 'LookBabyFood', component: LookBabyFood},
+      {path: '/ceshis', name: 'ceshis', component: ceshis},
+      {path: '/ceshisss', name: 'ceshisss', component: ceshisss},
+      {path: '/Approval', name: 'Approval', component: Approval},
+      {path: '/AuthorityManagement', name: 'AuthorityManagement', component: AuthorityManagement},
 
       //teacher
       {path: '/Curriculum', name: 'Curriculum', component: Curriculum},
@@ -80,6 +84,8 @@ const routes = [
       {path: '/CheckSafetyEducation', name: 'CheckSafetyEducation', component: CheckSafetyEducation},
       {path: '/ClassAttendance', name: 'ClassAttendance', component: ClassAttendance},
       {path: '/ClassInfo', name: 'ClassInfo', component: ClassInfo},
+      {path: '/ClassPhoto', name: 'ClassPhoto', component: ClassPhoto},
+      {path: '/ClassMessage', name: 'ClassMessage', component: ClassMessage},
     ]
   },
   // { path:"/",name:"App",component: App},

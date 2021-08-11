@@ -11,12 +11,11 @@ import Qs from 'qs';
 import Video from 'video.js'
 import 'video.js/dist/video-js.css'
 
+import echarts from 'echarts';
+Vue.prototype.$echarts = echarts;
+
 
 Vue.prototype.$video = Video
-
-
-
-
 Vue.use(ElementUI)
 
 

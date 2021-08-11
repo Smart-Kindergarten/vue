@@ -6,6 +6,7 @@
       <font>资讯名称:<input v-model="nameT" type="text"></font>
       <el-button @click="selectCondition(1)" type="primary" size="min">查询</el-button>
       <el-button @click="newClick" type="primary" size="min">新增</el-button>
+      <el-button @click="reptile" type="primary" size="min">开始爬虫</el-button>
       <el-dialog
         title="新增资讯"
         :visible.sync="dialogVisibless"
@@ -38,7 +39,7 @@
         fixed
         prop="ttid"
         label="资讯编号"
-        width="100">
+        width="80">
       </el-table-column>
       <el-table-column
         prop="iftcontent"
@@ -48,7 +49,7 @@
       <el-table-column
         prop="Createtime"
         label="公告内容"
-        width="150">
+        width="300">
       </el-table-column>
       <el-table-column
         prop="reserve1"
@@ -141,6 +142,22 @@
 
     },
     methods: {
+
+      reptile: function (val) {
+        // let that=this;
+        this.$axios.get('SafetyEducationInf/reptile', {
+          params: {
+
+          },
+        }).then(response => {
+          console.log(response.data)
+          this.getTableDate(1)
+        }).catch(error => {
+          console.log(error)
+          //sdasd
+        })
+
+      },
       selectCondition: function (val) {
         // let that=this;
         this.$axios.get('SafetyEducationInf/TerraceInf', {

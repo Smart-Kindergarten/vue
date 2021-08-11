@@ -3,20 +3,20 @@
     <h1>班级信息</h1>
     <div>
       班级名称：
-      <el-select v-model="classAry.classId" @change="getClassId(classAry.classId)" placeholder="请选择班级" style="width: 140px">
+      <el-select v-model="classAry.classId" @change="getClassId(classAry.classId)" placeholder="请选择班级">
         <el-option v-for="item in classAry" :key="item.classId" :label="item.className" :value="item.classId"></el-option>
       </el-select>
     </div>
     <div style="height: 10px"></div>
-    <div style="width: 800px;height: 40px;margin: auto">
-      <div style="float: left;width: 460px">
+    <div style="width: 781px;height: 40px;margin: auto">
+      <div style="float: left;">
         <span>入学时间：</span>
         <el-date-picker v-model="admissionTime1" format="yyyy-MM-dd" placeholder="选择日期" style="width: 160px" type="date" value-format="yyyy-MM-dd"></el-date-picker>
         <span>至</span>
         <el-date-picker v-model="admissionTime2" format="yyyy-MM-dd" placeholder="选择日期" style="width: 160px" type="date" value-format="yyyy-MM-dd"></el-date-picker>
       </div>
-      <div style="width: 100px;float: left;margin-left: 200px">
-        <el-button type="primary" plain @click="fuzzySelect">查询</el-button>
+      <div style="float: right;">
+        <el-button type="primary" plain @click="fuzzySelect">查　　询</el-button>
       </div>
     </div>
     <div style="height: 10px"></div>
@@ -85,7 +85,7 @@ export default {
   data () {
     return {
       classInfoAry: [],
-      pageSize: 10,
+      pageSize: 5,
       currPage: 1,
       classAry: [],
       cId: '',

@@ -32,7 +32,7 @@
         label="操作"
         width="260">
         <template slot-scope="scope">
-          <el-button type="primary" size="min" @click="updateClick(scope.row)">修改</el-button>
+          <el-button type="primary" size="min" @click="updateClick(scope.row)">配置试题</el-button>
 
         </template>
       </el-table-column>

@@ -27,14 +27,15 @@
         </el-checkbox>
         <el-form-item style="width:100%;">
           <el-button type="primary" style="width:40%;"
-                     @click.prevent="handleLogin">登录11
+                     @click.prevent="handleLogin">登录
           </el-button>
           <el-button type="primary" @click="handleRegister" style="width:40%;"
-          >注册23
+          >注册
           </el-button>
         </el-form-item>
       </el-form>
       <!--    <router-view></router-view>-->
+
     </div>
 
     <br>
