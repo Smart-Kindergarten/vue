@@ -1,15 +1,15 @@
 <template>
   <div>
     <h1>班级公告</h1>
-    <div style="width: 521px;height: 40px;margin: auto;">
-      <div style="float: left;width: 240px;">
+    <div style="width: 521px;height: 40px;margin:10px auto;">
+      <div style="float: left;">
         班级名称：
-        <el-select v-model="classAry.classId" placeholder="请选择班级" style="width: 140px" @change="getClassId(classAry.classId)">
+        <el-select v-model="classAry.classId" placeholder="请选择班级" @change="getClassId(classAry.classId)">
           <el-option v-for="item in classAry" :key="item.classId" :label="item.className" :value="item.classId"></el-option>
         </el-select>
       </div>
       <div style="float: right;">
-        <el-button plain @click="classMessageBtn">新增班级公告</el-button>
+        <el-button type="primary" plain @click="classMessageBtn">新增班级公告</el-button>
       </div>
     </div>
     <div style="height: 10px"></div>

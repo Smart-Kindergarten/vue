@@ -1,16 +1,15 @@
 <template>
   <div>
     <h1>安全教育配置</h1>
-    <div style="width: 100px;margin-left: 1000px;">
-      <el-button plain @click="dialogVisible = true">新增</el-button>
+    <div style="width: 641px;height: 40px;margin: 10px auto;">
+      <div style="float: right">
+      <el-button type="primary" plain @click="dialogVisible = true">新　　增</el-button>
+      </div>
     </div>
-    <div style="height: 10px"></div>
+<!--    <div style="height: 10px"></div>-->
     <div align="center">
-      <el-table
-        stripe border style="width: 641px;margin: auto;"
-        :data="SafEduAry.slice((this.currPage-1)*this.pageSize,this.currPage*this.pageSize)"
-        highlight-current-row
-        :default-sort="{prop: 'startTime', order: 'descending'}">
+      <el-table :data="SafEduAry.slice((this.currPage-1)*this.pageSize,this.currPage*this.pageSize)" :default-sort="{prop: 'startTime', order: 'descending'}" border highlight-current-row stripe
+                style="width: 641px;margin: auto;">
         <el-table-column type="index" label="视频编号" width="100" header-align="center" align="center"></el-table-column>
         <el-table-column prop="videoName" label="视频名称" width="140" header-align="center" align="center"></el-table-column>
         <el-table-column prop="startTime" label="开始时间" sortable width="200" header-align="center" align="center"></el-table-column>

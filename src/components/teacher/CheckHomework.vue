@@ -1,14 +1,15 @@
 <template>
   <div>
     <h1>查看作业</h1>
-    <div>
+    <div style="margin: 10px auto">
       班级名称：
-      <el-select v-model="classAry.classId" placeholder="请选择班级" style="width: 140px" @change="getClassId(classAry.classId)">
+      <el-select v-model="classAry.classId" placeholder="请选择班级" @change="getClassId(classAry.classId)">
         <el-option v-for="item in classAry" :key="item.classId" :label="item.className" :value="item.classId"></el-option>
       </el-select>
     </div>
     <div align="center">
-      <el-table :data="CheckHomeworkAry.slice((this.currPage-1)*this.pageSize,this.currPage*this.pageSize)" :default-sort="{prop: 'arrangementTime', order: 'descending'}" border highlight-current-row stripe
+      <el-table :data="CheckHomeworkAry.slice((this.currPage-1)*this.pageSize,this.currPage*this.pageSize)" :default-sort="{prop: 'arrangementTime', order: 'descending'}" border highlight-current-row
+                stripe
                 style="width: 991px;margin: auto;" @current-change="handleCurrentChange">
         <el-table-column align="center" header-align="center" label="序号" type="index" width="50"></el-table-column>
         <el-table-column align="center" header-align="center" label="宝宝编号" prop="biid" width="100"></el-table-column>

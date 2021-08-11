@@ -1,19 +1,11 @@
 <template>
 
   <div class="class-table">
-    <div style="height: 40px;font-size: 30px">课程表</div>
-    <div>班级名称：
-      <el-select
-        v-model="classAry.classId"
-        @change="getClassId(classAry.classId)"
-        placeholder="请选择班级"
-        style="width: 140px">
-        <el-option
-          v-for="item in classAry"
-          :key="item.classId"
-          :label="item.className"
-          :value="item.classId">
-        </el-option>
+    <h1>课程表</h1>
+    <div style="margin: 10px auto">
+      班级名称：
+      <el-select v-model="classAry.classId" placeholder="请选择班级" @change="getClassId(classAry.classId)">
+        <el-option v-for="item in classAry" :key="item.classId" :label="item.className" :value="item.classId"></el-option>
       </el-select>
     </div>
     <span>{{ startTime }}~{{ endTime }}</span>
@@ -31,7 +23,6 @@
             <td>
               <p>{{ '第' + digital2Chinese(index + 1) + '节' }}</p>
             </td>
-
             <td v-for='(week, index) in weeks' :key='index'>
               {{ item[week] || '-' }}
             </td>
@@ -39,16 +30,8 @@
           </tbody>
         </table>
       </div>
-      <el-button
-        type="primary"
-        icon="el-icon-arrow-left"
-        style="float: left;margin-left: 20px"
-        @click="getWeek('LastWeek')">上一周
-      </el-button>
-      <el-button
-        type="primary"
-        style="float: right;margin-right: 20px"
-        @click="getWeek('NextWeek')">下一周<i class="el-icon-arrow-right el-icon--right"></i></el-button>
+      <el-button icon="el-icon-arrow-left" style="float: left;margin-left: 20px" type="primary" @click="getWeek('LastWeek')">上一周</el-button>
+      <el-button style="float: right;margin-right: 20px" type="primary" @click="getWeek('NextWeek')">下一周<i class="el-icon-arrow-right el-icon--right"></i></el-button>
     </div>
   </div>
 </template>
@@ -131,7 +114,6 @@ export default {
         }
       }).then(response => {
         if (response.data != null) {
-          this.className = response.data[0].classId
           var currDate = response.data[0].currDate
           var date = currDate.split(',')
           this.startTime = date[0]
