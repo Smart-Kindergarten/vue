@@ -5,30 +5,6 @@
       <font>审批时间:<input v-model="bgtime" type="text">至<input v-model="overtime" type="text"></font>
       <font>园所名称:<input v-model="nameT" type="text"></font>
       <el-button @click="selectCondition(1)" type="primary" size="min">查询</el-button>
-      <el-button @click="newClick" type="primary" size="min">新增</el-button>
-      <el-dialog
-        title="提示"
-        :visible.sync="dialogVisibless"
-        width="30%"
-        :modal="false"
-        :before-close="handleClose">
-        <el-form>账号:<input type="text" v-model="uaccount"></el-form><br>
-        <el-form >宝宝名:
-          <select style="width: 180px;">
-            <option v-for="(item,index) in babyinf" value="item.name">{{item.biname}}</option>
-          </select>
-        </el-form><br>
-        <el-form>用户名:<input type="text" v-model="uname"></el-form><br>
-        <el-form>工作:<input type="text" v-model="usite"></el-form><br>
-        <el-form>地址:<input type="text" v-model="uwork"></el-form><br>
-        <el-form>电话号码:<input type="text" v-model="uphone"></el-form><br>
-        <el-form>亲子关系:<input type="text" v-model="uchildrelation"></el-form>
-        <span slot="footer" class="dialog-footer">
-    <el-button @click="dialogVisibless = false">取 消</el-button>
-    <el-button type="primary" @click="affirmAdd">确 定</el-button>
-          <!--          //撒大声地-->
-  </span>
-      </el-dialog>
     </div>
 
     <el-table
@@ -40,75 +16,52 @@
         fixed
         prop="ID"
         label="编号"
-        width="80">
+        width="100">
       </el-table-column>
       <el-table-column
         prop="schoolName"
         label="园所名称"
+        width="150">
+      </el-table-column>
+      <el-table-column
+        prop="saccount"
+        label="账号"
+        width="150">
+      </el-table-column>
+      <el-table-column
+        prop="EnrolmentTime"
+        label="审批时间"
+        width="200">
+      </el-table-column>
+      <el-table-column
+        prop="starta"
+        label="状态"
         width="80">
-      </el-table-column>
-      <el-table-column
-        prop="legalPerson"
-        label="法人"
-        width="80">
-      </el-table-column>
-      <el-table-column
-        prop="legalPersonId"
-        label="法人身份证"
-        width="80">
-      </el-table-column>
-      <el-table-column
-        prop="uwork"
-        label="工作"
-        width="80">
-      </el-table-column>
-      <el-table-column
-        prop="usite"
-        label="地址"
-        width="120">
-      </el-table-column>
-      <el-table-column
-        prop="uphone"
-        label="电话号码"
-        width="120">
-      </el-table-column>
-      <el-table-column
-        prop="uchildrelation"
-        label="亲子关系"
-        width="80">
-      </el-table-column>
-      <el-table-column
-        prop="biadtime"
-        label="创建时间"
-        width="100">
       </el-table-column>
       <el-table-column
         fixed="right"
         label="操作"
-        width="260">
+        width="400">
         <template slot-scope="scope">
-          <el-button type="primary" size="min" @click="updateClick(scope.row)">修改</el-button>
           <el-dialog
             title="提示"
             :visible.sync="dialogVisible"
             width="30%"
             :modal="false"
             :before-close="handleClose">
-            <el-form>账号:<input type="text" v-model="questionForm.uaccount"></el-form><br>
-            <el-form>宝宝名:<input type="text" v-model="questionForm.biname"></el-form><br>
-            <el-form>用户名:<input type="text" v-model="questionForm.uname"></el-form><br>
-            <el-form>工作:<input type="text" v-model="questionForm.uwork"></el-form><br>
-            <el-form>地址:<input type="text" v-model="questionForm.usite"></el-form><br>
-            <el-form>电话号码:<input type="text" v-model="questionForm.uphone"></el-form><br>
-            <el-form>亲子关系:<input type="text" v-model="questionForm.uchildrelation"></el-form>
+           <input type="text" v-model="schoolID"><br>
+            <el-form>园所名称:<input type="text" v-model="schoolname"></el-form><br>
+            <el-form>园所账号:<input type="text" v-model="schoolacc"></el-form><br>
             <span slot="footer" class="dialog-footer">
     <el-button @click="dialogVisible = false">取 消</el-button>
     <el-button type="primary" @click="affirmClick">确 定</el-button>
   </span>
           </el-dialog>
           <!--          <el-button @click="updateClick(scope.row)" type="primary" size="min">修改</el-button>-->
-          <el-button @click="handleClick(scope.row)" type="primary" size="min">删除</el-button>
-          <el-button @click="stateClick(scope.row)" type="primary" size="min">禁用</el-button>
+          <el-button @click="forbidden(scope.row)" type="primary" size="min">禁用</el-button>
+          <el-button @click="resetpwd(scope.row)" type="primary" size="min">重置密码</el-button>
+          <el-button @click="handleClick(scope.row)" type="primary" size="min">修改</el-button>
+          <el-button @click="delectID(scope.row)" type="primary" size="min">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -133,6 +86,9 @@
     name: 'Approval',
     data () {
       return {
+        schoolID :"",
+        schoolname :"",
+        schoolacc :"",
         nameT : "",
         bgtime : "",
         overtime: "",
@@ -168,7 +124,7 @@
     methods: {
       selectCondition: function (val) {
         // let that=this;
-        this.$axios.get('Terrace/PatriarchAll', {
+        this.$axios.get('SafetyEducationInf/selectSchool', {
           params: {
             biadtime : this.bgtime,
             biadtimes: this.overtime,
@@ -220,11 +176,11 @@
         })
       },
       // 删除
-      handleClick (row) {
+      delectID (row) {
         console.log(row.uaccount)
-        this.$axios.get('Terrace/delect', {
+        this.$axios.get('SafetyEducationInf/delectID', {
           params: {
-            uaccount: row.uaccount,
+            ID: row.ID,
           },
         }).then(response => {
           console.log(response.data)
@@ -234,72 +190,52 @@
         })
       },
       // 禁用
-      stateClick (row) {
+      forbidden (row) {
         console.log(row.uaccount)
-        this.$axios.get('Terrace/updateState', {
+        this.$axios.get('SafetyEducationInf/forbidden', {
           params: {
-            uaccount: row.uaccount,
-            ustate: row.pname,
+            starta : row.starta,
+            ID: row.ID,
           },
         }).then(response => {
           console.log(response.data)
-
           this.getTableDate(1)
         }).catch(error => {
           console.log(error)
         })
       },
-      // 新建用户
-      newClick (){
-        this.$axios.get('Terrace/selectBabyinf', {
+      // 重置密码
+      resetpwd (row){
+        this.$axios.get('SafetyEducationInf/resetpwd', {
+          params: {
+            ID: row.ID,
+          },
         }).then(response => {
-          // console.log(response.data)
-          this.babyinf = response.data
-          console.log(this.biname)
-          this.dialogVisibless = true
+          this.getTableDate(1)
         }).catch(error => {
           console.log(error)
         })
       },
       // 修改
-      updateClick (row) {
-        console.log(row.uaccount),
-          this.dialogVisible = true
-        this.questionForm.uaccount = row.uaccount
-        this.questionForm.biname = row. biname
-        this.questionForm.uname = row.uname
-        this.questionForm.uwork = row.uwork
-        this.questionForm.usite = row.usite
-        this.questionForm.uphone = row.uphone
-        this.questionForm.uchildrelation = row.uchildrelation
-        this.$axios.get('Terrace/selectBabyinf', {
-        }).then(response => {
-          console.log(response.data)
-          this.babyinf = response.data
-        }).catch(error => {
-          console.log(error)
-        })
+      handleClick (row) {
+        this.dialogVisible = true
+        this.schoolname = row.schoolName
+        this.schoolacc = row.saccount
+        this.schoolID = row.ID
+
       },
       // 确认修改
       affirmClick (row) {
         this.dialogVisible = false
-        console.log(this.questionForm.uaccount)
-        console.log(this.questionForm.uname)
-        console.log(this.questionForm.uwork)
-        console.log(this.questionForm.usite)
-        console.log(this.questionForm.uphone)
-        console.log(this.questionForm.uchildrelation)
-        this.$axios.get('Terrace/affirmClick', {
+        this.$axios.get('SafetyEducationInf/updateID', {
           params: {
-            uname: this.questionForm.uname,
-            uwork: this.questionForm.uwork,
-            usite: this.questionForm.usite,
-            uphone: this.questionForm.uphone,
-            uchildrelation: this.questionForm.uchildrelation,
-            uaccount: this.questionForm.uaccount,
+            schoolname :  this.schoolname,
+            schoolacc : this.schoolacc,
+            ID :this.schoolID,
           },
         }).then(response => {
           console.log(response.data)
+          this.babyinf = response.data
           this.getTableDate(1)
         }).catch(error => {
           console.log(error)

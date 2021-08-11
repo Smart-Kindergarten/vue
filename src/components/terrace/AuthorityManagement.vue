@@ -83,9 +83,9 @@
         // this.$router.go(0)
       },
       repower () {
-        this.$axios.get('admin/rePower', {
+        this.$axios.get('SafetyEducationInf/rePower', {
           params: {
-            ROLEID: this.ruleForm.region,
+            meid: this.ruleForm.region,
           }
         }).then((response) => {
           console.log(response.data)
@@ -100,11 +100,11 @@
           this.filldata.push(this.toData[i].id)
         }
         let datas = {
-          'roleid': this.ruleForm.region,
-          'allID': this.filldata
+          'mid': this.ruleForm.region,
+          'pid': this.filldata
         }
         console.log(this.filldata)
-        this.$axios.post('admin/addright', datas
+        this.$axios.post('SafetyEducationInf/addright', datas
         ).then((response) => {
           console.log(response.data)
           if (response.data === 200) {
@@ -130,8 +130,11 @@
           'roleidleft': this.ruleForm.region,
           'allIDleft': this.deldata
         }
+        console.log("qqqqqqqqqqqqqqq")
         console.log(this.deldata)
-        this.$axios.post('admin/removeleft', datas
+        // 删除
+        this.$axios.post('SafetyEducationInf/removeleft', datas//这个应该是整个左侧的集合   放进来   是左边的所有菜单  一级菜单
+
         ).then((response) => {
           console.log(response.data)
           if (response.data === 200) {
