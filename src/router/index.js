@@ -40,6 +40,7 @@ import ceshis from '../components/terrace/ceshis'
 import ceshisss from '../components/terrace/ceshisss'
 import Approval from '../components/terrace/Approval'
 import AuthorityManagement from '../components/terrace/AuthorityManagement'
+import Websocket from '../components/teacher/Websocket'
 
 Vue.use(Router)
 
@@ -86,6 +87,7 @@ const routes = [
       {path: '/ClassInfo', name: 'ClassInfo', component: ClassInfo},
       {path: '/ClassPhoto', name: 'ClassPhoto', component: ClassPhoto},
       {path: '/ClassMessage', name: 'ClassMessage', component: ClassMessage},
+      {path: '/Websocket', name: 'Websocket', component: Websocket},
     ]
   },
   // { path:"/",name:"App",component: App},
