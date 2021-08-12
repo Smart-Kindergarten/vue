@@ -115,7 +115,7 @@ export default {
       })
     },
     getBabyClass () {
-      console.log(this.urid)
+      // console.log(this.urid)
       if (this.urid == '2') {
         this.getClassName()
       } else {
@@ -200,7 +200,7 @@ export default {
     },
     // 消息发送
     sendMsg () {
-      console.log('消息发送')
+      // console.log('消息发送')
       if (this.curSessionId == '') {
         return this.$message.error('请选择左边的对话框开始聊天!')
       }
@@ -217,7 +217,7 @@ export default {
     // 登录
     loginOrRegister () {
       this.$axios.get('login').then(response => {
-        console.log('登录', response.data.data)
+        // console.log('登录', response.data.data)
         if (response.data.code == -1) {
           return this.$message.error(response.data.errDesc)
         }
@@ -239,7 +239,7 @@ export default {
           classId: this.cId
         }
       }).then(response => {
-        console.log('获取可建立会话列表', response.data.data)
+        // console.log('获取可建立会话列表', response.data.data)
         if (response.data.code == -1) {
           return this.$message.error(response.data.errDesc)
         }
@@ -255,7 +255,7 @@ export default {
           id: this.curUserId
         }
       }).then(response => {
-        console.log('获取已存在的会话列表', response.data.data)
+        // console.log('获取已存在的会话列表', response.data.data)
         if (response.data.code == -1) {
           return this.$message.error(response.data.errDesc)
         }
@@ -274,7 +274,7 @@ export default {
           toUserName: toUserName,
         }
       }).then(response => {
-        console.log('创建会话', response)
+        // console.log('创建会话', response)
 
         if (response.data.code == -1) {
           return thus.$message.error(response.data.errDesc)
@@ -303,7 +303,7 @@ export default {
           sessionId: sessionId
         }
       }).then(response => {
-        console.log('删除会话', response)
+        // console.log('删除会话', response)
         if (response.data.code == -1) {
           return thus.$message.error(response.data.errDesc)
         }
@@ -316,14 +316,14 @@ export default {
     // 退出登录
     loginOut () {
       this.$axios.get('loginOut').then(response => {
-        console.log('退出登录', response.data.data)
+        // console.log('退出登录', response.data.data)
         if (response.data.code == -1) {
           return this.$message.error(response.data.errDesc)
         }
         this.curUserId = ''
         this.curUserName = ''
         // return thus.$message.success('退出登录成功')
-        console.log('退出登录成功')
+        // console.log('退出登录成功')
       }).catch(error => {
         console.log(error)
       })
@@ -335,7 +335,7 @@ export default {
           sessionId: sessionId
         }
       }).then(response => {
-        console.log('获取消息数据', response.data.data)
+        // console.log('获取消息数据', response.data.data)
         if (response.data.code == -1) {
           return this.$message.error(response.data.errDesc)
         }
