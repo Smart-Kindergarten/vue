@@ -48,6 +48,7 @@ import BabyParents from '../components/kindergartenLeader/BabyParents'
 import BabyManagement from '../components/kindergartenLeader/BabyManagement'
 import LBT from '../components/view/LBT'
 import SendMesgPatriarch from "../components/teacher/SendMesgPatriarch";
+import Websocket from '../components/teacher/Websocket'
 
 Vue.use(Router)
 
@@ -101,6 +102,7 @@ const routes = [
       {path: '/ClassInfo', name: 'ClassInfo', component: ClassInfo},
       {path: '/ClassPhoto', name: 'ClassPhoto', component: ClassPhoto},
       {path: '/ClassMessage', name: 'ClassMessage', component: ClassMessage},
+      {path: '/Websocket', name: 'Websocket', component: Websocket},
       {path: '/SendMesgPatriarch', name:'SendMesgPatriarch', component: SendMesgPatriarch}
     ]
   },
