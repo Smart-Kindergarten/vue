@@ -49,6 +49,7 @@ import BabyManagement from '../components/kindergartenLeader/BabyManagement'
 import LBT from '../components/view/LBT'
 import SendMesgPatriarch from "../components/teacher/SendMesgPatriarch";
 import Websocket from '../components/teacher/Websocket'
+import ClassManage from "../components/kindergartenLeader/ClassManage";
 
 Vue.use(Router)
 
@@ -85,6 +86,7 @@ const routes = [
       {path: '/Approval', name: 'Approval', component: Approval},
       {path: '/AuthorityManagement', name: 'AuthorityManagement', component: AuthorityManagement},
       {path: '/ClassManagement', name: 'ClassManagement', component: ClassManagement},
+      {path: '/ClassManage', name: 'ClassManage', component: ClassManage},
       {path: '/CurriculumLeader', name: 'CurriculumLeader', component: CurriculumLeader},
       {path: '/CampusBulletin', name: 'CampusBulletin', component: CampusBulletin},
       {path: '/Announcement', name: 'Announcement', component: Announcement},
@@ -103,7 +105,7 @@ const routes = [
       {path: '/ClassPhoto', name: 'ClassPhoto', component: ClassPhoto},
       {path: '/ClassMessage', name: 'ClassMessage', component: ClassMessage},
       {path: '/Websocket', name: 'Websocket', component: Websocket},
-      {path: '/SendMesgPatriarch', name:'SendMesgPatriarch', component: SendMesgPatriarch}
+      {path: '/SendMesgPatriarch', name: 'SendMesgPatriarch', component: SendMesgPatriarch}
     ]
   },
   // { path:"/",name:"App",component: App},
