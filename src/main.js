@@ -10,6 +10,7 @@ import Axios from 'axios'
 import Qs from 'qs';
 import Video from 'video.js'
 import 'video.js/dist/video-js.css'
+import BaiduMap from 'vue-baidu-map'
 
 
 Vue.prototype.$video = Video
@@ -18,7 +19,9 @@ Vue.prototype.$video = Video
 
 
 Vue.use(ElementUI)
-
+Vue.use(BaiduMap, {
+  ak: 'kHh6RIvClwEnteofGiGoeAhO7HQPxmjl'
+})
 
 Vue.config.productionTip = false
 Vue.prototype.$axios =Axios

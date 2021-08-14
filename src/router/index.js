@@ -9,7 +9,7 @@ import AdminIndex from '../components/admin/AdminIndex'
 import UserAdmin from '../components/admin/UserAdmin'
 import UsersTable from '../components/admin/UsersTable'
 import Power from '../components/view/Power'
-import Security from '../components/SecurityGuard'
+import SecurityPick from '../components/security/SecurityGuard-Pick'
 import Curriculum from '../components/teacher/Curriculum'
 import Health from '../components/patriarch/Health'
 import Alipay from '../components/patriarch/Alipay'
@@ -33,6 +33,10 @@ import ParentChildReading from '../components/terrace/ParentChildReading'
 import SafetyEducationQuestions from '../components/terrace/SafetyEducationQuestions'
 import BabyParents from '../components/kindergartenLeader/BabyParents'
 import BabyManagement from '../components/kindergartenLeader/BabyManagement'
+import SecuityGuardAlert from '../components/security/SecurityGuard-alert'
+import SecuityGuardLocation from '../components/security/SecurityGuard-location'
+import SecurityGuardPersonalCenter from '../components/security/SecurityGuard-PersonalCenter'
+// import SecuityAmapJS from '../components/security/test'
 
 Vue.use(Router)
 
@@ -47,7 +51,6 @@ const routes = [
       {path: '/UserAdmin', name: 'UserAdmin', component: UserAdmin},
       {path: '/UserTable', name: 'UserTable', component: UsersTable},
       {path: '/Health', name: 'Health', component: Health},
-      {path: '/Security', name: 'Security', component: Security},
       {path: '/Alipay', name: 'Alipay', component: Alipay},
       {path: '/SendMessage', name: 'SendMessage', component: SendMessage},
       {path: '/ParentsManagement', name: 'ParentsManagement', component: ParentsManagement},
@@ -63,20 +66,24 @@ const routes = [
       {path: '/SafetyEducationQuestions', name: 'SafetyEducationQuestions', component: SafetyEducationQuestions},
       {path: '/BabyParents', name: 'BabyParents', component: BabyParents},
       {path: '/BabyManagement', name: 'BabyManagement', component: BabyManagement},
-
+      {path: '/SecurityPick', name: 'SecurityPick', component: SecurityPick},
       //teacher
       {path: '/Curriculum', name: 'Curriculum', component: Curriculum},
       {path: '/PublishHomework', name: 'PublishHomework', component: PublishHomework},
       {path: '/CheckHomework', name: 'CheckHomework', component: CheckHomework},
       {path: '/TeacherSafetyEducation', name: 'TeacherSafetyEducation', component: SafetyEducation},
       {path: '/CheckSafetyEducation', name: 'CheckSafetyEducation', component: CheckSafetyEducation},
-      {path: '/ClassAttendance', name: 'ClassAttendance', component: ClassAttendance},
       {path: '/ClassInfo', name: 'ClassInfo', component: ClassInfo},
+      {path: '/SecuityGuardAlert', name: 'SecuityGuardAlert', component: SecuityGuardAlert},
+      {path: '/SecurityGuardPersonalCenter', name: 'SecurityGuardPersonalCenter', component: SecurityGuardPersonalCenter},
+      {path: '/SecuityGuardLocation', name: 'SecuityGuardLocation', component: SecuityGuardLocation},
     ]
   },
   // { path:"/",name:"App",component: App},
   {path: '/AdminIndex', name: 'AdminIndex', component: AdminIndex},
   {path: '/Power', name: 'Power', component: Power},
+  // {path: '/SecuityAmapJS', name: 'SecuityAmapJS', component: SecuityAmapJS}
+
 
 ]
 
