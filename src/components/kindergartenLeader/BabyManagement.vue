@@ -335,7 +335,6 @@ export default {
     checkBaby(){
       this.ptime=''
       this.ptime +=this.pDate
-      alert(this.ptime)
       if (this.pName!==''&&this.ptime!==''){
         this.$axios.get('checkBaby',{
           params:{
@@ -343,7 +342,6 @@ export default {
             pName:this.pName
           }
         }).then(response=>{
-          alert(response.data)
           this.tableData = response.data
         }).catch(error => {
           console.log(error)
@@ -363,36 +361,46 @@ export default {
       }
     },
     //删除
-    handleDelete(index, row){
-      this.$axios.get('deleteBaby',{
-        params:{
-          id:row.biid
-        }
-      }).then(response=>{
-        if (response.data==='成功'){
-          this.$axios.get('selectAllBaby').then(response => {
-            this.tableData = response.data
-          })
-            .catch(error => {
-              console.log(error)
+    handleDelete(index, row) {
+      this.$confirm('此操作将永久删除, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.$axios.get('deleteBaby', {
+          params: {
+            id: row.biid
+          }
+        }).then(response => {
+          if (response.data === '成功') {
+            this.$axios.get('selectAllBaby').then(response => {
+              this.tableData = response.data
             })
-          this.dialogFormVisible = false,
-            this.$notify({
-              title: '成功',
-              message: '修改成功！',
-              type: 'success'
+              .catch(error => {
+                console.log(error)
+              })
+            this.dialogFormVisible = false,
+              this.$notify({
+                title: '成功',
+                message: '修改成功！',
+                type: 'success'
+              });
+          } else {
+            this.$notify.error({
+              title: '错误',
+              message: '删除错误！'
             });
-        }else {
-          this.$notify.error({
-            title: '错误',
-            message: '删除错误！'
-          });
-        }
-      }).catch(error => {
-        console.log(error)
-      })
+          }
+        }).catch(error => {
+          console.log(error)
+        })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        });
+      });
     }
-
   }
 }
 </script>

@@ -132,10 +132,10 @@
                       <el-button type="primary" @click="changeClass">确 定</el-button>
                     </div>
                   </el-dialog>
-                  <el-button
-                    size="mini"
-                    type="danger"
-                    @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+<!--                  <el-button-->
+<!--                    size="mini"-->
+<!--                    type="danger"-->
+<!--                    @click="handleDelete(scope.$index, scope.row)">删除</el-button>-->
                 </template>
               </el-table-column>
             </el-table>
