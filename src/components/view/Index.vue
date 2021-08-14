@@ -166,14 +166,14 @@
       },
 
 
-      handleClose(done) {
-        this.$confirm('确认关闭？')
-          .then(_ => {
-            done()
-          })
-          .catch(_ => {
-          })
-      },
+      // handleClose(done) {
+      //   this.$confirm('确认关闭？')
+      //     .then(_ => {
+      //       done()
+      //     })
+      //     .catch(_ => {
+      //     })
+      // },
       handleCommand(command) {
         // this.$message('click on item ' + command);
         if (command === 'a') {
