@@ -134,7 +134,7 @@
         if (this.password === '') {
           alert('密码不能为空')
         }
-        if (this.username != '' && this.password != '') {
+        if (this.username !== '' && this.password !== '') {
           this.$axios.get('admin/GGB2', {
             params: {
               uaccount: this.username,
@@ -152,9 +152,19 @@
               name: 'Index',
               params: {Userid: response.data[0].uaccount}
             })
+            this.$message({
+              showClose: true,
+              message: '登录成功！',
+              type: 'success'
+            })
 
           }).catch(error => {
             console.log(error)
+            this.$message({
+              showClose: true,
+              message: '登录失败！',
+              type: 'error'
+            })
           })
           // this.$router.replace('/Login12306')
         } else {

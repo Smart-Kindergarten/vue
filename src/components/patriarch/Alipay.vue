@@ -1,15 +1,26 @@
 <template>
-  <!--  <el-button type="primary" icon="el-icon-platform-eleme" @click="pay">进行缴费</el-button>-->
-  <el-form :inline="true" class="demo-form-inline">
-    <el-form-item>
-      <el-button type="primary" @click="pay">进行缴费</el-button>
-    </el-form-item>
-  </el-form>
+  <div>
+    <div class="block">
+      <el-image :src="src" style="height: 300px;width: 500px;"></el-image>
+    </div>
+
+    <el-form :inline="true" class="demo-form-inline">
+      <el-form-item>
+        <el-button type="primary" plain @click="pay">进行缴费</el-button>
+      </el-form-item>
+    </el-form>
+  </div>
+
 </template>
 
 <script>
   export default {
     name: "Alipay",
+    data() {
+      return {
+        src: "./static/images/yry1.jpg"
+      }
+    },
     methods: {
       pay() {
         this.$axios.post("alipay").then(response => {
