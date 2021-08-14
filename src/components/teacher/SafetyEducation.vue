@@ -3,10 +3,10 @@
     <h1>安全教育配置</h1>
     <div style="width: 641px;height: 40px;margin: 10px auto;">
       <div style="float: right">
-      <el-button type="primary" plain @click="dialogVisible = true">新　　增</el-button>
+        <el-button type="primary" plain @click="dialogVisible = true">新　　增</el-button>
       </div>
     </div>
-<!--    <div style="height: 10px"></div>-->
+    <!--    <div style="height: 10px"></div>-->
     <div align="center">
       <el-table :data="SafEduAry.slice((this.currPage-1)*this.pageSize,this.currPage*this.pageSize)" :default-sort="{prop: 'startTime', order: 'descending'}" border highlight-current-row stripe
                 style="width: 641px;margin: auto;">
@@ -14,11 +14,11 @@
         <el-table-column prop="videoName" label="视频名称" width="140" header-align="center" align="center"></el-table-column>
         <el-table-column prop="startTime" label="开始时间" sortable width="200" header-align="center" align="center"></el-table-column>
         <el-table-column prop="endTime" label="结束时间" width="200" header-align="center" align="center"></el-table-column>
-<!--        <el-table-column label="操作" width="120" header-align="center" align="center">-->
-<!--          <template slot-scope="scope">-->
-<!--            <el-button size="small" @click="getScope(scope.row)">配置试题</el-button>-->
-<!--          </template>-->
-<!--        </el-table-column>-->
+        <!--        <el-table-column label="操作" width="120" header-align="center" align="center">-->
+        <!--          <template slot-scope="scope">-->
+        <!--            <el-button size="small" @click="getScope(scope.row)">配置试题</el-button>-->
+        <!--          </template>-->
+        <!--        </el-table-column>-->
       </el-table>
     </div>
     <div>
@@ -106,6 +106,9 @@ export default {
     },
 // 查询安全教育
     checkSafEdu () {
+      this.startDate = ''
+      this.endDate = ''
+      this.options = []
       this.$axios.get('teacher/selectSafEdu').then(res => {
         // console.log(res.data)
         this.SafEduAry = res.data
@@ -137,6 +140,7 @@ export default {
             type: 'success'
           })
           this.checkSafEdu()
+
         } else {
           this.$message({
             showClose: true,
@@ -147,6 +151,7 @@ export default {
       }).catch(error => {
         console.log(error)
       })
+
     },
 
   },
