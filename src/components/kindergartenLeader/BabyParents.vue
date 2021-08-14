@@ -313,7 +313,7 @@ export default {
         }else {
           this.$notify.error({
             title: '错误',
-            message: '更改错误请核对！'
+            message: '请核对信息或联系管理员！'
           });
         }
         this.form.changeName='',
@@ -423,7 +423,7 @@ export default {
           }else {
             this.$notify.error({
               title: '错误',
-              message: '添加错误请核对！'
+              message: '请核对信息或联系管理员！'
             });
           }
           this.form.name ='',

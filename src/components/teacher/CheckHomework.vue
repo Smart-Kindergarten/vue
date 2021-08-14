@@ -1,87 +1,29 @@
 <template>
   <div>
     <h1>查看作业</h1>
-    <div>
+    <div style="margin: 10px auto">
       班级名称：
-      <el-select
-        v-model="classAry.classId"
-        @change="getClassId(classAry.classId)"
-        placeholder="请选择班级"
-        style="width: 140px">
-        <el-option
-          v-for="item in classAry"
-          :key="item.classId"
-          :label="item.className"
-          :value="item.classId">
-        </el-option>
+      <el-select v-model="classAry.classId" placeholder="请选择班级" @change="getClassId(classAry.classId)">
+        <el-option v-for="item in classAry" :key="item.classId" :label="item.className" :value="item.classId"></el-option>
       </el-select>
     </div>
     <div align="center">
-      <el-table
-        stripe
-        border
-        style="width: 991px;margin: auto;"
-        :data="CheckHomeworkAry.slice((this.currPage-1)*this.pageSize,this.currPage*this.pageSize)"
-        highlight-current-row
-        @current-change="handleCurrentChange"
-        :default-sort="{prop: 'arrangementTime', order: 'descending'}">
-        <el-table-column
-          type="index"
-          label="序号"
-          width="50"
-          header-align="center"
-          align="center">
-        </el-table-column>
-        <el-table-column
-          prop="biid"
-          label="宝宝编号"
-          width="100"
-          header-align="center"
-          align="center">
-        </el-table-column>
-        <el-table-column
-          prop="biname"
-          label="宝宝名称"
-          width="100"
-          header-align="center"
-          align="center">
-        </el-table-column>
-        <el-table-column
-          prop="uname"
-          label="家长名称"
-          width="100"
-          header-align="center"
-          align="center">
-        </el-table-column>
-        <el-table-column
-          label="作业内容"
-          width="120"
-          header-align="center"
-          align="center">
+      <el-table :data="CheckHomeworkAry.slice((this.currPage-1)*this.pageSize,this.currPage*this.pageSize)" :default-sort="{prop: 'arrangementTime', order: 'descending'}" border highlight-current-row
+                stripe
+                style="width: 991px;margin: auto;" @current-change="handleCurrentChange">
+        <el-table-column align="center" header-align="center" label="序号" type="index" width="50"></el-table-column>
+        <el-table-column align="center" header-align="center" label="宝宝编号" prop="biid" width="100"></el-table-column>
+        <el-table-column align="center" header-align="center" label="宝宝名称" prop="biname" width="100"></el-table-column>
+        <el-table-column align="center" header-align="center" label="家长名称" prop="uname" width="100"></el-table-column>
+        <el-table-column align="center" header-align="center" label="作业内容" width="120">
           <template slot-scope="scope">
             <el-button size="small" @click="checkWork(scope.row)">查看作业</el-button>
           </template>
         </el-table-column>
-        <el-table-column
-          prop="arrangementTime"
-          label="发布时间"
-          sortable
-          width="200"
-          header-align="center"
-          align="center">
+        <el-table-column align="center" header-align="center" label="发布时间" prop="arrangementTime" sortable width="200">
         </el-table-column>
-        <el-table-column
-          prop="completionTime"
-          label="完成时间"
-          width="200"
-          header-align="center"
-          align="center">
-        </el-table-column>
-        <el-table-column
-          label="操作"
-          width="120"
-          header-align="center"
-          align="center">
+        <el-table-column align="center" header-align="center" label="完成时间" prop="completionTime" width="200"></el-table-column>
+        <el-table-column align="center" header-align="center" label="操作" width="120">
           <template slot-scope="scope">
             <el-button size="small" @click="handleClick(scope.row)">作业打分</el-button>
           </template>
@@ -89,27 +31,15 @@
       </el-table>
     </div>
     <div>
-      <el-pagination
-        background
-        layout="prev, pager, next,sizes,total"
-        :page-sizes="[5,10]"
-        :page-size="pageSize"
-        :total="CheckHomeworkAry.length"
-        @current-change="CurrentChange"
-        @size-change="handleSizeChange">
-      </el-pagination>
+      <el-pagination :page-size="pageSize" :page-sizes="[5,10]" :total="CheckHomeworkAry.length" background layout="prev, pager, next,sizes,total" @current-change="CurrentChange"
+                     @size-change="handleSizeChange"></el-pagination>
     </div>
     <div>
-      <el-dialog title="作业评分" :visible.sync="dialogFormVisible" width="30%" center :before-close="handleClose">
+      <el-dialog :before-close="handleClose" :visible.sync="dialogFormVisible" center title="作业评分" width="30%">
         <el-form>
           <el-form-item label="作业评级：">
             <el-select v-model="options.value" placeholder="请选择作业评级" @change="getRating(options.value)">
-              <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value">
-              </el-option>
+              <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
             </el-select>
           </el-form-item>
         </el-form>
@@ -259,20 +189,8 @@ export default {
 
     //下载作业
     checkWork (row) {
-      console.log('查看:', row.homeworkURL)
-      // window.location = 'teacher/download?file=' + row.homeworkURL
-      // this.$axios({
-      //   method: 'GET',
-      //   url: 'teacher/download',
-      //   responseType: 'blob',
-      //   params: {
-      //     path: row.homeworkURL
-      //   },
-      // }).then(response => {
-      //   const blob = new Blob([response.data])
-      //   const url = window.URL.createObjectURL(blob)
-      //   window.location.href = url
-      // }).catch(error => this.$message.error(error))
+      // console.log('查看:', row)
+      window.location.href = 'http://localhost:9901/images/publishHomework/' + row.workName
     }
   },
   mounted () {

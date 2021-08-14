@@ -12,12 +12,17 @@ import Video from 'video.js'
 import 'video.js/dist/video-js.css'
 
 
+import VueParticles from 'vue-particles'
+Vue.use(VueParticles)
+
+
+import echarts from 'echarts';
+Vue.prototype.$echarts = echarts;
+
+
 Vue.prototype.$video = Video
-
-
-
-
 Vue.use(ElementUI)
+
 
 
 Vue.config.productionTip = false

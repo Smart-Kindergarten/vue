@@ -1,45 +1,32 @@
 <template>
   <div>
     <h1>安全教育配置</h1>
-    <div style="width: 100px;margin-left: 1000px;">
-      <el-button plain @click="dialogVisible = true">新增</el-button>
+    <div style="width: 641px;height: 40px;margin: 10px auto;">
+      <div style="float: right">
+        <el-button type="primary" plain @click="dialogVisible = true">新　　增</el-button>
+      </div>
     </div>
-    <div style="height: 10px"></div>
+    <!--    <div style="height: 10px"></div>-->
     <div align="center">
-      <el-table
-        stripe border style="width: 761px;margin: auto;"
-        :data="SafEduAry.slice((this.currPage-1)*this.pageSize,this.currPage*this.pageSize)"
-        highlight-current-row
-        :default-sort="{prop: 'startTime', order: 'descending'}">
+      <el-table :data="SafEduAry.slice((this.currPage-1)*this.pageSize,this.currPage*this.pageSize)" :default-sort="{prop: 'startTime', order: 'descending'}" border highlight-current-row stripe
+                style="width: 641px;margin: auto;">
         <el-table-column type="index" label="视频编号" width="100" header-align="center" align="center"></el-table-column>
         <el-table-column prop="videoName" label="视频名称" width="140" header-align="center" align="center"></el-table-column>
         <el-table-column prop="startTime" label="开始时间" sortable width="200" header-align="center" align="center"></el-table-column>
         <el-table-column prop="endTime" label="结束时间" width="200" header-align="center" align="center"></el-table-column>
-        <el-table-column label="操作" width="120" header-align="center" align="center">
-          <template slot-scope="scope">
-            <el-button size="small" @click="getScope(scope.row)">配置试题</el-button>
-          </template>
-        </el-table-column>
+        <!--        <el-table-column label="操作" width="120" header-align="center" align="center">-->
+        <!--          <template slot-scope="scope">-->
+        <!--            <el-button size="small" @click="getScope(scope.row)">配置试题</el-button>-->
+        <!--          </template>-->
+        <!--        </el-table-column>-->
       </el-table>
     </div>
     <div>
-      <el-pagination
-        background
-        layout="prev, pager, next,sizes,total"
-        :page-sizes="[5,10]"
-        :page-size="pageSize"
-        :total="SafEduAry.length"
-        @current-change="currentChange"
-        @size-change="sizeChange">
+      <el-pagination :page-size="pageSize" :page-sizes="[5,10]" :total="SafEduAry.length" background layout="prev, pager, next,sizes,total" @current-change="currentChange" @size-change="sizeChange">
       </el-pagination>
     </div>
     <div>
-      <el-dialog
-        center
-        title="新增安全教育视频"
-        :visible.sync="dialogVisible"
-        width="30%"
-        :before-close="handleClose">
+      <el-dialog :before-close="handleClose" :visible.sync="dialogVisible" center title="新增安全教育视频" width="30%">
         <div>
           <el-form style="width: 300px;margin: auto">
             <el-form-item label="视频名称:">
@@ -119,6 +106,9 @@ export default {
     },
 // 查询安全教育
     checkSafEdu () {
+      this.startDate = ''
+      this.endDate = ''
+      this.options = []
       this.$axios.get('teacher/selectSafEdu').then(res => {
         // console.log(res.data)
         this.SafEduAry = res.data
@@ -150,6 +140,7 @@ export default {
             type: 'success'
           })
           this.checkSafEdu()
+
         } else {
           this.$message({
             showClose: true,
@@ -160,6 +151,7 @@ export default {
       }).catch(error => {
         console.log(error)
       })
+
     },
 
   },

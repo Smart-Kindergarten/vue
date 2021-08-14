@@ -3,12 +3,12 @@
     <h1>安全教育试题完成情况</h1>
     <div>
       班级名称：
-      <el-select v-model="classAry.classId" @change="getClassId(classAry.classId)" placeholder="请选择班级" style="width: 140px">
+      <el-select v-model="classAry.classId" @change="getClassId(classAry.classId)" placeholder="请选择班级">
         <el-option v-for="item in classAry" :key="item.classId" :label="item.className" :value="item.classId"></el-option>
       </el-select>
     </div>
     <div style="height: 10px"></div>
-    <div style="width: 800px;height: 40px;margin: auto">
+    <div style="width: 921px;height: 40px;margin: auto">
       <div style="float: left;width: 460px">
         <span>完成时间：</span>
         <el-date-picker v-model="wDate1" format="yyyy-MM-dd" placeholder="选择日期" style="width: 160px" type="date" value-format="yyyy-MM-dd"></el-date-picker>
@@ -21,8 +21,8 @@
           <el-option v-for="item in paramAry" :key="item.pzid" :label="item.pname" :value="item.pzid"></el-option>
         </el-select>
       </div>
-      <div style="width: 100px;float: left">
-        <el-button type="primary" plain @click="checkFuzzy">查询</el-button>
+      <div style="width: 100px;float: right">
+        <el-button type="primary" plain @click="checkFuzzy">查　　询</el-button>
       </div>
     </div>
     <div style="height: 10px"></div>
@@ -149,7 +149,7 @@ export default {
           classId: this.cId
         }
       }).then(response => {
-        // console.log(response)
+        console.log(response)
         if (response.data != null) {
           this.checkSafEduAry = response.data
         } else {

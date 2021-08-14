@@ -2,33 +2,16 @@
   <el-main>
     <div style="float: left">
       <font>查询条件</font>
-      <font>创建时间:<input v-model="bgtime" type="text">至<input v-model="overtime" type="text"></font>
-      <font>家长名称:<input v-model="nameT" type="text"></font>
+      <font>菜单名称:<input v-model="mename" type="text"></font>
+      <font>一级菜单:
+        <select style="width: 180px;">
+          <option value=""></option>
+          <option v-for="(item,index) in one" v-model="onename" value="item.name">{{item.mename}}</option>
+        </select>
+      </font>
+
       <el-button @click="selectCondition(1)" type="primary" size="min">查询</el-button>
-      <el-button @click="newClick" type="primary" size="min">新增</el-button>
-      <el-dialog
-        title="提示"
-        :visible.sync="dialogVisibless"
-        width="30%"
-        :modal="false"
-        :before-close="handleClose">
-        <el-form>账号:<input type="text" v-model="uaccount"></el-form><br>
-        <el-form >宝宝名:
-          <select style="width: 180px;">
-            <option v-for="(item,index) in babyinf" value="item.name">{{item.biname}}</option>
-          </select>
-        </el-form><br>
-        <el-form>用户名:<input type="text" v-model="uname"></el-form><br>
-        <el-form>工作:<input type="text" v-model="usite"></el-form><br>
-        <el-form>地址:<input type="text" v-model="uwork"></el-form><br>
-        <el-form>电话号码:<input type="text" v-model="uphone"></el-form><br>
-        <el-form>亲子关系:<input type="text" v-model="uchildrelation"></el-form>
-        <span slot="footer" class="dialog-footer">
-    <el-button @click="dialogVisibless = false">取 消</el-button>
-    <el-button type="primary" @click="affirmAdd">确 定</el-button>
-<!--          //撒大声地-->
-  </span>
-      </el-dialog>
+
     </div>
 
     <el-table
@@ -38,54 +21,29 @@
       style="width: 100%">
       <el-table-column
         fixed
-        prop="uaccount"
-        label="账号"
-        width="80">
+        prop="mepid"
+        label="序号"
+        width="200">
       </el-table-column>
       <el-table-column
-        prop="biname"
-        label="宝宝名称"
-        width="80">
+        prop="mename"
+        label="菜单名称"
+        width="200">
       </el-table-column>
       <el-table-column
-        prop="uname"
-        label="用户名"
-        width="80">
+        prop="meurl"
+        label="URL"
+        width="200">
       </el-table-column>
       <el-table-column
-        prop="pname"
-        label="用户状态"
-        width="80">
-      </el-table-column>
-      <el-table-column
-        prop="uwork"
-        label="工作"
-        width="80">
-      </el-table-column>
-      <el-table-column
-        prop="usite"
-        label="地址"
-        width="120">
-      </el-table-column>
-      <el-table-column
-        prop="uphone"
-        label="电话号码"
-        width="120">
-      </el-table-column>
-      <el-table-column
-        prop="uchildrelation"
-        label="亲子关系"
-        width="80">
-      </el-table-column>
-      <el-table-column
-        prop="biadtime"
-        label="创建时间"
-        width="100">
+        prop="menames"
+        label="上级菜单"
+        width="200">
       </el-table-column>
       <el-table-column
         fixed="right"
         label="操作"
-        width="260">
+        width="200">
         <template slot-scope="scope">
           <el-button type="primary" size="min" @click="updateClick(scope.row)">修改</el-button>
           <el-dialog
@@ -94,21 +52,17 @@
             width="30%"
             :modal="false"
             :before-close="handleClose">
-            <el-form>账号:<input type="text" v-model="questionForm.uaccount"></el-form><br>
-            <el-form>宝宝名:<input type="text" v-model="questionForm.biname"></el-form><br>
-            <el-form>用户名:<input type="text" v-model="questionForm.uname"></el-form><br>
-            <el-form>工作:<input type="text" v-model="questionForm.uwork"></el-form><br>
-            <el-form>地址:<input type="text" v-model="questionForm.usite"></el-form><br>
-            <el-form>电话号码:<input type="text" v-model="questionForm.uphone"></el-form><br>
-            <el-form>亲子关系:<input type="text" v-model="questionForm.uchildrelation"></el-form>
+            <input type="hidden" v-model="umepid"><br>
+            <el-form>菜单名称:<input type="text" v-model="umename"></el-form><br>
+            <el-form>URL:<input type="text" v-model="umeurl"></el-form><br>
+           <input type="hidden" v-model="umenames"><br>
             <span slot="footer" class="dialog-footer">
     <el-button @click="dialogVisible = false">取 消</el-button>
     <el-button type="primary" @click="affirmClick">确 定</el-button>
   </span>
           </el-dialog>
-<!--          <el-button @click="updateClick(scope.row)" type="primary" size="min">修改</el-button>-->
+          <!--          <el-button @click="updateClick(scope.row)" type="primary" size="min">修改</el-button>-->
           <el-button @click="handleClick(scope.row)" type="primary" size="min">删除</el-button>
-          <el-button @click="stateClick(scope.row)" type="primary" size="min">禁用</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -121,7 +75,7 @@
         :page-sizes="[5, 10, 20]"
         :page-size="100"
         layout="total, sizes, prev, pager, next, jumper"
-        :total="20">
+        :total="55">
       </el-pagination>
     </div>
 
@@ -130,9 +84,16 @@
 
 <script>
   export default {
-    name: 'ParentsManagement',
+    name: 'ceshisss',
     data () {
       return {
+        umepid:"",
+        umename:'',
+        umeurl:'',
+        umenames:'',
+        onename:"",
+        one:[],
+        mename : "",
         nameT : "",
         bgtime : "",
         overtime: "",
@@ -168,22 +129,16 @@
     methods: {
       selectCondition: function (val) {
         // let that=this;
-        this.$axios.get('Terrace/PatriarchAll', {
+        this.$axios.get('SafetyEducationInf/menuManagement', {
           params: {
-            biadtime : this.bgtime,
-            biadtimes: this.overtime,
-            uname : this.nameT,
+            onename: this.onename,
+            mename : this.mename,
             page: val,
           },
         }).then(response => {
           console.log(response.data)
           this.tableData = response.data
           this.maxlengrh = response.data.length
-          this.$message({
-            showClose: true,
-            message: '查询成功',
-            type: 'success'
-          })
         }).catch(error => {
           console.log(error)
           //sdasd
@@ -211,8 +166,9 @@
       },
       getTableDate: function (val) {
         // let that=this;
-        this.$axios.get('Terrace/PatriarchAll', {
+        this.$axios.get('SafetyEducationInf/menuManagement', {
           params: {
+
             page: val,
           },
         }).then(response => {
@@ -233,32 +189,17 @@
           },
         }).then(response => {
           console.log(response.data)
-          this.$message({
-            showClose: true,
-            message: '删除成功',
-            type: 'success'
-          })
           this.getTableDate(1)
         }).catch(error => {
           console.log(error)
         })
       },
-      // 禁用
-      stateClick (row) {
-        console.log(row.uaccount)
-        this.$axios.get('Terrace/updateState', {
-          params: {
-            uaccount: row.uaccount,
-            ustate: row.pname,
-          },
+      // 一级菜单
+      selectOne () {
+        this.$axios.get('SafetyEducationInf/selectOne', {
         }).then(response => {
-          console.log(response.data)
-          this.$message({
-            showClose: true,
-            message: '禁用成功',
-            type: 'success'
-          })
-          this.getTableDate(1)
+           console.log(response.data)
+          this.one = response.data
         }).catch(error => {
           console.log(error)
         })
@@ -277,15 +218,11 @@
       },
       // 修改
       updateClick (row) {
-        console.log(row.uaccount),
+        this.umepid = row.mepid
+        this.umename= row.mename
+          this.umeurl= row.meurl
+          this.umenames= row.menames
         this.dialogVisible = true
-        this.questionForm.uaccount = row.uaccount
-        this.questionForm.biname = row. biname
-        this.questionForm.uname = row.uname
-        this.questionForm.uwork = row.uwork
-        this.questionForm.usite = row.usite
-        this.questionForm.uphone = row.uphone
-        this.questionForm.uchildrelation = row.uchildrelation
         this.$axios.get('Terrace/selectBabyinf', {
         }).then(response => {
           console.log(response.data)
@@ -297,29 +234,20 @@
       // 确认修改
       affirmClick (row) {
         this.dialogVisible = false
-        console.log(this.questionForm.uaccount)
-        console.log(this.questionForm.uname)
-        console.log(this.questionForm.uwork)
-        console.log(this.questionForm.usite)
-        console.log(this.questionForm.uphone)
-        console.log(this.questionForm.uchildrelation)
-        this.$axios.get('Terrace/affirmClick', {
+        console.log(this.umepid)
+        console.log(this.umename)
+        console.log(this.umeurl)
+        console.log(this.umenames)
+        this.$axios.get('SafetyEducationInf/updateMenu', {
           params: {
-            uname: this.questionForm.uname,
-            uwork: this.questionForm.uwork,
-            usite: this.questionForm.usite,
-            uphone: this.questionForm.uphone,
-            uchildrelation: this.questionForm.uchildrelation,
-            uaccount: this.questionForm.uaccount,
+            umepid : this.umepid,
+            umename : this.umename,
+            umeurl : this.umeurl,
+            umenames : this.umenames,
           },
         }).then(response => {
           console.log(response.data)
           this.getTableDate(1)
-          this.$message({
-            showClose: true,
-            message: '修改成功',
-            type: 'success'
-          })
         }).catch(error => {
           console.log(error)
         })
@@ -345,11 +273,7 @@
           },
         }).then(response => {
           console.log(response.data)
-          this.$message({
-            showClose: true,
-            message: '新增成功',
-            type: 'success'
-          })
+
         }).catch(error => {
           console.log(error)
         })
@@ -366,6 +290,7 @@
     },
     mounted () {
       this.getTableDate(1)
+      this.selectOne();
     }
   }
 
