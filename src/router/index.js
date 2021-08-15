@@ -110,6 +110,7 @@ const routes = [
       {path: '/SecurityGuardPersonalCenter', name: 'SecurityGuardPersonalCenter', component: SecurityGuardPersonalCenter},
       {path: '/SecuityGuardLocation', name: 'SecuityGuardLocation', component: SecuityGuardLocation},
       {path: '/ClassPhoto', name: 'ClassPhoto', component: ClassPhoto},
+      {path: '/ClassAttendance', name: 'ClassAttendance', component: ClassAttendance},
       {path: '/ClassMessage', name: 'ClassMessage', component: ClassMessage},
       {path: '/Websocket', name: 'Websocket', component: Websocket},
       {path: '/SendMesgPatriarch', name: 'SendMesgPatriarch', component: SendMesgPatriarch}
