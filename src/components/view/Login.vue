@@ -151,7 +151,7 @@
             })
 
             this.$router.push({
-              name: 'Index',
+              name: 'Login12306',
               params: {Userid: response.data[0].uaccount}
             })
             this.$message({

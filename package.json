@@ -15,7 +15,6 @@
     "serve": "webpack-dev-server --open"
   },
   "dependencies": {
-    "ant-design-vue": "^1.7.7",
     "axios": "^0.21.1",
     "echarts": "^4.9.0",
     "el-tree-transfer": "^2.4.7",
@@ -23,7 +22,6 @@
     "qs": "^6.10.1",
     "video.js": "^7.14.3",
     "vue": "^2.5.2",
-    "vue-amap": "^0.5.10",
     "vue-baidu-map": "^0.21.22",
     "vue-particles": "^1.0.9",
     "vue-router": "^3.0.1",

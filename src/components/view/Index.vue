@@ -16,9 +16,9 @@
       <div
         style="width: 260px;margin: 5px; font-family: STCaiyun; color: #2C6D7F; background-color: #E6F2EC; border-radius: 5px;">
         <h2>☀智慧幼儿园管理系统</h2>
-        <div>
-          <marquee behavior="1" direction="">欢迎光临智慧幼儿园管理系统</marquee>
-        </div>
+<!--        <div>-->
+<!--          <marquee behavior="1" direction="">欢迎光临智慧幼儿园管理系统</marquee>-->
+<!--        </div>-->
       </div>
       <!--右边-->
       <div style="margin-left: 1140px">

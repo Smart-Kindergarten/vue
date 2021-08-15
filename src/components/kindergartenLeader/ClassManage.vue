@@ -15,7 +15,7 @@
 
           <div style="display: flex;align-content: center;justify-content: center;">
             <label style="margin-top: 17px;">班级名称</label>
-            <el-input maxlength="5" show-word-limit v-model="className"
+            <el-input maxlength="5" show-word-limit v-model="className" clearable
                       style="width: 190px;margin-top: 10px;margin-left: 5px;"
                       placeholder="请输入班级名称"></el-input>
           </div>
@@ -39,7 +39,7 @@
 
             <div style="display: flex;align-content: center;justify-content: center;">
               <label style="margin-top: 30px;">班级名称</label>
-              <el-input maxlength="5" show-word-limit v-model="className"
+              <el-input maxlength="5" show-word-limit v-model="className" clearable
                         style="width: 190px;float: right;margin-top: 20px; margin-left: 55px;margin-bottom: 30px"
                         placeholder="请输入班级名称"></el-input>
             </div>

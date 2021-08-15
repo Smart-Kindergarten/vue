@@ -60,15 +60,15 @@ Vue.use(Router)
 const routes = [
   {path: '/', name: 'Login', component: Login},
   {path: '/Menu/:cid', name: 'Menu', component: Menu},
-  {path: '/Login12306', name: 'Login12306', component: Login12306},
   {path: '/Reg12306', name: 'Reg12306', component: Reg12306},
   {
     path: '/Index', name: 'Index', component: Index,
     children: [
+      {path: '/Login12306', name: 'Login12306', component: Login12306},
       {path: '/UserAdmin', name: 'UserAdmin', component: UserAdmin},
       {path: '/UserTable', name: 'UserTable', component: UsersTable},
       {path: '/Health', name: 'Health', component: Health},
-      {path: '/Security', name: 'Security', component: Security},
+      // {path: '/Security', name: 'Security', component: Security},
       {path: '/Alipay', name: 'Alipay', component: Alipay},
       {path: '/SendMessage', name: 'SendMessage', component: SendMessage},
       {path: '/ParentsManagement', name: 'ParentsManagement', component: ParentsManagement},
@@ -96,7 +96,7 @@ const routes = [
       {path: '/Announcement', name: 'Announcement', component: Announcement},
       {path: '/BabyParents', name: 'BabyParents', component: BabyParents},
       {path: '/BabyManagement', name: 'BabyManagement', component: BabyManagement},
-      {path: '/SecurityPick', name: 'SecurityPick', component: SecurityPick},
+      // {path: '/SecurityPick', name: 'SecurityPick', component: SecurityPick},
       {path: '/LBT', name: 'LBT', component: LBT},
 
       //teacher
