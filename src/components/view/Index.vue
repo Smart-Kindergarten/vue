@@ -1,13 +1,45 @@
 <template xmlns:router="">
-  <div style="background-color: #69818B;height: 790px;width: 100%">
-    <div>
-      <h1>智慧幼儿园管理系统</h1>
+  <div style="background-color: #B7C3C6;height: 790px;width: 100%">
+    <!--    <div>-->
+    <!--      <h1>智慧幼儿园管理系统</h1>-->
+    <!--    </div>-->
+    <div style="display: flex;background-color: #2C6D7F">
+      <div>
+        <div class="block">
+          <el-image :src="src">
+            <div slot="placeholder" class="image-slot">
+              加载中<span class="dot">...</span>
+            </div>
+          </el-image>
+        </div>
+      </div>
+      <div
+        style="width: 260px;margin: 5px; font-family: STCaiyun; color: #2C6D7F; background-color: #E6F2EC; border-radius: 5px;">
+        <h2>☀智慧幼儿园管理系统</h2>
+<!--        <div>-->
+<!--          <marquee behavior="1" direction="">欢迎光临智慧幼儿园管理系统</marquee>-->
+<!--        </div>-->
+      </div>
+      <!--右边-->
+      <div style="margin-left: 1140px">
+        <el-avatar :size="30" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+        <el-dropdown @command="handleCommand" style="margin-right: 10px;">
+                    <span class="el-dropdown-link">
+                      个人中心<i class="el-icon--right"></i>
+                    </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item command="a">修改密码</el-dropdown-item>
+            <el-dropdown-item command="b">退出</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </div>
     </div>
     <div style="margin-top: 0px;">
       <div>
         <!--        {{User}}-->
         <el-row :gutter="20">
           <el-col :span="4">
+            <!--            <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>-->
             <div class="grid-content bg-purple">
               <el-menu
                 router :default-active="this.$route.path"
@@ -16,53 +48,28 @@
                 @open="handleOpen"
                 @close="handleClose">
                 <el-submenu v-for="(item,index) in menuData" :key="item.mepid" :index="item.mepid"
-                            style="background-color: #69818B">
+                            style="background-color: #293438">
                   <template slot="title">
                     <i class="el-icon-s-grid"></i>
                     <font style="color:white">{{ item.mename }}</font>
                   </template>
-                  <el-menu-item-group style="background-color: #69818B">
-                    <el-menu-item style="color:white" :index="subItem.meurl" v-for="(subItem,subIndex) in menuTwoData"
+                  <el-menu-item-group style="background-color: #939B9E">
+                    <el-menu-item style="color:black;" :index="subItem.meurl" v-for="(subItem,subIndex) in menuTwoData"
                                   v-if="subItem.meid === item.mepid" :key="subIndex">
                       {{ subItem.mename }}
                     </el-menu-item>
                   </el-menu-item-group>
                 </el-submenu>
-                <!--              <el-submenu v-for="(item,index) in menuData" :key="item.mepid" >-->
-                <!--                <template slot="title">-->
-                <!--                  <i class="el-icon-location"></i>-->
-                <!--                  <span>{{item.mename}}</span>-->
-                <!--                </template>-->
-                <!--                <el-menu-item-group>-->
-                <!--                  <el-menu-item :index="subItem.meurl" v-for="(subItem,subIndex) in menuTwoData"-->
-                <!--                                v-if="subItem.meid === item.mepid" :key="subIndex">-->
-                <!--                    {{subItem.mename}}-->
-                <!--                  </el-menu-item>-->
-                <!--                </el-menu-item-group>-->
-                <!--              </el-submenu>-->
+
               </el-menu>
             </div>
           </el-col>
           <el-col :span="18">
+            <router-view :uacc="User"></router-view>
             <div class="grid-content bg-purple">
-              <router-view :uacc="User"></router-view>
+              <!--              <el-avatar :size="30" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>-->
             </div>
           </el-col>
-
-
-          <!--右边-->
-          <div style="float: right;">
-            <el-dropdown @command="handleCommand" style="margin-right: 30px;">
-              <span class="el-dropdown-link">
-                个人中心<i class="el-icon-arrow-down el-icon--right"></i>
-              </span>
-              <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item command="a">修改密码</el-dropdown-item>
-                <el-dropdown-item command="b">退出</el-dropdown-item>
-              </el-dropdown-menu>
-            </el-dropdown>
-          </div>
-
 
           <el-dialog
             title="修改密码" center
@@ -128,6 +135,7 @@
         uaccount: '',
         upwd: '',
         reupwd: '',
+        src: '/static/images/baby.png',
       }
     },
     name: 'Index',
@@ -262,8 +270,8 @@
       },
 
       //验证账号
-      uacpwd(){
-        if (this.upwd === ''){
+      uacpwd() {
+        if (this.upwd === '') {
           this.$message({
             showClose: true,
             message: '密码不能为空！',
@@ -272,8 +280,8 @@
         }
       },
       //验证密码
-      pwdch(){
-        if (this.reupwd === ''){
+      pwdch() {
+        if (this.reupwd === '') {
           this.$message({
             showClose: true,
             message: '确认密码不能为空！',
@@ -300,7 +308,7 @@
 
   .el-dropdown-link {
     cursor: pointer;
-    color: #409EFF;
+    color: white;
     font-weight: bold;
   }
 
@@ -313,11 +321,11 @@
   }
 
   .bg-purple-dark {
-    background: #99a9bf;
+    /*background: #99a9bf;*/
   }
 
   .bg-purple {
-    background: #d3dce6;
+    /*background: #d3dce6;*/
   }
 
   .bg-purple-light {

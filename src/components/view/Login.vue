@@ -5,10 +5,10 @@
         color="#fff"
         :particleOpacity="0.7"
         :particlesNumber="60"
-        shapeType="circle"
-        :particleSize="4"
+        shapeType="star"
+        :particleSize="5"
         linesColor="#fff"
-        :linesWidth="1"
+        :linesWidth="2"
         :lineLinked="true"
         :lineOpacity="0.4"
         :linesDistance="150"
@@ -61,9 +61,9 @@
         <h3 class="title" style="margin-bottom: 20px">系统登录</h3>
         <el-form-item>
           <el-input type="text"
-
                     placeholder="用户名"
                     v-model="username"
+                    clearable
           ></el-input>
           <br><br>
         </el-form-item>
@@ -72,6 +72,8 @@
                     auto-complete="off"
                     placeholder="密码"
                     v-model="password"
+                    show-password
+                    clearable
           ></el-input>
           <br><br>
         </el-form-item>
@@ -149,7 +151,7 @@
             })
 
             this.$router.push({
-              name: 'Index',
+              name: 'Login12306',
               params: {Userid: response.data[0].uaccount}
             })
             this.$message({
@@ -230,10 +232,12 @@
 
   .login_container {
     background-image: linear-gradient(-180deg, #1a1454 0%, #2D3A4B 100%);
-    z-index: -100;
+    /*background-image: url('/static/images/yry3.jpg');*/
+    z-index: -1;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
+    /*opacity: 0.1;*/
   }
   .login-container {
     width: 100%;

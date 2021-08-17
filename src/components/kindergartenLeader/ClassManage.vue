@@ -8,16 +8,14 @@
         <div style="display: flex;align-content: center;justify-content: center;">
           <font style="margin-top: 17px;">查询条件</font>
           <el-input v-model="bgtime" prefix-icon="el-icon-search" style="width: 200px;float: left;margin: 10px;"
-                    placeholder="请输入创建时间"></el-input>
+                    placeholder="请输入创建时间" clearable></el-input>
           <font style="margin-top: 16px;">至</font>
           <el-input v-model="overtime" prefix-icon="el-icon-search" style="width: 200px; float: left; margin: 10px;"
-                    placeholder="请输入结束时间"></el-input>
-          <!--      <font>创建时间:<input v-model="bgtime" type="text">至<input v-model="overtime" type="text"></font>-->
-          <!--      <font>班级名称:<input v-model="className" type="text"></font>-->
+                    placeholder="请输入结束时间" clearable></el-input>
 
           <div style="display: flex;align-content: center;justify-content: center;">
             <label style="margin-top: 17px;">班级名称</label>
-            <el-input maxlength="5" show-word-limit v-model="className"
+            <el-input maxlength="5" show-word-limit v-model="className" clearable
                       style="width: 190px;margin-top: 10px;margin-left: 5px;"
                       placeholder="请输入班级名称"></el-input>
           </div>
@@ -41,7 +39,7 @@
 
             <div style="display: flex;align-content: center;justify-content: center;">
               <label style="margin-top: 30px;">班级名称</label>
-              <el-input maxlength="5" show-word-limit v-model="className"
+              <el-input maxlength="5" show-word-limit v-model="className" clearable
                         style="width: 190px;float: right;margin-top: 20px; margin-left: 55px;margin-bottom: 30px"
                         placeholder="请输入班级名称"></el-input>
             </div>

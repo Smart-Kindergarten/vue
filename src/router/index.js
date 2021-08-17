@@ -9,7 +9,7 @@ import AdminIndex from '../components/admin/AdminIndex'
 import UserAdmin from '../components/admin/UserAdmin'
 import UsersTable from '../components/admin/UsersTable'
 import Power from '../components/view/Power'
-import Security from '../components/SecurityGuard'
+// import Security from '../components/SecurityGuard'
 import Curriculum from '../components/teacher/Curriculum'
 import Health from '../components/patriarch/Health'
 import Alipay from '../components/patriarch/Alipay'
@@ -46,6 +46,10 @@ import CampusBulletin from '../components/kindergartenLeader/CampusBulletin'
 import Announcement from '../components/kindergartenLeader/Announcement'
 import BabyParents from '../components/kindergartenLeader/BabyParents'
 import BabyManagement from '../components/kindergartenLeader/BabyManagement'
+import SecuityGuardAlert from '../components/security/SecurityGuard-alert'
+import SecuityGuardLocation from '../components/security/SecurityGuard-location'
+import SecurityGuardPersonalCenter from '../components/security/SecurityGuard-PersonalCenter'
+// import SecuityAmapJS from '../components/security/test'
 import LBT from '../components/view/LBT'
 import SendMesgPatriarch from "../components/teacher/SendMesgPatriarch";
 import Websocket from '../components/teacher/Websocket'
@@ -56,15 +60,15 @@ Vue.use(Router)
 const routes = [
   {path: '/', name: 'Login', component: Login},
   {path: '/Menu/:cid', name: 'Menu', component: Menu},
-  {path: '/Login12306', name: 'Login12306', component: Login12306},
   {path: '/Reg12306', name: 'Reg12306', component: Reg12306},
   {
     path: '/Index', name: 'Index', component: Index,
     children: [
+      {path: '/Login12306', name: 'Login12306', component: Login12306},
       {path: '/UserAdmin', name: 'UserAdmin', component: UserAdmin},
       {path: '/UserTable', name: 'UserTable', component: UsersTable},
       {path: '/Health', name: 'Health', component: Health},
-      {path: '/Security', name: 'Security', component: Security},
+      // {path: '/Security', name: 'Security', component: Security},
       {path: '/Alipay', name: 'Alipay', component: Alipay},
       {path: '/SendMessage', name: 'SendMessage', component: SendMessage},
       {path: '/ParentsManagement', name: 'ParentsManagement', component: ParentsManagement},
@@ -92,6 +96,7 @@ const routes = [
       {path: '/Announcement', name: 'Announcement', component: Announcement},
       {path: '/BabyParents', name: 'BabyParents', component: BabyParents},
       {path: '/BabyManagement', name: 'BabyManagement', component: BabyManagement},
+      // {path: '/SecurityPick', name: 'SecurityPick', component: SecurityPick},
       {path: '/LBT', name: 'LBT', component: LBT},
 
       //teacher
@@ -100,9 +105,12 @@ const routes = [
       {path: '/CheckHomework', name: 'CheckHomework', component: CheckHomework},
       {path: '/TeacherSafetyEducation', name: 'TeacherSafetyEducation', component: SafetyEducation},
       {path: '/CheckSafetyEducation', name: 'CheckSafetyEducation', component: CheckSafetyEducation},
-      {path: '/ClassAttendance', name: 'ClassAttendance', component: ClassAttendance},
       {path: '/ClassInfo', name: 'ClassInfo', component: ClassInfo},
+      {path: '/SecuityGuardAlert', name: 'SecuityGuardAlert', component: SecuityGuardAlert},
+      {path: '/SecurityGuardPersonalCenter', name: 'SecurityGuardPersonalCenter', component: SecurityGuardPersonalCenter},
+      {path: '/SecuityGuardLocation', name: 'SecuityGuardLocation', component: SecuityGuardLocation},
       {path: '/ClassPhoto', name: 'ClassPhoto', component: ClassPhoto},
+      {path: '/ClassAttendance', name: 'ClassAttendance', component: ClassAttendance},
       {path: '/ClassMessage', name: 'ClassMessage', component: ClassMessage},
       {path: '/Websocket', name: 'Websocket', component: Websocket},
       {path: '/SendMesgPatriarch', name: 'SendMesgPatriarch', component: SendMesgPatriarch}
@@ -111,6 +119,8 @@ const routes = [
   // { path:"/",name:"App",component: App},
   {path: '/AdminIndex', name: 'AdminIndex', component: AdminIndex},
   {path: '/Power', name: 'Power', component: Power},
+  // {path: '/SecuityAmapJS', name: 'SecuityAmapJS', component: SecuityAmapJS}
+
 
 ]
 

@@ -13,11 +13,12 @@
       </div>
       <el-select
         v-model="classname"
-        :filterable="classfilterable"
-        :remote="classremote"
+        filterable
+        remote
+        :remote-method="getClassBaby"
         :clearable="clearable"
         loading-text="正在加载班级，请稍后"
-        @change="Query()"
+        @change="Query"
         :loading="loading"
         placeholder="请输入班级"
         style="
@@ -26,9 +27,9 @@
         margin-left: 20px;">
 
         <el-option v-for="item in options"
-                   :key="item.value"
-                   :label="item.label"
-                   :value="item.value"></el-option>
+                   :key="item.classID"
+                   :label="item.classBabyName"
+                   :value="item.classID"></el-option>
       </el-select>
     </el-header>
     <el-main>
@@ -87,10 +88,7 @@
             loading:false,
             clearable:true,
             classname:'',
-            options:[{
-                label:'label1',
-                value:'value1'
-              }],
+            options:[],
             BabyName:'',
             tableData:[],
             classfilterable:true,
@@ -102,6 +100,21 @@
           }
         },
         methods:{
+          getClassBaby(query){
+            this.loading = true;
+            var thon = this;
+            let datas = {
+              CName:query
+            }
+            this.$axios({
+              method: 'post',
+              data:this.$qs.stringify(datas),
+              url: '/Security/GetBabyClass',
+            }).then(function (response) {
+              thon.options = response.data
+              thon.loading = false;
+            })
+          },
           getBate(){
             var thon = this;
             this.$axios({
@@ -114,7 +127,6 @@
           Query(index){
             var ABName = this.BabyName;
             var classname = this.classname;
-            console.log("当前条件:宝宝名字"+ABName+"班级："+classname)
             if(this.testing.BName != ABName || this.testing.CID != classname){
               this.testing.BName = ABName
               this.testing.CID = classname
@@ -124,7 +136,6 @@
                 CID:classname
               }
               this.$axios.post('/Security/GetBaby',this.$qs.stringify(data)).then(function (response) {
-                console.log("12323")
                 thon.tableData = response.data
               })
             }
@@ -136,6 +147,15 @@
     }
 </script>
 
-<style scoped>
-
+<style>
+  .el-calendar-table__row{
+    height: 150px;
+  }
+  .prev{
+    width: 210px;
+  }
+  .el-calendar-day{
+    height: 100%;
+    width: 100%;
+  }
 </style>

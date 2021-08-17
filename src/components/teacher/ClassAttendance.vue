@@ -212,6 +212,7 @@ export default {
         if (response.data != null) {
           this.classAttendanceAry = response.data
         } else {
+          this.classAttendanceAry =[]
           this.$message({
             showClose: true,
             message: '无数据',
@@ -238,7 +239,8 @@ export default {
         if (response.data != null) {
           this.classAttendanceAry = response.data
         } else {
-          this.$message({
+          this.classAttendanceAry =[]
+            this.$message({
             showClose: true,
             message: '无数据',
             type: 'error'

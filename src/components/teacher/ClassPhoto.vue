@@ -196,6 +196,7 @@ export default {
         if (response.data != null) {
           this.classPhotoAry = response.data
         } else {
+          this.classPhotoAry =[]
           this.$message({
             showClose: true,
             message: '无数据',
